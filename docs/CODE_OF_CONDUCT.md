@@ -20,11 +20,11 @@ Questo documento definisce il comportamento del gruppo scrum minsky, alla quale 
 - Sarò professionale e delicato quando fornisco dei commenti di revisione.
 - Sarò aperto a ricevere dei riscontri quando gli altri revisionano il mio lavoro.
 
-## Writing code
+## Scrittura del codice
 
-- I will express myself through code.
-- I will add comments to code only if I have failed to express myself through code.
-- I will write code that adheres to my team's formatting and style conventions.
-- I will not submit production code without thorough in-memory unit tests.
-- I will not submit code that causes any tool to emit a warning.
+- Esprimerò me stesso attraverso il codice.
+- Aggiungerò dei commenti solamente se dovessi aver fallito nell'esprimere me stesso attraverso il codice.
+- Scriverò il codice in maniera tale che sia coerente allo stile che adottano gli altri membri del gruppo.
+- Non invierò codice di produzione senza aver fatto prima degli unit test in memoria.
+- Non invierò codice che causerà degli errori per gli strumenti che utilizzeremo.
 
