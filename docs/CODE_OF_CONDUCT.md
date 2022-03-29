@@ -15,10 +15,10 @@ Questo documento definisce il comportamento del gruppo scrum minsky, alla quale 
 - Sarò onesto in qualsiasi momento.
 - Comunicherò senza esitazione se qualcosa dovesse essere non fattibile.
 
-## Peer reviews
+## Revisioni paritarie
 
-- I will be professional and tactful when providing review comments.
-- I will be open to receiving feedback when others review my work.
+- Sarò professionale e delicato quando fornisco dei commenti di revisione.
+- Sarò aperto a ricevere dei riscontri quando gli altri revisionano il mio lavoro.
 
 ## Writing code
 
