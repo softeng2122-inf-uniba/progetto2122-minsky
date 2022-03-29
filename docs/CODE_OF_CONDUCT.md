@@ -1,19 +1,19 @@
-# Scrum team member code of conduct
+# Codice di comportamento del gruppo scrum minsky
 
-##### June 30, 2012
+##### 29 Marzo 2022
 
-This post defines a code of conduct that I try to adhere to on a Scrum team.
+Questo documento definisce il comportamento del gruppo scrum minsky, alla quale tutti i componenti aderiscono.
 
-## Team participation 
+## Partecipazione al gruppo
 
-- Fixing my team's broken builds is my highest priority.
-- Participating in my team's code reviews is my second highest priority.
-- Improving my team's velocity is more important than improving my individual velocity.
-- I will not be late for team meetings.
-- I will ask for help when I need it.
-- I will provide help when asked.
-- I will be honest at all times.
-- If I don't believe something is possible I will say so without hesitation.
+- Correggere pezzi di codice del gruppo malfunzionanti è la mia più alta priorità.
+- Partecipare come revisore del codice del mio gruppo è la mia seconda più alta priorità.
+- Migliorare la velocità del gruppo è più importante di migliorare la mia velocità individuale.
+- Non farò ritardo alle riunioni di gruppo.
+- Chiederò aiuto agli altri membri del gruppo qualora ne avessi bisogno.
+- Offrirò aiuto agli altri membri del gruppo qualora mi venisse chiesto.
+- Sarò onesto in qualsiasi momento.
+- Comunicherò senza esitazione se qualcosa dovesse essere non fattibile.
 
 ## Peer reviews
 
