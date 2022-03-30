@@ -1,9 +1,6 @@
-# Marvin Minsky
-
+# Hyman Marvin
 ## Biografia
-Marvin Lee Minsky (New York, 9 agosto 1927 – Boston, 24 gennaio 2016) è stato un matematico, informatico e ricercatore statunitense specializzato nel campo dell'intelligenza artificiale (IA). Fu cofondatore dell'Artificial Intelligence Project (divenuto, in seguito, Artificial Intelligence Laboratory) presso il Massachusetts Institute of Technology (MIT) di Cambridge (Massachusetts) e autore di numerosi testi riguardanti l'IA e la filosofia.
-
-Marvin Minsky è uno scienziato che ha fornito contributi importanti nel campo dell'intelligenza artificiale, della psicologia cognitiva, della matematica, della linguistica computazionale, della robotica e dell'ottica. Negli ultimi anni ha soprattutto lavorato per dare alle macchine la capacità  umana di ragionare.
+Marvin Minsky, (Chicago, 23 settembre 1919 – Rhinebeck, 24 ottobre 1996) è stato uno scienziato che ha fornito contributi importanti nel campo dell'intelligenza artificiale, della psicologia cognitiva, della matematica, della linguistica computazionale, della robotica e dell'ottica. 
 
 Dopo aver studiato matematica a Harvard e Princeton, dove ha conseguito il dottorato nel 1954, Minsky inizia a lavorare al Mit (Massachusetts Institute of Technology) dove ha insegnato come "Toshiba Professor of Media Arts and Sciences" e professore di Ingegneria elettronica e informatica.
 
@@ -32,14 +29,14 @@ Ha ricevuto numerose onorificenze e riconoscimenti tra cui:
 - Japan Prize nel 1990; Research Excellence Award nel 1991 da parte di IJCAI;
 - Rank Prize nel 1995 da parte di Royal Society of Medicine.
 
-# Lavori Essenziali
-- Marvin Minsky, Neural Nets and the Brain Model Problem, Princeton University, 1954. Tesi di dottorato, prima pubblicazione di teorie e teoremi sull'apprendimento delle reti neurali, secondary reinforcement, circulating dynamic storage e modifiche sinaptiche
-- Marvin Minsky, Computation: Finite and Infinite Machine, Prentice-Hall, 1967. Un testo classico dell'informatica
-- Marvin Minsky (a cura di), Semantic Information Processing, MIT press, 1968. Tesi che hanno avuto una forte influenza sulla linguistica computazionale moderna
-- Marvin Minsky e Seymour Papert, Artificial Intelligence (PDF), University of Oregon Press, 1972.
-- Marvin Minsky, Communication with Alien Intelligence, Cambridge University Press, 1985.
-- Marvin Minsky (a cura di), Robotics, Doubleday, 1985. Raccolta di saggi sulla robotica, con introduzione e postfazione di Minsky
-- Marvin Minsky e Seymour Papert, Perceptrons, MIT press, 1987.
-- Marvin Minsky, La società della mente, Milano, Adelphi, 1989. Descrizione della teoria della struttura mentale e del suo sviluppo
-- Marvin Minsky e Harry Harrison, L'uomo di Turing, New York, Nord, 1994. Thriller fantascientifico sulla costruzione di un robot nell'anno 2023
-- Marvin Minsky, The Emotion Machine, Simon and Schuster, 2007.
+Ha scritto numerosi articoli a carattere scientifico. Tra i suoi libri:
+- Neural Nets and the Brain Model Problem, (tesi di dottorato) Princeton University, 1954.  
+Computation: Finite and Infinite Machines, Prentice-Hall, 1967. Un testo classico dell'informatica.
+- Semantic Information Processing, MIT Press, 1968.
+- Perceptrons, (con Seymour A. Papert), MIT Press, 1969 (nuova versione nel 1988).
+- Artificial Intelligence, con Seymour Papert, Univ. of Oregon Press, 1972.
+- Robotics, Doubleday, 1986. Una collezione di saggi sui robot, con Introduzione e Postfazione di Minsky.
+- The Society of Mind, Simon and Schuster, 1987. Una completa descrizione della teoria della 
+ Societa' della Mente sulla struttura e sviluppo intellettuale.
+- The Turing Option, (con Harry Harrison), Warner Books, New York, 1992. Un thriller di 
+ fantascienza, ambientato nel 2023, sulla costruzione di un robot superintelligente.
