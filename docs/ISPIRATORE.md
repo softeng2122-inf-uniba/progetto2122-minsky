@@ -1,6 +1,6 @@
 # Marvin Minsky
 ## Biografia
-Marvin Minsky, (Chicago, 23 settembre 1919 – Rhinebeck, 24 ottobre 1996) è stato uno scienziato che ha fornito contributi importanti nel campo dell'intelligenza artificiale, della psicologia cognitiva, della matematica, della linguistica computazionale, della robotica e dell'ottica. 
+Marvin Minsky, (New York, 9 agosto 1927 – Boston, 24 gennaio 2016) è stato uno scienziato che ha fornito contributi importanti nel campo dell'intelligenza artificiale, della psicologia cognitiva, della matematica, della linguistica computazionale, della robotica e dell'ottica. 
 
 Dopo aver studiato matematica a Harvard e Princeton, dove ha conseguito il dottorato nel 1954, Minsky inizia a lavorare al Mit (Massachusetts Institute of Technology) dove ha insegnato come "Toshiba Professor of Media Arts and Sciences" e professore di Ingegneria elettronica e informatica.
 
