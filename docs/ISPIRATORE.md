@@ -1,4 +1,4 @@
-# Hyman Minsky
+# Hyman Marvin
 ## Biografia
 Marvin Minsky, (Chicago, 23 settembre 1919 – Rhinebeck, 24 ottobre 1996) è stato uno scienziato che ha fornito contributi importanti nel campo dell'intelligenza artificiale, della psicologia cognitiva, della matematica, della linguistica computazionale, della robotica e dell'ottica. 
 
