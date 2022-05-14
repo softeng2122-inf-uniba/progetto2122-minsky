@@ -1,5 +1,7 @@
 package it.uniba.app.command;
 
+import it.uniba.app.exception.InvalidCommandException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +14,7 @@ import java.util.Map;
 public final class CommandParser {
     private final Map<String, CommandType> commandsStrings = new HashMap<>();
 
-    public Command parse(String commandString) {
+    public Command parse(String commandString) throws InvalidCommandException {
         commandString = commandString.trim().toLowerCase();
 
         String[] prefixAndArgs = commandString.split("\\s+", 2);
@@ -24,8 +26,8 @@ public final class CommandParser {
         if (prefix.startsWith("/")) {
             return new Command(commandsStrings.get(prefix), args);
         } else {
-            // TODO: return new Command(CommandType.TENTA, prefix);
-            return new Command(null, args);
+            throw new InvalidCommandException(); // TODO: Eliminare una volta implementata l'esecuzione del tentativo.
+            // return new Command(CommandType.TENTA, prefixAndArgs); // TODO: Rimuovere commento una volta implementata l'esecuzione del tentativo.
         }
     }
 

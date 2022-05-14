@@ -1,6 +1,7 @@
 package it.uniba.app.command;
 
 import it.uniba.app.controller.Controller;
+import it.uniba.app.exception.InvalidCommandException;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -54,12 +55,12 @@ public final class CommandLineShell {
                 String commandString = commandLineInputStream.readLine();
                 System.out.println();
 
-                Command command = commandParser.parse(commandString);
+                try {
+                    Command command = commandParser.parse(commandString);
 
-                if (command.getCommandType() != null) {
                     Controller controller = command.getCommandType().getControllerClass().getConstructor().newInstance();
                     controller.control(command.getArgs());
-                } else {
+                } catch (InvalidCommandException exception) {
                     System.out.println(UNKNOWN_COMMAND_MESSAGE);
                     System.out.println(HELP_TIP);
                 }
