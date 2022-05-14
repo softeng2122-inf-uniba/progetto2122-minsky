@@ -3,7 +3,7 @@ package it.uniba.app.command;
 /**
  * <noECB>
  * <p>
- * Rappresenta un comando inserito dall'utente in una CommandLineShell e riconosciuto da un CommandParser
+ * Rappresenta un comando inserito dall'utente in una CommandLineShell e riconosciuto da un CommandParser.
  */
 
 public final class Command {

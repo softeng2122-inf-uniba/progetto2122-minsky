@@ -3,7 +3,7 @@ package it.uniba.app.command;
 import it.uniba.app.controller.Controller;
 
 /**
- * Contiene tutti i tipi di comando riconoscibili da un CommandParser
+ * Contiene tutti i tipi di comando riconoscibili da un CommandParser.
  */
 
 public enum CommandType {
