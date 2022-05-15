@@ -18,6 +18,7 @@ public final class CommandLineShell {
     private static final String WELCOME_MESSAGE = "Benvenuto su Wordle!";
     private static final String UNKNOWN_COMMAND_MESSAGE = "[ERRORE] Comando inesistente.";
     private static final String INPUT_PREFIX = "wordle:> ";
+    private static final String EXIT_MESSAGE = "/esci";
     private final CommandParser commandParser = new CommandParser();
     private final BufferedReader commandLineInputStream = new BufferedReader(new InputStreamReader(System.in));
 
@@ -72,5 +73,6 @@ public final class CommandLineShell {
 
     private void registerCommands() {
         // TODO Aggiungere ogni nuovo comando con: commandParser.addCommand();
+        commandParser.addCommand(EXIT_MESSAGE, CommandType.ESCI);
     }
 }
