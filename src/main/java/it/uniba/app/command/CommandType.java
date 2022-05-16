@@ -2,6 +2,7 @@ package it.uniba.app.command;
 
 import it.uniba.app.controller.Controller;
 import it.uniba.app.controller.ExitGame;
+import it.uniba.app.controller.InizioPartitaController;
 import it.uniba.app.controller.HelpController;
 import it.uniba.app.controller.SelezioneParolaSegretaController;
 
@@ -14,7 +15,7 @@ public enum CommandType {
     NUOVA(SelezioneParolaSegretaController.class),
     MOSTRA(null),
     HELP(HelpController.class),
-    GIOCA(null),
+    GIOCA(InizioPartitaController.class),
     ABBANDONA(null),
     ESCI(ExitGame.class),
     TENTA(null);
