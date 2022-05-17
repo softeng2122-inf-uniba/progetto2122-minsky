@@ -80,6 +80,7 @@ public final class CommandLineShell {
 
     private void registerCommands() {
         // TODO Aggiungere ogni nuovo comando con: commandParser.addCommand();
+        commandParser.addCommand("/nuova", CommandType.NUOVA);
         commandParser.addCommand(EXIT_MESSAGE, CommandType.ESCI);
         commandParser.addCommand(HELP_MESSAGE, CommandType.HELP);
     }
