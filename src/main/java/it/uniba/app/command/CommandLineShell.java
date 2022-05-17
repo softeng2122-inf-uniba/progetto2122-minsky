@@ -1,6 +1,8 @@
 package it.uniba.app.command;
 
 import it.uniba.app.controller.Controller;
+import it.uniba.app.controller.HelpController;
+import it.uniba.app.exception.FlagException;
 import it.uniba.app.exception.InvalidCommandException;
 
 import java.io.BufferedReader;
@@ -15,10 +17,11 @@ import java.io.InputStreamReader;
 
 public final class CommandLineShell {
     private static final String HELP_TIP = "[TIP] Usa /help per visualizzare la lista dei comandi disponibili.";
-    private static final String WELCOME_MESSAGE = "Benvenuto su Wordle!";
+    private static final String WELCOME_MESSAGE = "\n\n ================================ Benvenuto su Wordle! ================================ \n\n";
     private static final String UNKNOWN_COMMAND_MESSAGE = "[ERRORE] Comando inesistente.";
     private static final String INPUT_PREFIX = "wordle:> ";
     private static final String EXIT_MESSAGE = "/esci";
+    private static final String HELP_MESSAGE = "/help";
     private final CommandParser commandParser = new CommandParser();
     private final BufferedReader commandLineInputStream = new BufferedReader(new InputStreamReader(System.in));
 
@@ -35,16 +38,20 @@ public final class CommandLineShell {
     private void start(final String[] args) {
         System.out.println(WELCOME_MESSAGE);
 
-        if (checkHelpOnStart(args)) {
-            // TODO
-        } else {
-            System.out.println(HELP_TIP);
-        }
-    }
+        try {
+            if (HelpController.checkFlagOnStart(args)) {
 
-    private boolean checkHelpOnStart(final String[] args) {
-        // TODO
-        return false;
+                HelpController helpController = new HelpController();
+                helpController.control(args);
+
+            } else {
+                System.out.println(HELP_TIP);
+            }
+        } catch (FlagException fe) {
+
+            System.out.println(fe.showMessage());
+            System.exit(0);
+        }
     }
 
     private void runREPL() {
@@ -59,14 +66,14 @@ public final class CommandLineShell {
                 try {
                     Command command = commandParser.parse(commandString);
 
-                    Controller controller = command.getCommandType().getControllerClass().getConstructor().newInstance();
+                    Controller controller = command.getCommandType().getControllerClass().getConstructor()
+                            .newInstance();
                     controller.control(command.getArgs());
                 } catch (InvalidCommandException exception) {
                     System.out.println(UNKNOWN_COMMAND_MESSAGE);
                     System.out.println(HELP_TIP);
                 }
-            }
-            while (true);
+            } while (true);
         } catch (Exception ignored) {
         }
     }
@@ -74,5 +81,6 @@ public final class CommandLineShell {
     private void registerCommands() {
         // TODO Aggiungere ogni nuovo comando con: commandParser.addCommand();
         commandParser.addCommand(EXIT_MESSAGE, CommandType.ESCI);
+        commandParser.addCommand(HELP_MESSAGE, CommandType.HELP);
     }
 }
