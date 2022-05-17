@@ -38,22 +38,20 @@ public final class CommandLineShell {
     private void start(final String[] args) {
         System.out.println(WELCOME_MESSAGE);
 
-        try{
-        if (HelpController.checkFlagOnStart(args)) {
-            // TODO
+        try {
+            if (HelpController.checkFlagOnStart(args)) {
 
+                HelpController helpController = new HelpController();
+                helpController.control(args);
 
-            HelpController helpController = new HelpController();
-            helpController.control(args);
+            } else {
+                System.out.println(HELP_TIP);
+            }
+        } catch (FlagException fe) {
 
-        } else {
-            System.out.println(HELP_TIP);
+            System.out.println(fe.showMessage());
+            System.exit(0);
         }
-    }catch(FlagException fe){
-
-        System.out.println(fe.showMessage());
-        System.exit(0);
-    }
     }
 
     private void runREPL() {
@@ -68,14 +66,14 @@ public final class CommandLineShell {
                 try {
                     Command command = commandParser.parse(commandString);
 
-                    Controller controller = command.getCommandType().getControllerClass().getConstructor().newInstance();
+                    Controller controller = command.getCommandType().getControllerClass().getConstructor()
+                            .newInstance();
                     controller.control(command.getArgs());
                 } catch (InvalidCommandException exception) {
                     System.out.println(UNKNOWN_COMMAND_MESSAGE);
                     System.out.println(HELP_TIP);
                 }
-            }
-            while (true);
+            } while (true);
         } catch (Exception ignored) {
         }
     }
