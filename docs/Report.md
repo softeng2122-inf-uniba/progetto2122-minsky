@@ -23,7 +23,8 @@ Il lavoro è stato suddiviso equamente tra tutti i contributori del progetto:
 Proscia Vito, Quagliarella Vincenzo, Romanazzi Raffaello, Tancrini Stefano, Venezia Mario.
 
 # 2. Modello di dominio
-![Modello di dominio](/docs/img/Modello%20di%20dominio%20nuovo.png)
+![Modello di dominio](img/modello%20di%20dominio.png)
+
 # 3. Requisisti specifici
 ## 3.1 Requisiti funzionali
 Requisito funzionale 1 : **Selezione parola segreta**
@@ -145,4 +146,3 @@ Windows:
 Dopo aver eseguito il comando docker pull copiandolo da GitHub Packages, Il comando Docker da usare per eseguire il container contenente l’applicazione è:
 
 >docker run --rm -it ghcr.io/softeng2122-inf-uniba/wordle-minsky2122:latest
-
