@@ -9,4 +9,9 @@ package it.uniba.app.exception;
 
 public class ParolaCortaException extends Exception {
 
+    public String showMessage(){
+        
+        return "[ERRORE]: Tentativo incompleto, parola troppo corta, per maggiori informazioni digitare /help \n\n";
+    }
+
 }
