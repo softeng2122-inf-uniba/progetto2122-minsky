@@ -9,17 +9,23 @@ import it.uniba.app.wordle.ParolaSegreta;
 
 public class ShowMessage implements Controller{
     private static final String SHOWING_MESSAGE = "Questa è la parola segreta impostata: ";
+    private static final String MISSING_WORD="\n[ERRORE]Non è stata impostata nessuna parola segreta";
     
     @Override
     public void control(String[] args)  {
-        System.out.println(SHOWING_MESSAGE);
+        
         
         try{
-            System.out.println(ParolaSegreta.getAttualeParolaSegreta());
-            throw new ParolaSegretaMancanteException();
+            if(ParolaSegreta.getAttualeParolaSegreta()!=null){
+            System.out.println(SHOWING_MESSAGE);
+            System.out.println(ParolaSegreta.getAttualeParolaSegreta().toString());
+        }
+            else{
+                throw new ParolaSegretaMancanteException();
+            }  
         }
         catch (ParolaSegretaMancanteException e) {
-             System.out.println(e);
+             System.out.println(MISSING_WORD);
         }
          
     }
