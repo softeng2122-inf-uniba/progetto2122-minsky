@@ -1,4 +1,5 @@
 package it.uniba.app.controller;
+import it.uniba.app.exception.ParolaSegretaMancanteException;
 import it.uniba.app.wordle.ParolaSegreta;
 /**
  * <Control>
@@ -8,26 +9,18 @@ import it.uniba.app.wordle.ParolaSegreta;
 
 public class ShowMessage implements Controller{
     private static final String SHOWING_MESSAGE = "Questa è la parola segreta impostata: ";
-    private static final String ERROR_SHOWING_MESSAGE= "\nLa parola segreta non è stata impostata";
     
-    public void control(String[] args){
+    @Override
+    public void control(String[] args)  {
         System.out.println(SHOWING_MESSAGE);
         
         try{
-            if(ParolaSegreta.getAttualeParolaSegreta()!=null){
-                System.out.println(ParolaSegreta.getAttualeParolaSegreta());
-            }
-            else{
-                System.out.println(ERROR_SHOWING_MESSAGE);           
-             }
+            System.out.println(ParolaSegreta.getAttualeParolaSegreta());
+            throw new ParolaSegretaMancanteException();
         }
-        catch(Exception ex){
-              System.out.println(ex);
+        catch (ParolaSegretaMancanteException e) {
+             System.out.println(e);
         }
-        /**
-         * catch(ParolaSegretaMancanteException ex){
-         *       inizioPartitaBoundary.showMissingSecretWord();
-         * }
-         */
+         
     }
 }
