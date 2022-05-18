@@ -1,5 +1,6 @@
 package it.uniba.app.wordle;
 
+import it.uniba.app.exception.NessunaPartitaInCorsoException;
 import it.uniba.app.exception.ParolaSegretaMancanteException;
 import it.uniba.app.exception.PartitaInCorsoException;
 
@@ -27,8 +28,16 @@ public class Partita {
             } else {
                 throw new ParolaSegretaMancanteException();
             }
+        }
+    }
+
+    public static void AbbandonaPartita() throws NessunaPartitaInCorsoException {
+        if (getPartitaInCorso() != null) {
+            if (ParolaSegreta.getAttualeParolaSegreta() != null) {
+                partitaInCorso = null;
+            }
         } else {
-            throw new PartitaInCorsoException();
+            throw new NessunaPartitaInCorsoException();
         }
     }
 
