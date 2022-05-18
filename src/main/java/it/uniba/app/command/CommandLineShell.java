@@ -22,6 +22,7 @@ public final class CommandLineShell {
     private static final String INPUT_PREFIX = "wordle:> ";
     private static final String EXIT_MESSAGE = "/esci";
     private static final String HELP_MESSAGE = "/help";
+    private static final String SHOW_MESSAGE = "/mostra";
     private final CommandParser commandParser = new CommandParser();
     private final BufferedReader commandLineInputStream = new BufferedReader(new InputStreamReader(System.in));
 
@@ -84,5 +85,6 @@ public final class CommandLineShell {
         commandParser.addCommand("/gioca", CommandType.GIOCA);
         commandParser.addCommand(EXIT_MESSAGE, CommandType.ESCI);
         commandParser.addCommand(HELP_MESSAGE, CommandType.HELP);
+        commandParser.addCommand(SHOW_MESSAGE, CommandType.MOSTRA);
     }
 }
