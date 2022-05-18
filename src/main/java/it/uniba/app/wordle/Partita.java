@@ -28,14 +28,14 @@ public class Partita {
             } else {
                 throw new ParolaSegretaMancanteException();
             }
+        } else {
+            throw new PartitaInCorsoException();
         }
     }
 
     public static void AbbandonaPartita() throws NessunaPartitaInCorsoException {
         if (getPartitaInCorso() != null) {
-            if (ParolaSegreta.getAttualeParolaSegreta() != null) {
                 partitaInCorso = null;
-            }
         } else {
             throw new NessunaPartitaInCorsoException();
         }
