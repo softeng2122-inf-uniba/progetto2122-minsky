@@ -26,8 +26,7 @@ public final class CommandParser {
         if (prefix.startsWith("/")) {
             return new Command(commandsStrings.get(prefix), args);
         } else {
-            throw new InvalidCommandException(); // TODO: Eliminare una volta implementata l'esecuzione del tentativo.
-            // return new Command(CommandType.TENTA, prefixAndArgs); // TODO: Rimuovere commento una volta implementata l'esecuzione del tentativo.
+             return new Command(CommandType.TENTA, prefixAndArgs); // TODO: Rimuovere commento una volta implementata l'esecuzione del tentativo.
         }
     }
 

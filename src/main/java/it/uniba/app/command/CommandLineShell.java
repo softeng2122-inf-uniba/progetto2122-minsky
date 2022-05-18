@@ -84,5 +84,7 @@ public final class CommandLineShell {
         commandParser.addCommand("/gioca", CommandType.GIOCA);
         commandParser.addCommand(EXIT_MESSAGE, CommandType.ESCI);
         commandParser.addCommand(HELP_MESSAGE, CommandType.HELP);
+        //commandParser.addCommand(commandLineInputStream.readLine(), CommandType.TENTA);
+
     }
 }

@@ -5,6 +5,7 @@ import it.uniba.app.controller.ExitGame;
 import it.uniba.app.controller.InizioPartitaController;
 import it.uniba.app.controller.HelpController;
 import it.uniba.app.controller.SelezioneParolaSegretaController;
+import it.uniba.app.controller.attemptController;
 
 /**
  * Contiene tutti i tipi di comando riconoscibili da un CommandParser.
@@ -18,7 +19,7 @@ public enum CommandType {
     GIOCA(InizioPartitaController.class),
     ABBANDONA(null),
     ESCI(ExitGame.class),
-    TENTA(null);
+    TENTA(attemptController.class);
 
     private final Class<? extends Controller> controllerClass;
 
