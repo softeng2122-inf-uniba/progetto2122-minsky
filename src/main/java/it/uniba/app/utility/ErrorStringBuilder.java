@@ -7,7 +7,7 @@ package it.uniba.app.utility;
  */
 
 public final class ErrorStringBuilder {
-    private static final String ANSI_RED = "\u001B[31m";
+    private static final String ANSI_RED = "\u001b[31;1m";
     private static final String ANSI_RESET = "\u001B[0m";
     private static final String ERROR_STRING_PREFIX = ANSI_RED + "[ERRORE] ";
     private static final String ERROR_STRING_SUFFIX = ANSI_RESET;

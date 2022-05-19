@@ -4,6 +4,7 @@ import it.uniba.app.controller.Controller;
 import it.uniba.app.controller.HelpController;
 import it.uniba.app.exception.FlagException;
 import it.uniba.app.exception.InvalidCommandException;
+import it.uniba.app.utility.ErrorStringBuilder;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -18,7 +19,7 @@ import java.io.InputStreamReader;
 public final class CommandLineShell {
     private static final String HELP_TIP = "[TIP] Usa /help per visualizzare la lista dei comandi disponibili.";
     private static final String WELCOME_MESSAGE = "\n\n ================================ Benvenuto su Wordle! ================================ \n\n";
-    private static final String UNKNOWN_COMMAND_MESSAGE = "[ERRORE] Comando inesistente.";
+    private static final String UNKNOWN_COMMAND_MESSAGE = "Comando inesistente.";
     private static final String INPUT_PREFIX = "wordle:> ";
     private static final String EXIT_MESSAGE = "/esci";
     private static final String HELP_MESSAGE = "/help";
@@ -70,7 +71,7 @@ public final class CommandLineShell {
                             .newInstance();
                     controller.control(command.getArgs());
                 } catch (InvalidCommandException exception) {
-                    System.out.println(UNKNOWN_COMMAND_MESSAGE);
+                    System.out.println(new ErrorStringBuilder(UNKNOWN_COMMAND_MESSAGE));
                     System.out.println(HELP_TIP);
                 }
             } while (true);

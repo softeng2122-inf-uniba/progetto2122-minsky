@@ -12,7 +12,7 @@ public class LetteraInvalidaException extends Exception {
 
     public String showMessage(){
         
-        return "[ERRORE]: Tentativo non valido, carratteri non riconosciuti, per maggiori informazioni digitare /help \n\n";
+        return "Tentativo non valido, carratteri non riconosciuti, per maggiori informazioni digitare /help";
     }
 
 }

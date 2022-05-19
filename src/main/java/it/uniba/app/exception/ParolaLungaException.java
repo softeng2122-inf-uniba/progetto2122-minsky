@@ -11,7 +11,7 @@ public class ParolaLungaException extends Exception {
 
     public String showMessage(){
         
-        return "[ERRORE]: Tentativo eccessivo, parola troppo lunga, per maggiori informazioni digitare /help \n\n";
+        return "Tentativo eccessivo, parola troppo lunga, per maggiori informazioni digitare /help";
     }
 
 }

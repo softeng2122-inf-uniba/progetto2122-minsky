@@ -8,7 +8,7 @@ package it.uniba.app.utility;
  */
 
 public final class SelezioneParolaSegretaBoundary {
-    private static final String ANSI_GREEN = "\u001B[32m";
+    private static final String ANSI_GREEN = "\u001b[32;1m";
     private static final String ANSI_RESET = "\u001B[0m";
 
     private static final String MESSAGGIO_OK = ANSI_GREEN + "[OK] Parola segreta impostata con successo!" + ANSI_RESET;
