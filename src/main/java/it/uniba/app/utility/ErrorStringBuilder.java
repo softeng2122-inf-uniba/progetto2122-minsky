@@ -1,5 +1,7 @@
 package it.uniba.app.utility;
 
+import it.uniba.app.utility.AnsiColors;
+
 /**
  * <noECB>
  * <p>
@@ -7,10 +9,8 @@ package it.uniba.app.utility;
  */
 
 public final class ErrorStringBuilder {
-    private static final String ANSI_RED = "\u001b[31;1m";
-    private static final String ANSI_RESET = "\u001B[0m";
-    private static final String ERROR_STRING_PREFIX = ANSI_RED + "[ERRORE] ";
-    private static final String ERROR_STRING_SUFFIX = ANSI_RESET;
+    private static final String ERROR_STRING_PREFIX = AnsiColors.getBrightRed() + "[ERRORE] ";
+    private static final String ERROR_STRING_SUFFIX = AnsiColors.getReset();
 
     private final StringBuilder stringBuilder = new StringBuilder(ERROR_STRING_PREFIX + ERROR_STRING_SUFFIX);
 

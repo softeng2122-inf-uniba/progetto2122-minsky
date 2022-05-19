@@ -8,10 +8,8 @@ package it.uniba.app.utility;
  */
 
 public final class SelezioneParolaSegretaBoundary {
-    private static final String ANSI_GREEN = "\u001b[32;1m";
-    private static final String ANSI_RESET = "\u001B[0m";
 
-    private static final String MESSAGGIO_OK = ANSI_GREEN + "[OK] Parola segreta impostata con successo!" + ANSI_RESET;
+    private static final String MESSAGGIO_OK = AnsiColors.getBrightGreen() + "[OK] Parola segreta impostata con successo!" + AnsiColors.getReset();
     private static final String MESSAGGIO_PAROLA_MANCANTE =
             new ErrorStringBuilder("Non hai specificato alcuna parola.").toString();
     private static final String MESSAGGIO_PARTITA_IN_CORSO =
