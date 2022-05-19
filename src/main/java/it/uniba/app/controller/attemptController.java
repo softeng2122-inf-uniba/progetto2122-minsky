@@ -8,6 +8,7 @@ import it.uniba.app.exception.LetteraInvalidaException;
 import it.uniba.app.exception.ParolaCortaException;
 import it.uniba.app.exception.ParolaLungaException;
 import it.uniba.app.exception.PartitaInCorsoException;
+import it.uniba.app.utility.AnsiColors;
 import it.uniba.app.utility.ErrorStringBuilder;
 import it.uniba.app.wordle.Parola;
 import it.uniba.app.wordle.ParolaSegreta;
@@ -27,12 +28,16 @@ public class attemptController implements Controller {
 
                 if (args[0].length() == Parola.getLength()) {
 
-                    String parola = args[0];
+                    Parola parola = new Parola(args[0]);
+                    String[] coloredLetter = new String[5];
+
+                    coloredLetter = compereLetters(ParolaSegreta.getAttualeParolaSegreta(), parola);
+
                     System.out.println("┌───────────────────┐");
                     System.out.println("│ GRIGLIA DI GIOCO  │");
                     System.out.println("├───┬───┬───┬───┬───┤");
 
-                    System.out.println(MessageFormat.format("│ {0} │ {1} │ {2} │ {3} │ {4} │", parola.charAt(0),  parola.charAt(1),  parola.charAt(2),  parola.charAt(3),  parola.charAt(4)));
+                    System.out.println(MessageFormat.format("│ {0} │ {1} │ {2} │ {3} │ {4} │", coloredLetter[0],  coloredLetter[1],  coloredLetter[2], coloredLetter[3],  coloredLetter[4]));
                     System.out.println("├───┼───┼───┼───┼───┤");
                     
 
@@ -77,4 +82,64 @@ public class attemptController implements Controller {
         }
 
     }
+
+    public String[] compereLetters(Parola parolaSegreta, Parola tentativo){
+
+        String[] coloredWord = new String[5];
+        boolean flagLettera = false;
+
+        if(tentativo.equalsIgnoreCaseAndColors(ParolaSegreta.getAttualeParolaSegreta())){
+            for(int i = 0; i < Parola.getLength(); i++){
+                coloredWord[i] = AnsiColors.makeBackgourdGreen(tentativo.getLettere()[i].getCarattere());
+            }
+        }else{
+
+            for(int i = 0; i < Parola.getLength(); i++){
+
+                int j = 0;
+
+                flagLettera = false;
+
+                    while(j < Parola.getLength() && flagLettera == false){
+
+                    if(parolaSegreta.getLettere()[j].getCarattere() == tentativo.getLettere()[i].getCarattere()){
+
+                        flagLettera = true;
+
+                        if(i == j){
+                            coloredWord[i] = AnsiColors.makeBackgourdGreen(tentativo.getLettere()[i].getCarattere());
+                            System.out.println("i == j --> " + i + " - " + j);
+                        }else{
+                            j = i;
+                            if(parolaSegreta.getLettere()[j].getCarattere() == tentativo.getLettere()[i].getCarattere()){
+                                coloredWord[i] = AnsiColors.makeBackgourdGreen(tentativo.getLettere()[i].getCarattere());
+                            }else{
+                                coloredWord[i] = AnsiColors.makeBackgourdYellow(tentativo.getLettere()[i].getCarattere());
+                                System.out.println("i != j --> " + i + " - " + j);
+                            }
+
+
+                        }
+
+                        System.out.println(" jjjjjjjjjjjjjjjjjj ");
+
+                    }
+
+                    j++;
+                }
+
+                    if(flagLettera == false){
+                        coloredWord[i] = AnsiColors.makeBackgourdGray(tentativo.getLettere()[i].getCarattere());
+                    }
+
+                    System.out.println(" iiiiiiiiiiiii ");
+
+            }
+
+        }
+
+        return coloredWord;
+
+    }
+
 }
