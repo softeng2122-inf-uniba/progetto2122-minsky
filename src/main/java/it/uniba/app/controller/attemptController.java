@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import it.uniba.app.exception.LetteraInvalidaException;
+import it.uniba.app.exception.NessunaPartitaInCorsoException;
 import it.uniba.app.exception.ParolaCortaException;
 import it.uniba.app.exception.ParolaLungaException;
 import it.uniba.app.exception.PartitaInCorsoException;
@@ -18,21 +19,23 @@ public class attemptController implements Controller {
 
     private static int attemptCount = 0;
     private static boolean win = false;
+    public static List<String[]> attempt = new ArrayList<>();
 
     public static void addCount(){attemptCount++;}
     public static int getCount(){return attemptCount;}
     public static boolean getWin(){return win;}
     public static void setWin(){win = true;}
-    public static List<String[]> attempt = new ArrayList<>();
+    public static void reserWin(){win = false;}
+    public static void resetAttemptCount(){attemptCount = 0;}
+    public static void clearAttempt(){attempt.clear();}
 
     @Override
-    public void control(String[] args) {
+    public void control(String[] args){
 
         try {
 
             if (Partita.getPartitaInCorso() != null) {
 
-                attemptController.endAttempts();
 
                 if (args[0].length() == Parola.getLength()) {
 
@@ -44,6 +47,9 @@ public class attemptController implements Controller {
                     attempt.add(coloredLetter);
 
                     printGrid(attempt);
+
+                    attemptController.endAttempts();
+
 
 
                 } else if (args[0].length() < Parola.getLength()) {
@@ -82,11 +88,11 @@ public class attemptController implements Controller {
 
             System.out.println(new ErrorStringBuilder(e.showMessage()));
 
-        }
+        }catch (NessunaPartitaInCorsoException e){}
 
     }
 
-    public String[] compereLetters(Parola parolaSegreta, Parola tentativo) {
+    public String[] compereLetters(Parola parolaSegreta, Parola tentativo) throws NessunaPartitaInCorsoException {
 
         String[] coloredWord = new String[5];
         boolean flagLettera = false;
@@ -96,10 +102,9 @@ public class attemptController implements Controller {
             for (int i = 0; i < Parola.getLength(); i++) {
                 coloredWord[i] = AnsiColors.makeBackgourdGreen(tentativo.getLettere()[i].getCarattere());
             }
-            System.out.println("Parola segreta indovinata, complimenti! Numero tentativi : "  + attemptController.getCount());
+            System.out.println(AnsiColors.getBrightGreen() +"Parola segreta indovinata, complimenti! Numero tentativi : "  + attemptController.getCount() + AnsiColors.getReset());
             attemptController.setWin();
-            //TODO ---- ABBANDONA PARTITA
-
+            Partita.AbbandonaPartita();
         } else {
 
             for (int i = 0; i < Parola.getLength(); i++) {
@@ -149,11 +154,12 @@ public class attemptController implements Controller {
 
     }
 
-    public static void endAttempts(){
+    public static void endAttempts() throws NessunaPartitaInCorsoException{
 
         if(attemptController.getCount() == 6 && attemptController.getWin() == false){
-            System.out.println("Hai raggiunto il numero massimo di tentativi, per maggiori informazioni digitare /help");
-            //TODO ---- ABBANDONA PARTITA
+            System.out.println(new ErrorStringBuilder("Hai raggiunto il numero massimo di tentativi, per maggiori informazioni digitare /help"));
+            System.out.println("\nLa parola segreta è: " + ParolaSegreta.getAttualeParolaSegreta().toString());
+            Partita.AbbandonaPartita();
         }
     }
 
@@ -166,7 +172,7 @@ public class attemptController implements Controller {
 
         for(int i = 0; i < attempt.size(); i++){
 
-            System.out.println(MessageFormat.format("│ {0} │ {1} │ {2} │ {3} │ {4} │", attempt.get(i)[0],
+            System.out.println(MessageFormat.format("│{0}│{1}│{2}│{3}│{4}│", attempt.get(i)[0],
             attempt.get(i)[1],  attempt.get(i)[2],  attempt.get(i)[3],  attempt.get(i)[4]));
             System.out.println("├───┼───┼───┼───┼───┤");
 

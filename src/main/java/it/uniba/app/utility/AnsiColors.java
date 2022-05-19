@@ -15,8 +15,8 @@ public class AnsiColors {
     public static String getBrightGreen(){return ANSI_BRIGHT_GREEN;}
     public static String getReset(){return ANSI_RESET;}
 
-    public static String makeBackgourdGreen(char c){return ANSI_BACKGROUDN_BRIGHT_GREEN + c + ANSI_RESET;}
-    public static String makeBackgourdYellow(char c){return ANSI_BACKGROUDN_BRIGHT_YELLOW + c + ANSI_RESET;}
-    public static String makeBackgourdGray(char c){return ANSI_BACKGROUDN_BRIGHT_GRAY + c + ANSI_RESET;}
+    public static String makeBackgourdGreen(char c){return ANSI_BACKGROUDN_BRIGHT_GREEN + " " + c + " " + ANSI_RESET;}
+    public static String makeBackgourdYellow(char c){return ANSI_BACKGROUDN_BRIGHT_YELLOW + " " + c + " " +  ANSI_RESET;}
+    public static String makeBackgourdGray(char c){return ANSI_BACKGROUDN_BRIGHT_GRAY + " " + c + " " + ANSI_RESET;}
 
 }

@@ -87,10 +87,6 @@ public final class CommandLineShell {
         commandParser.addCommand("/abbandona", CommandType.ABBANDONA);
         commandParser.addCommand(EXIT_MESSAGE, CommandType.ESCI);
         commandParser.addCommand(HELP_MESSAGE, CommandType.HELP);
-<<<<<<< HEAD
-        
-=======
         commandParser.addCommand(SHOW_MESSAGE, CommandType.MOSTRA);
->>>>>>> master
     }
 }

@@ -1,17 +1,6 @@
 package it.uniba.app.command;
 
-<<<<<<< HEAD
-import it.uniba.app.controller.Controller;
-import it.uniba.app.controller.ExitGame;
-import it.uniba.app.controller.InizioPartitaController;
-import it.uniba.app.controller.HelpController;
-import it.uniba.app.controller.SelezioneParolaSegretaController;
-import it.uniba.app.controller.attemptController;
-=======
-
 import it.uniba.app.controller.*;
-
->>>>>>> master
 
 /**
  * Contiene tutti i tipi di comando riconoscibili da un CommandParser.
