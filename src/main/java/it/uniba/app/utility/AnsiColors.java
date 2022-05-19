@@ -1,5 +1,12 @@
 package it.uniba.app.utility;
 
+/**
+ * <noECB>
+ * <p>
+ * Definizione dei colori da utilizzare per il gioco
+ */
+
+
 public class AnsiColors {
 
     public static final String ANSI_BRIGHT_GREEN = "\u001b[32;1m";

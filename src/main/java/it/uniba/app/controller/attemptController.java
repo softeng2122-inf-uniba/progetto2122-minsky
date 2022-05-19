@@ -2,7 +2,6 @@ package it.uniba.app.controller;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import it.uniba.app.exception.LetteraInvalidaException;
 import it.uniba.app.exception.NessunaPartitaInCorsoException;
@@ -14,6 +13,12 @@ import it.uniba.app.utility.ErrorStringBuilder;
 import it.uniba.app.wordle.Parola;
 import it.uniba.app.wordle.ParolaSegreta;
 import it.uniba.app.wordle.Partita;
+
+/**
+ * <Control>
+ * <p>
+ * Permette di eseguire i tentativi 
+ */
 
 public class attemptController implements Controller {
 
