@@ -16,6 +16,15 @@ import it.uniba.app.wordle.Partita;
 
 public class attemptController implements Controller {
 
+    private static int attemptCount = 0;
+    private static boolean win = false;
+
+    public static void addCount(){attemptCount++;}
+    public static int getCount(){return attemptCount;}
+    public static boolean getWin(){return win;}
+    public static void setWin(){win = true;}
+    public static List<String[]> attempt = new ArrayList<>();
+
     @Override
     public void control(String[] args) {
 
@@ -23,8 +32,7 @@ public class attemptController implements Controller {
 
             if (Partita.getPartitaInCorso() != null) {
 
-                int attemptCount = 0;
-                List<Parola> attempt = new ArrayList<>();
+                attemptController.endAttempts();
 
                 if (args[0].length() == Parola.getLength()) {
 
@@ -33,16 +41,9 @@ public class attemptController implements Controller {
 
                     coloredLetter = compereLetters(ParolaSegreta.getAttualeParolaSegreta(), parola);
 
-                    System.out.println("┌───────────────────┐");
-                    System.out.println("│ GRIGLIA DI GIOCO  │");
-                    System.out.println("├───┬───┬───┬───┬───┤");
+                    attempt.add(coloredLetter);
 
-                    System.out.println(MessageFormat.format("│ {0} │ {1} │ {2} │ {3} │ {4} │", coloredLetter[0],  coloredLetter[1],  coloredLetter[2], coloredLetter[3],  coloredLetter[4]));
-                    System.out.println("├───┼───┼───┼───┼───┤");
-                    
-
-                    System.out.println("│   │   │   │   │   │");
-                    System.out.println("└───┴───┴───┴───┴───┘");
+                    printGrid(attempt);
 
 
                 } else if (args[0].length() < Parola.getLength()) {
@@ -57,6 +58,8 @@ public class attemptController implements Controller {
 
                     throw new LetteraInvalidaException();
                 }
+
+
 
             } else {
 
@@ -83,62 +86,94 @@ public class attemptController implements Controller {
 
     }
 
-    public String[] compereLetters(Parola parolaSegreta, Parola tentativo){
+    public String[] compereLetters(Parola parolaSegreta, Parola tentativo) {
 
         String[] coloredWord = new String[5];
         boolean flagLettera = false;
 
-        if(tentativo.equalsIgnoreCaseAndColors(ParolaSegreta.getAttualeParolaSegreta())){
-            for(int i = 0; i < Parola.getLength(); i++){
+        if (tentativo.equalsIgnoreCaseAndColors(ParolaSegreta.getAttualeParolaSegreta())) {
+
+            for (int i = 0; i < Parola.getLength(); i++) {
                 coloredWord[i] = AnsiColors.makeBackgourdGreen(tentativo.getLettere()[i].getCarattere());
             }
-        }else{
+            System.out.println("Parola segreta indovinata, complimenti! Numero tentativi : "  + attemptController.getCount());
+            attemptController.setWin();
+            //TODO ---- ABBANDONA PARTITA
 
-            for(int i = 0; i < Parola.getLength(); i++){
+        } else {
+
+            for (int i = 0; i < Parola.getLength(); i++) {
 
                 int j = 0;
 
                 flagLettera = false;
 
-                    while(j < Parola.getLength() && flagLettera == false){
+                while (j < Parola.getLength() && flagLettera == false) {
 
-                    if(parolaSegreta.getLettere()[j].getCarattere() == tentativo.getLettere()[i].getCarattere()){
+                    if (parolaSegreta.getLettere()[j].getCarattere() == tentativo.getLettere()[i].getCarattere()) {
 
                         flagLettera = true;
 
-                        if(i == j){
+                        if (i == j) {
+
                             coloredWord[i] = AnsiColors.makeBackgourdGreen(tentativo.getLettere()[i].getCarattere());
-                            System.out.println("i == j --> " + i + " - " + j);
-                        }else{
+                        } else {
+
                             j = i;
-                            if(parolaSegreta.getLettere()[j].getCarattere() == tentativo.getLettere()[i].getCarattere()){
-                                coloredWord[i] = AnsiColors.makeBackgourdGreen(tentativo.getLettere()[i].getCarattere());
-                            }else{
-                                coloredWord[i] = AnsiColors.makeBackgourdYellow(tentativo.getLettere()[i].getCarattere());
-                                System.out.println("i != j --> " + i + " - " + j);
+                            if (parolaSegreta.getLettere()[j].getCarattere() == tentativo.getLettere()[i]
+                                    .getCarattere()) {
+                                coloredWord[i] = AnsiColors
+                                        .makeBackgourdGreen(tentativo.getLettere()[i].getCarattere());
+                            } else {
+
+                                coloredWord[i] = AnsiColors
+                                        .makeBackgourdYellow(tentativo.getLettere()[i].getCarattere());
                             }
 
-
                         }
-
-                        System.out.println(" jjjjjjjjjjjjjjjjjj ");
 
                     }
 
                     j++;
                 }
 
-                    if(flagLettera == false){
-                        coloredWord[i] = AnsiColors.makeBackgourdGray(tentativo.getLettere()[i].getCarattere());
-                    }
-
-                    System.out.println(" iiiiiiiiiiiii ");
+                if (flagLettera == false) {
+                    coloredWord[i] = AnsiColors.makeBackgourdGray(tentativo.getLettere()[i].getCarattere());
+                }
 
             }
 
         }
 
         return coloredWord;
+
+    }
+
+    public static void endAttempts(){
+
+        if(attemptController.getCount() == 6 && attemptController.getWin() == false){
+            System.out.println("Hai raggiunto il numero massimo di tentativi, per maggiori informazioni digitare /help");
+            //TODO ---- ABBANDONA PARTITA
+        }
+    }
+
+    public static void printGrid(List<String[]> attempt){
+
+
+        System.out.println("┌───────────────────┐");
+        System.out.println("│ GRIGLIA DI GIOCO  │");
+        System.out.println("├───┬───┬───┬───┬───┤");
+
+        for(int i = 0; i < attempt.size(); i++){
+
+            System.out.println(MessageFormat.format("│ {0} │ {1} │ {2} │ {3} │ {4} │", attempt.get(i)[0],
+            attempt.get(i)[1],  attempt.get(i)[2],  attempt.get(i)[3],  attempt.get(i)[4]));
+            System.out.println("├───┼───┼───┼───┼───┤");
+
+        }
+
+        System.out.println("│   │   │   │   │   │");
+        System.out.println("└───┴───┴───┴───┴───┘");
 
     }
 

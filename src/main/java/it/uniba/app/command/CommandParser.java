@@ -1,6 +1,8 @@
 package it.uniba.app.command;
 
+import it.uniba.app.controller.attemptController;
 import it.uniba.app.exception.InvalidCommandException;
+import it.uniba.app.wordle.Partita;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +28,12 @@ public final class CommandParser {
         if (prefix.startsWith("/")) {
             return new Command(commandsStrings.get(prefix), args);
         } else {
-             return new Command(CommandType.TENTA, prefixAndArgs); 
+            while(attemptController.getCount() < Partita.getNumeroMassimoTentativi() && attemptController.getWin() == false){
+                attemptController.addCount();
+                return new Command(CommandType.TENTA, prefixAndArgs); 
+            }
+
+            return new Command(commandsStrings.get(prefix), args);
         }
     }
 
