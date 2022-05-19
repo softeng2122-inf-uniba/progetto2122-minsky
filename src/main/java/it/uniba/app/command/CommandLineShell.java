@@ -23,6 +23,7 @@ public final class CommandLineShell {
     private static final String INPUT_PREFIX = "wordle:> ";
     private static final String EXIT_MESSAGE = "/esci";
     private static final String HELP_MESSAGE = "/help";
+    private static final String SHOW_MESSAGE = "/mostra";
     private final CommandParser commandParser = new CommandParser();
     private final BufferedReader commandLineInputStream = new BufferedReader(new InputStreamReader(System.in));
 
@@ -83,8 +84,13 @@ public final class CommandLineShell {
         // TODO Aggiungere ogni nuovo comando con: commandParser.addCommand();
         commandParser.addCommand("/nuova", CommandType.NUOVA);
         commandParser.addCommand("/gioca", CommandType.GIOCA);
+        commandParser.addCommand("/abbandona", CommandType.ABBANDONA);
         commandParser.addCommand(EXIT_MESSAGE, CommandType.ESCI);
         commandParser.addCommand(HELP_MESSAGE, CommandType.HELP);
+<<<<<<< HEAD
         
+=======
+        commandParser.addCommand(SHOW_MESSAGE, CommandType.MOSTRA);
+>>>>>>> master
     }
 }

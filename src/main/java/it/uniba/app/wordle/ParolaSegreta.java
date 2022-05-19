@@ -29,4 +29,15 @@ public class ParolaSegreta extends Parola {
     public static ParolaSegreta getAttualeParolaSegreta() {
         return attualeParolaSegreta;
     }
+    @Override
+    public String toString(){
+        final StringBuilder sb = new StringBuilder();
+
+    for (Lettera l : getLettere()) {
+        sb.append(l.getCarattere());
+    }
+
+    return sb.toString();
+    }
+    
 }

@@ -9,4 +9,5 @@ package it.uniba.app.exception;
  */
 
 public class ParolaSegretaMancanteException extends Exception {
+    
 }
