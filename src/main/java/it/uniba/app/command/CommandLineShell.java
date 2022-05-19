@@ -83,6 +83,7 @@ public final class CommandLineShell {
         // TODO Aggiungere ogni nuovo comando con: commandParser.addCommand();
         commandParser.addCommand("/nuova", CommandType.NUOVA);
         commandParser.addCommand("/gioca", CommandType.GIOCA);
+        commandParser.addCommand("/abbandona", CommandType.ABBANDONA);
         commandParser.addCommand(EXIT_MESSAGE, CommandType.ESCI);
         commandParser.addCommand(HELP_MESSAGE, CommandType.HELP);
         commandParser.addCommand(SHOW_MESSAGE, CommandType.MOSTRA);
