@@ -1,6 +1,8 @@
 package it.uniba.app.command;
 
+
 import it.uniba.app.controller.*;
+
 
 /**
  * Contiene tutti i tipi di comando riconoscibili da un CommandParser.
@@ -8,8 +10,9 @@ import it.uniba.app.controller.*;
 
 public enum CommandType {
     // TODO: Aggiungere per ogni comando la classe <control> associata
+
     NUOVA(SelezioneParolaSegretaController.class),
-    MOSTRA(null),
+    MOSTRA(ShowMessage.class),
     HELP(HelpController.class),
     GIOCA(InizioPartitaController.class),
     ABBANDONA(AbbandonaPartitaController.class),
