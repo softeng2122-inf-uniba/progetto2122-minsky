@@ -15,11 +15,10 @@ public class AnsiColors {
     public static String getBrightGreen(){return ANSI_BRIGHT_GREEN;}
     public static String getReset(){return ANSI_RESET;}
 
-    public static String getBackgroundGreen(){return ANSI_BACKGROUDN_BRIGHT_GREEN;}
-    public static String getBackgroundYellow(){return ANSI_BACKGROUDN_BRIGHT_YELLOW;}
-    public static String getBackgroundGray(){return ANSI_BACKGROUDN_BRIGHT_GRAY;}
-
-
-
+    public static String makeBackgourdGreen(char c){return ANSI_BACKGROUDN_BRIGHT_GREEN + c + ANSI_RESET;}
+    public static String makeBackgourdYellow(char c){return ANSI_BACKGROUDN_BRIGHT_YELLOW + c + ANSI_RESET;}
+    public static String makeBackgourdGray(char c){return ANSI_BACKGROUDN_BRIGHT_GRAY + c + ANSI_RESET;}
+    public static String makeRed(String s){return ANSI_BRIGHT_RED + s + ANSI_RESET;}
+    public static String makeGreen(String s){return ANSI_BRIGHT_GREEN + s + ANSI_RESET;}
 
 }
