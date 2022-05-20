@@ -181,7 +181,7 @@ container contenente l’applicazione è:
 ## 4.3 Esecuzione del tentativo
 
 ### Diagramma delle classi
-
+![](img/OO_Design/EsecuzioneTentativo/classDiagram.png)
 
 ### Diagramma di sequenza
 
