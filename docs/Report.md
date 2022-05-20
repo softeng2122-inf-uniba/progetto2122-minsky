@@ -8,7 +8,7 @@
    2. Requisiti non funzionali
 4. OO Design
    1. Selezione Parola Segreta
-
+   2. Inizio Nuova Partita
 
 
 # 1. Introduzione
