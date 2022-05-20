@@ -159,8 +159,8 @@ container contenente l’applicazione è:
 
 ### Diagramma delle classi
 
-![](img/OO Design/selezioneParolaSegreta/classDiagram.png)
+![](img/OO_Design/selezioneParolaSegreta/classDiagram.png)
 
 ### Diagramma di sequenza
 
-![](img/OO Design/selezioneParolaSegreta/sequenceDiagram.png)
+![](img/OO_Design/selezioneParolaSegreta/sequenceDiagram.png)
