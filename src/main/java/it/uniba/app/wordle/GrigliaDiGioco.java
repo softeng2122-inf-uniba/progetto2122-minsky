@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * <Entity>
  * <p>
- * Rappresenta una matrice dei tentativi relativa ad una Partita.
+ * Rappresenta una matrice dei tentativi relativa ad una Partita. [PER USO FUTURO]
  */
 
 public class GrigliaDiGioco {

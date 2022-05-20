@@ -1,6 +1,11 @@
 package it.uniba.app.controller;
-
 import it.uniba.app.exception.FlagException;
+
+/**
+ * <Control>
+ * <p>
+ * Gestisce la stampa della guida  
+ */
 
 public class HelpController implements Controller {
 

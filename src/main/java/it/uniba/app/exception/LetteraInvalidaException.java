@@ -8,4 +8,11 @@ package it.uniba.app.exception;
  */
 
 public class LetteraInvalidaException extends Exception {
+
+
+    public String showMessage(){
+        
+        return "Tentativo non valido, carratteri non riconosciuti, per maggiori informazioni digitare /help";
+    }
+
 }

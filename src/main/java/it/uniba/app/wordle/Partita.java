@@ -1,5 +1,6 @@
 package it.uniba.app.wordle;
 
+import it.uniba.app.controller.attemptController;
 import it.uniba.app.exception.NessunaPartitaInCorsoException;
 import it.uniba.app.exception.ParolaSegretaMancanteException;
 import it.uniba.app.exception.PartitaInCorsoException;
@@ -24,6 +25,9 @@ public class Partita {
     public static void iniziaNuovaPartita() throws PartitaInCorsoException, ParolaSegretaMancanteException {
         if (getPartitaInCorso() == null) {
             if (ParolaSegreta.getAttualeParolaSegreta() != null) {
+                attemptController.reserWin();
+                attemptController.resetAttemptCount();
+                attemptController.clearAttempt();
                 partitaInCorso = new Partita(ParolaSegreta.getAttualeParolaSegreta());
             } else {
                 throw new ParolaSegretaMancanteException();

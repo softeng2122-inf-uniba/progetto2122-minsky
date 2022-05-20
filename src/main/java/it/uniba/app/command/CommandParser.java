@@ -1,6 +1,8 @@
 package it.uniba.app.command;
 
+import it.uniba.app.controller.attemptController;
 import it.uniba.app.exception.InvalidCommandException;
+import it.uniba.app.wordle.Partita;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,8 +28,8 @@ public final class CommandParser {
         if (prefix.startsWith("/")) {
             return new Command(commandsStrings.get(prefix), args);
         } else {
-            throw new InvalidCommandException(); // TODO: Eliminare una volta implementata l'esecuzione del tentativo.
-            // return new Command(CommandType.TENTA, prefixAndArgs); // TODO: Rimuovere commento una volta implementata l'esecuzione del tentativo.
+ 
+            return new Command(CommandType.TENTA, prefixAndArgs);
         }
     }
 
