@@ -8,7 +8,7 @@
    2. Requisiti non funzionali
 4. OO Design
    1. Selezione Parola Segreta
-
+   2. Inizio Nuova Partita
 
 
 # 1. Introduzione
@@ -165,3 +165,14 @@ container contenente l’applicazione è:
 ### Diagramma di sequenza
 
 ![](img/OO_Design/selezioneParolaSegreta/sequenceDiagram.png)
+
+## 4.2 Inizio Nuova Partita
+
+### Diagramma delle classi
+
+![](img/OO_Design/InizioNuovaPartita/classDiagram.png)
+
+### Diagramma di sequenza
+
+![](img/OO_Design/InizioNuovaPartita/sequenceDiagram.png)
+
