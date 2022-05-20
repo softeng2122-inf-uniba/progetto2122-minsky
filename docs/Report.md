@@ -7,6 +7,7 @@
    1. Requisiti funzionali
    2. Requisiti non funzionali
 4. OO Design
+   1. Selezione Parola Segreta
 
 
 
@@ -82,20 +83,25 @@ Requisito funzionale 5: **Abbandono della partita**
 Come giocatore voglio abbandonare la partita. Al comando:
 > `/abbandona`
 
- l’app chiede conferma:
+l’app chiede conferma:
 
 - se la conferma è positiva, l'app comunica l’abbandono.
 - se la conferma è negativa, l'app si predispone a ricevere un altro tentativo o altri comandi.
+
 #
+
 Requisito funzionale 6 : **Chiusura del gioco**
 
 Come giocatore voglio chiudere il gioco. Al comando:
 > `/esci`
+
 l’app chiede conferma:
 
 - se la conferma è positiva, l'app si chiude restituendo un zero exit code.
 - se la conferma è negativa, l'app si predispone a ricevere nuovi tentativi o comandi.
+
 #
+
 Requisito funzionale 7 : **Esecuzione del tentativo**
 
 Come giocatore voglio effettuare un tentativo per indovinare la parola segreta.
@@ -143,6 +149,19 @@ Windows:
 - Git Bash (in questo caso il comando Docker ha come prefisso winpty; es: winpty docker -it ....)
 
 **Comando per l’esecuzione del container**
-Dopo aver eseguito il comando docker pull copiandolo da GitHub Packages, Il comando Docker da usare per eseguire il container contenente l’applicazione è:
+Dopo aver eseguito il comando docker pull copiandolo da GitHub Packages, Il comando Docker da usare per eseguire il
+container contenente l’applicazione è:
 
->docker run --rm -it ghcr.io/softeng2122-inf-uniba/wordle-minsky2122:latest
+> docker run --rm -it ghcr.io/softeng2122-inf-uniba/wordle-minsky2122:latest
+
+# 4. OO Design
+
+## 4.1 Selezione Parola Segreta
+
+### Diagramma delle classi
+
+![](img/OO_Design/selezioneParolaSegreta/classDiagram.png)
+
+### Diagramma di sequenza
+
+![](img/OO_Design/selezioneParolaSegreta/sequenceDiagram.png)
