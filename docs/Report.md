@@ -9,6 +9,7 @@
 4. OO Design
    1. Selezione Parola Segreta
    2. Inizio Nuova Partita
+   3. Esecuzione del tentativo
 
 
 # 1. Introduzione
@@ -176,3 +177,12 @@ container contenente l’applicazione è:
 
 ![](img/OO_Design/InizioNuovaPartita/sequenceDiagram.png)
 
+
+## 4.3 Esecuzione del tentativo
+
+### Diagramma delle classi
+
+
+### Diagramma di sequenza
+
+![](img/OO_Design/EsecuzioneTentativo/sequenceDiagram.png)
