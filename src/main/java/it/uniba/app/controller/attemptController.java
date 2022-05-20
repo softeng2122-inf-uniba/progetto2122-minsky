@@ -27,6 +27,7 @@ public class attemptController implements Controller {
     public static List<String[]> attempt = new ArrayList<>();
 
     public static void addCount(){attemptCount++;}
+    public static void reduceCount(){attemptCount--;}
     public static int getCount(){return attemptCount;}
     public static boolean getWin(){return win;}
     public static void setWin(){win = true;}
@@ -45,7 +46,7 @@ public class attemptController implements Controller {
                 if (args[0].length() == Parola.getLength()) {
 
                     Parola parola = new Parola(args[0]);
-                    String[] coloredLetter = new String[5];
+                    String[] coloredLetter;
 
                     coloredLetter = compereLetters(ParolaSegreta.getAttualeParolaSegreta(), parola);
 
@@ -55,9 +56,8 @@ public class attemptController implements Controller {
 
                     attemptController.endAttempts();
 
-
-
                 } else if (args[0].length() < Parola.getLength()) {
+
 
                     throw new ParolaCortaException();
 
@@ -70,8 +70,6 @@ public class attemptController implements Controller {
                     throw new LetteraInvalidaException();
                 }
 
-
-
             } else {
 
                 throw new PartitaInCorsoException();
@@ -83,14 +81,17 @@ public class attemptController implements Controller {
 
         } catch (ParolaCortaException e) {
 
+            attemptController.reduceCount();
             System.out.println(new ErrorStringBuilder(e.showMessage()));
 
         } catch (ParolaLungaException e) {
 
+            attemptController.reduceCount();
             System.out.println(new ErrorStringBuilder(e.showMessage()));
 
         } catch (LetteraInvalidaException e) {
 
+            attemptController.reduceCount();
             System.out.println(new ErrorStringBuilder(e.showMessage()));
 
         }catch (NessunaPartitaInCorsoException e){}

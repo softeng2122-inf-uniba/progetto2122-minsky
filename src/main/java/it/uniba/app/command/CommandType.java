@@ -7,7 +7,6 @@ import it.uniba.app.controller.*;
  */
 
 public enum CommandType {
-    // TODO: Aggiungere per ogni comando la classe <control> associata
 
     NUOVA(SelezioneParolaSegretaController.class),
     MOSTRA(ShowMessage.class),

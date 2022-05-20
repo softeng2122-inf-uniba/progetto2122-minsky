@@ -28,9 +28,6 @@ public final class CommandParser {
         if (prefix.startsWith("/")) {
             return new Command(commandsStrings.get(prefix), args);
         } else {
-            attemptController.reserWin();
-            attemptController.resetAttemptCount();
-            attemptController.clearAttempt();
             while(attemptController.getCount() < Partita.getNumeroMassimoTentativi() && attemptController.getWin() == false){
                 attemptController.addCount();
                 return new Command(CommandType.TENTA, prefixAndArgs); 
