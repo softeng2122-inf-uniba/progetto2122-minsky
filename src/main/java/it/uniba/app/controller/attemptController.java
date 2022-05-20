@@ -48,6 +48,7 @@ public class attemptController implements Controller {
                     Parola parola = new Parola(args[0]);
                     String[] coloredLetter;
 
+                    attemptController.addCount();
                     coloredLetter = compereLetters(ParolaSegreta.getAttualeParolaSegreta(), parola);
 
                     attempt.add(coloredLetter);
@@ -81,17 +82,14 @@ public class attemptController implements Controller {
 
         } catch (ParolaCortaException e) {
 
-            attemptController.reduceCount();
             System.out.println(new ErrorStringBuilder(e.showMessage()));
 
         } catch (ParolaLungaException e) {
 
-            attemptController.reduceCount();
             System.out.println(new ErrorStringBuilder(e.showMessage()));
 
         } catch (LetteraInvalidaException e) {
 
-            attemptController.reduceCount();
             System.out.println(new ErrorStringBuilder(e.showMessage()));
 
         }catch (NessunaPartitaInCorsoException e){}
