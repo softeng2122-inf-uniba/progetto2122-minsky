@@ -153,9 +153,9 @@ container contenente l’applicazione è:
 
 > docker run --rm -it ghcr.io/softeng2122-inf-uniba/wordle-minsky2122:latest
 
-# 5. OO Design
+# 4. OO Design
 
-## 5.1 Selezione Parola Segreta
+## 4.1 Selezione Parola Segreta
 
 ### Diagramma delle classi
 
