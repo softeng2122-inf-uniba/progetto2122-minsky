@@ -82,20 +82,25 @@ Requisito funzionale 5: **Abbandono della partita**
 Come giocatore voglio abbandonare la partita. Al comando:
 > `/abbandona`
 
- l’app chiede conferma:
+l’app chiede conferma:
 
 - se la conferma è positiva, l'app comunica l’abbandono.
 - se la conferma è negativa, l'app si predispone a ricevere un altro tentativo o altri comandi.
+
 #
+
 Requisito funzionale 6 : **Chiusura del gioco**
 
 Come giocatore voglio chiudere il gioco. Al comando:
 > `/esci`
-> l’app chiede conferma:
+
+l’app chiede conferma:
 
 - se la conferma è positiva, l'app si chiude restituendo un zero exit code.
 - se la conferma è negativa, l'app si predispone a ricevere nuovi tentativi o comandi.
+
 #
+
 Requisito funzionale 7 : **Esecuzione del tentativo**
 
 Come giocatore voglio effettuare un tentativo per indovinare la parola segreta.
