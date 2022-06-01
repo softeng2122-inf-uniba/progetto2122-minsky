@@ -19,15 +19,16 @@ Lo svolgimento del lavoro è stato diviso in tre fasi principali dette Sprint, c
 
 - Sprint 0: dimostrare familiarità con GitHub e il processo agile.
 - Sprint 1: giocare in modo basico.
+- Sprint 2: assicurare la qualità del lavoro svolto.
 
-Il tempo di realizzazione dello Sprint 0 è stato dal 28 Marzo 2022 al 19 Aprile 2022, per quanto riguarda lo Sprint 1 è stato dal 6 Maggio 2022 al 20 Maggio 2022.
-Il lavoro è stato suddiviso equamente tra tutti i contributori del progetto:
+Il tempo di realizzazione dello Sprint 0 è stato dal 28 Marzo 2022 all' 11 Aprile 2022, lo Sprint 1 è stato dal 6 Maggio 2022 al 20 Maggio 2022 e per quanto riguarda lo Sprint 2 dal 30 Maggio 2022 al 14 Giugno 2022.
+Il lavoro è stato suddiviso equamente tra tutti i contributori del progetto :
 Proscia Vito, Quagliarella Vincenzo, Romanazzi Raffaello, Tancrini Stefano, Venezia Mario.
 
 # 2. Modello di dominio
-![Modello di dominio](img/modello%20di%20dominio.png)
+![Modello di dominio](./img/modello%20di%20dominio%20plant.png)
 
-# 3. Requisisti specifici
+# 3. Requisiti specifici
 ## 3.1 Requisiti funzionali
 Requisito funzionale 1 : **Selezione parola segreta**
 
@@ -130,7 +131,7 @@ Se il tentativo fallito è l’ultimo possibile , l’applicazione risponde
 - Hai raggiunto il numero massimo di tentativi. La parola segreta è <…> e si predispone a nuovi comand
 #
 
-## 3.2 Requisisti non funzionali
+## 3.2 Requisiti non funzionali
 Requisito non funzionale 1 : 
 
 il container docker dell’app deve essere eseguito da terminali che supportano Unicode con encoding UTF-8 o UTF-16.
