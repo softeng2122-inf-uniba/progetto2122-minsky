@@ -6,10 +6,16 @@
 3. Requisiti specifici:
    1. Requisiti funzionali
    2. Requisiti non funzionali
-4. OO Design
+4. System Design
+5. OO Design
    1. Selezione Parola Segreta
    2. Inizio Nuova Partita
    3. Esecuzione del tentativo
+6. Riepilogo del test
+7. Manuale Utente
+8. Processo di sviluppo e organizzazione del lavoro
+9. Analisi retrospettiva
+   1. Sprint 1
 
 
 # 1. Introduzione
@@ -156,9 +162,11 @@ container contenente l’applicazione è:
 
 > docker run --rm -it ghcr.io/softeng2122-inf-uniba/wordle-minsky2122:latest
 
-# 4. OO Design
+# 4. System Design
 
-## 4.1 Selezione Parola Segreta
+# 5. OO Design
+
+## 5.1 Selezione Parola Segreta
 
 ### Diagramma delle classi
 
@@ -168,7 +176,7 @@ container contenente l’applicazione è:
 
 ![](img/OO_Design/selezioneParolaSegreta/sequenceDiagram.png)
 
-## 4.2 Inizio Nuova Partita
+## 5.2 Inizio Nuova Partita
 
 ### Diagramma delle classi
 
@@ -179,7 +187,7 @@ container contenente l’applicazione è:
 ![](img/OO_Design/InizioNuovaPartita/sequenceDiagram.png)
 
 
-## 4.3 Esecuzione del tentativo
+## 5.3 Esecuzione del tentativo
 
 ### Diagramma delle classi
 ![](img/OO_Design/EsecuzioneTentativo/classDiagram.png)
