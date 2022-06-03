@@ -19,10 +19,11 @@ public final class ConfirmationRequest {
     /**
      * Asks the user for confirmation before performing an operation.
      *
-     * @return {@code true} if the user accepted the operation;
-     * {@code false} if the user rejected the operation.
+     * @return {@code true} if the user accepted the confirmation request;
+     * {@code false} if the user declined the confirmation request.
      * @throws IOException                  if an I/O error occurs;
-     * @throws InvalidConfirmationException If the user did not answer correctly to this request.
+     * @throws InvalidConfirmationException If the user did not answer correctly
+     *                                      to this request.
      */
     public boolean askUserConfirmation() throws IOException, InvalidConfirmationException {
         System.out.print("[y/n]: ");
