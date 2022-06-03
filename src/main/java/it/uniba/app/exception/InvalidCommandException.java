@@ -3,7 +3,10 @@ package it.uniba.app.exception;
 /**
  * <noECB>
  * <p>
- * Rappresenta una situazione in cui l'utente ha inserito un comando invalido.
+ * Thrown to indicate that the user entered an invalid {@code Command}.
+ *
+ * @see it.uniba.app.command.Command
+ * @see it.uniba.app.command.CommandType
  */
 
 public class InvalidCommandException extends Exception {
