@@ -1,14 +1,17 @@
 package it.uniba.app;
 
-import it.uniba.app.wordle.Partita;
+import it.uniba.app.wordle.Game;
 
 /**
  * <Boundary>
  * <p>
- * Mostra all'utente informazioni relative all'avvio di una partita.
+ * Responsible of showing feedback messages when a player
+ * tries to start a new {@code Game} of Wordle.
+ *
+ * @see Game
  */
 
-public class InizioPartitaBoundary {
+public class StartGameBoundary {
     private static final String gameRunningErrorMessage = "[ERRORE] Una partita è già in corso.";
     private static final String missingSecretWordErrorMessage = "[ERRORE] La parola segreta non è stata impostata.";
     private static final String setSecretWordTip = "[TIP] Imposta una parola segreta con /nuova <parola>.";
@@ -18,7 +21,7 @@ public class InizioPartitaBoundary {
         System.out.println("┌───────────────────┐");
         System.out.println("│ GRIGLIA DI GIOCO  │");
         System.out.println("├───┬───┬───┬───┬───┤");
-        for (i = 0; i < (Partita.getNumeroMassimoTentativi() - 1); i++) {
+        for (i = 0; i < (Game.getMaxGameAttempts() - 1); i++) {
             System.out.println("│   │   │   │   │   │");
             System.out.println("├───┼───┼───┼───┼───┤");
         }
