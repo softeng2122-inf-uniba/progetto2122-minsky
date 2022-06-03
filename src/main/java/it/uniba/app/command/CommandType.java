@@ -3,18 +3,27 @@ package it.uniba.app.command;
 import it.uniba.app.controller.*;
 
 /**
- * Contiene tutti i tipi di comando riconoscibili da un CommandParser.
+ * <noECB>
+ * <p>
+ * This enum provides all {@code CommandType}s
+ * that a {@code CommandParser} can identify.
+ * <p>
+ * Each {@code CommandType} is provided with a class
+ * implementing the {@code Controller} interface.
+ *
+ * @see CommandParser
+ * @see Controller
  */
 
 public enum CommandType {
 
-    NUOVA(SelezioneParolaSegretaController.class),
+    NUOVA(SecretWordSelectionController.class),
     MOSTRA(ShowMessage.class),
     HELP(HelpController.class),
-    GIOCA(InizioPartitaController.class),
-    ABBANDONA(AbbandonaPartitaController.class),
+    GIOCA(StartGameController.class),
+    ABBANDONA(AbortGameController.class),
     ESCI(ExitGame.class),
-    TENTA(attemptController.class);
+    ATTEMPT(attemptController.class);
 
     private final Class<? extends Controller> controllerClass;
 
