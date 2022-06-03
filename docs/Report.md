@@ -195,3 +195,53 @@ container contenente l’applicazione è:
 ### Diagramma di sequenza
 
 ![](img/OO_Design/EsecuzioneTentativo/sequenceDiagram.png)
+
+# 6. Riepilogo del test
+
+# 7. Manuale d'uso
+
+# 8. Processo di sviluppo ed organizzazione del lavoro
+Il gruppo Minsky per la realizzazione di questo progetto ha utilizzato il processo di sviluppo agile che segue i seguenti 12 principi:
+1. La nostra massima priorità è soddisfare il cliente
+rilasciando software di valore, fin da subito
+e in maniera continua.
+2. Accogliamo i cambiamenti nei requisiti,
+anche a stadi avanzati dello sviluppo.
+I processi agili sfruttano il cambiamento
+a favore del vantaggio competitivo del cliente.
+3. Consegniamo frequentemente software
+funzionante, con cadenza variabile da un paio di
+settimane a un paio di mesi, preferendo i periodi
+brevi. 
+4. Committenti e sviluppatori devono lavorare
+insieme quotidianamente per tutta la durata del
+progetto.
+5. Fondiamo i progetti su individui motivati.
+Diamo loro l'ambiente e il supporto di cui hanno
+bisogno e confidiamo nella loro capacità di portare
+il lavoro a termine.
+6. Una conversazione faccia a faccia è il modo più
+efficiente e più efficace per comunicare con il
+team ed all'interno del team. 
+7. Il software funzionante è il principale metro di
+misura di progresso.
+8. I processi agili promuovono uno sviluppo
+sostenibile.
+Gli sponsor, gli sviluppatori e gli utenti dovrebbero
+essere in grado di mantenere indefinitamente un
+ritmo costante.
+9. La continua attenzione all'eccellenza tecnica
+e alla buona progettazione esaltano l'agilità. 
+10. La semplicità - l'arte di massimizzare la quantità
+di lavoro non svolto - è essenziale.
+11. Le architetture, i requisiti e la progettazione
+migliori emergono da team che si autoorganizzano.
+12. A intervalli regolari il team riflette su come
+diventare più efficace, dopodiché regola e adatta
+il proprio comportamento di conseguenza.
+
+Più in particolare questo gruppo si è organizzato seguendo le direttive del metodo scrum seguendo il [codice di condotta](./CODE_OF_CONDUCT.md).
+
+# 9. Analisi retrospettiva
+## 1. Sprint 1
+![Analisi retrospettiva](./img/analisi%20retrospettiva.png)
