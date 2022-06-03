@@ -1,8 +1,6 @@
 package it.uniba.app.command;
 
-import it.uniba.app.controller.attemptController;
 import it.uniba.app.exception.InvalidCommandException;
-import it.uniba.app.wordle.Partita;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +8,11 @@ import java.util.Map;
 /**
  * <Control>
  * <p>
- * Riconosce i comandi inseriti dall'utente in una CommandLineShell.
+ * A {@code CommandParser} is able to identify {@code Command}s
+ * entered in a {@code CommandLineShell}.
+ *
+ * @see Command
+ * @see CommandLineShell
  */
 
 public final class CommandParser {
@@ -28,8 +30,8 @@ public final class CommandParser {
         if (prefix.startsWith("/")) {
             return new Command(commandsStrings.get(prefix), args);
         } else {
- 
-            return new Command(CommandType.TENTA, prefixAndArgs);
+
+            return new Command(CommandType.ATTEMPT, prefixAndArgs);
         }
     }
 
