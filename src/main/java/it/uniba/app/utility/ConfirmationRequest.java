@@ -9,18 +9,20 @@ import java.io.InputStreamReader;
 /**
  * <Boundary>
  * <p>
- * Interagisce con l'utente, chiedendo una conferma per una operazione da eseguire.
+ * A {@code ConfirmationRequest} is used to ask the user for confirmation
+ * before performing a particularly important
+ * (typically non-reversible) operation.
  */
 
 public final class ConfirmationRequest {
 
     /**
-     * Richiede all'utente una conferma per una operazione da eseguire.
+     * Asks the user for confirmation before performing an operation.
      *
-     * @return {@code true} se l'utente ha confermato l'operazione;
-     * {@code false} se l'utente ha rifiutato l'operazione.
-     * @throws IOException                  Se si verifica un errore di I/O;
-     * @throws InvalidConfirmationException Se l'utente non ha risposto correttamente alla richiesta di conferma.
+     * @return {@code true} if the user accepted the operation;
+     * {@code false} if the user rejected the operation.
+     * @throws IOException                  if an I/O error occurs;
+     * @throws InvalidConfirmationException If the user did not answer correctly to this request.
      */
     public boolean askUserConfirmation() throws IOException, InvalidConfirmationException {
         System.out.print("[y/n]: ");
