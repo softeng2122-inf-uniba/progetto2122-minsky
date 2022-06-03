@@ -3,7 +3,7 @@ package it.uniba.app.exception;
 /**
  * <noECB>
  * <p>
- * Rappresenta la situazione in cui l'utente sbaglai il flag
+ * Thrown to indicate that the user has provided an invalid flag.
  */
 
 
