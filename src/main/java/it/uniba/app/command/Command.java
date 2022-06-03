@@ -5,8 +5,12 @@ import it.uniba.app.exception.InvalidCommandException;
 /**
  * <noECB>
  * <p>
- * Rappresenta un comando inserito dall'utente in una
- * CommandLineShell e riconosciuto da un CommandParser.
+ * The {@code Command} class is used to represent
+ * any command entered in a {@code CommandLineShell} and
+ * recognised by a {@code CommandParser}.
+ *
+ * @see CommandLineShell
+ * @see CommandParser
  */
 
 public final class Command {
