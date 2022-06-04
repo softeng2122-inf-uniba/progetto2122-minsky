@@ -242,6 +242,8 @@ il proprio comportamento di conseguenza.
 
 Più in particolare questo gruppo si è organizzato seguendo le direttive del metodo scrum seguendo il [codice di condotta](./CODE_OF_CONDUCT.md).
 
+
+
 # 9. Analisi retrospettiva
 ## 1. Sprint 1
 ![Analisi retrospettiva](./img/analisi%20retrospettiva.png)
