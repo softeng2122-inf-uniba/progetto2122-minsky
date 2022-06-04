@@ -200,49 +200,59 @@ container contenente l’applicazione è:
 
 # 7. Manuale d'uso
 
+All’avvio il gioco si interfaccia con l’utente spiegando brevemente in cosa consiste; dopodiché è pronto a ricevere un nuovo comando, tra i seguenti:
+- `/help`
+- `/nuova <parola>`
+- `/mostra`
+- `/gioca`
+- `/abbandona`
+- `/esci`
+
+Il gioco presenta due ruoli principali, il paroliere che imposta e sceglie la parola segreta ed il giocatore che deve indovinarla.
+## Paroliere
+Prima di iniziare una nuova partita è necessario impostare una parola segreta, compito che spetta al ruolo del paroliere, attraverso il comando `/nuova <parola>`.
+La parola segreta deve essere di esattamente 5 caratteri compresi nell'alfabeto, se cosi non fosse l'applicazione darebbe i seguenti errori:
+
+![errori parola segreta](./img/manuale%20utente/errori%20parola%20segreta.png)
+
+Per assicurarsi che la parola segreta sia stata scritta correttamente, si utilizza il comando `/mostra` . 
+## Giocatore
+È ora possibile, tramite l’inserimento del comando `/gioca`, iniziare una nuova partita; una volta iniziata, l’applicazione attenderà in input i tentativi del giocatore mostrando una griglia di gioco vuota come in figura. (N.B. i tentativi non vanno preceduti dal carattere `/`).
+
+![griglia di gioco](./img/manuale%20utente/griglia%20di%20gioco.png)
+
+Se il tentativo sarà inferiore o superiore a 5 caratteri, o i caratteri inseriti non saranno lettere dell’alfabeto, l’applicazione mostrerà messaggi di errore.
+![errori](./img/manuale%20utente/errori.png)
+
+Una volta inserito un tentativo valido l'applicazione da un feedback visivo al giocatore evidenziando le lettere di un determinato colore in base alla presenza o meno di esse nella parola segreta, secondo questi criteri:
+- VERDE rappresenta una lettera della parola segreta posizionata correttamente;
+- GIALLO una lettera in parola ma non nella posizione corretta;
+- GRIGIO una lettera non in parola.
+
+Esempio (parola segreta : prova)
+
+![tentativo](./img/manuale%20utente/tentativo.png)
+
+Se il giocatore non dovesse indovinare la parola entro il numero massimo di tentativi il gioco terminerebbe con un messaggio :
+
+![max tentativi](./img/manuale%20utente/max%20tentativi.png)
+
+altrimenti al giusto tentativo il gioco terminerebbe con successo, mostrando il numero di tentativi effettuati:
+
+![parola segreta indovinata](./img/manuale%20utente/parola%20segreta%20indovinata.png)
+
+Con il comando `/abbandona` il giocatore può abbandonare la partita in corso, se avviata precedentemente, dopo aver confermato la sua scelta attraverso l'input `y` (yes), altrimenti con l'input `n` (no) il giocatore rimane in partita.
+
+![abbandona](./img/manuale%20utente/abbandona.png)
+
+Attraverso il comando `/esci` il giocatore può uscire dalla sessione di gioco sempre dopo aver confermato la sua scelta in maniera analoga al comando `/abbandona`.
+
+![esci](./img/manuale%20utente/esci.png)
 # 8. Processo di sviluppo ed organizzazione del lavoro
-Il gruppo Minsky per la realizzazione di questo progetto ha utilizzato il processo di sviluppo agile che segue i seguenti 12 principi:
-1. La nostra massima priorità è soddisfare il cliente
-rilasciando software di valore, fin da subito
-e in maniera continua.
-2. Accogliamo i cambiamenti nei requisiti,
-anche a stadi avanzati dello sviluppo.
-I processi agili sfruttano il cambiamento
-a favore del vantaggio competitivo del cliente.
-3. Consegniamo frequentemente software
-funzionante, con cadenza variabile da un paio di
-settimane a un paio di mesi, preferendo i periodi
-brevi. 
-4. Committenti e sviluppatori devono lavorare
-insieme quotidianamente per tutta la durata del
-progetto.
-5. Fondiamo i progetti su individui motivati.
-Diamo loro l'ambiente e il supporto di cui hanno
-bisogno e confidiamo nella loro capacità di portare
-il lavoro a termine.
-6. Una conversazione faccia a faccia è il modo più
-efficiente e più efficace per comunicare con il
-team ed all'interno del team. 
-7. Il software funzionante è il principale metro di
-misura di progresso.
-8. I processi agili promuovono uno sviluppo
-sostenibile.
-Gli sponsor, gli sviluppatori e gli utenti dovrebbero
-essere in grado di mantenere indefinitamente un
-ritmo costante.
-9. La continua attenzione all'eccellenza tecnica
-e alla buona progettazione esaltano l'agilità. 
-10. La semplicità - l'arte di massimizzare la quantità
-di lavoro non svolto - è essenziale.
-11. Le architetture, i requisiti e la progettazione
-migliori emergono da team che si autoorganizzano.
-12. A intervalli regolari il team riflette su come
-diventare più efficace, dopodiché regola e adatta
-il proprio comportamento di conseguenza.
+Il gruppo Minsky per la realizzazione di questo progetto ha utilizzato il processo di sviluppo agile più in particolare si è organizzato seguendo le direttive del metodo scrum seguendo il [codice di condotta](./CODE_OF_CONDUCT.md).
 
-Più in particolare questo gruppo si è organizzato seguendo le direttive del metodo scrum seguendo il [codice di condotta](./CODE_OF_CONDUCT.md).
-
-
+Il gruppo si è coordinato utilizzando le piattaforme di comunicazione Whatsapp,  Discord e Microsoft Teams sui quali venivano condivisi file, immagini e documentazioni oltre che problemi incontrati durante lo sviluppo. Nello specifico su Whatsapp venivano decisi meeting da farsi periodicamente in aggiunta a quelli straordinari quando venivano sollevate questioni importanti, i meeting erano poi svolti sulla piattafroma Discord sul quale è stato creato un server privato di comunicazione contenente diversi canali per mantenere ordine e organizzazione al massimo. E' stato anche svolto un meeting straordinario su Microsoft Teams per la realizzazione dell'analisi retrospettiva dato che Teams ci permetteva di condividere in tempo reale l'utilizzo del software Microsoft Witheboard.
+Nello specifico i meeting periodici venivano svolti ogni 2 giorni, escludendo la domenica, ed avevano la durata di 15/20 minuti, nei quali si aggiornavano i membri del gruppo dello stato di avanzamento dei propri issue. 
 
 # 9. Analisi retrospettiva
 ## 1. Sprint 1
