@@ -23,23 +23,19 @@ public class attemptController implements Controller {
     private static boolean win = false;
     public static List<String[]> attempt = new ArrayList<>();
 
-    public static void addCount() {
+    private static void addCount() {
         attemptCount++;
     }
 
-    public static void reduceCount() {
-        attemptCount--;
-    }
-
-    public static int getCount() {
+    private static int getCount() {
         return attemptCount;
     }
 
-    public static boolean getWin() {
+    private static boolean getWin() {
         return win;
     }
 
-    public static void setWin() {
+    private static void setWin() {
         win = true;
     }
 
