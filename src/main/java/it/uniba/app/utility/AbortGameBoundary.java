@@ -3,11 +3,14 @@ package it.uniba.app.utility;
 /**
  * <Boundary>
  * <p>
- * Interagisce con l'utente, mostrando il feedback relativo
- * all'abbandono di una partita.
+ * This class is responsible for displaying feedback to the player
+ * regarding their request to quit the {@code Game}.
+ *
+ * @see it.uniba.app.wordle.Game
+ * @see it.uniba.app.controller.AbortGameController
  */
 
-public class AbbandonaPartitaBoundary {
+public class AbortGameBoundary {
     private static final String gameNotRunningErrorMessage = "[ERRORE] Non c'è nessuna partita in corso.";
     private static final String AbandonGameMessage = "[OK] La Partita è stata abbandonata.";
 
@@ -17,7 +20,7 @@ public class AbbandonaPartitaBoundary {
         System.out.println();
     }
 
-    public static void showPartitaAbbandonata() {
+    public static void showGameAbortedMessage() {
         System.out.println();
         System.out.println(AbandonGameMessage);
         System.out.println();

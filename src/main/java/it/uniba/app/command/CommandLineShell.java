@@ -12,8 +12,8 @@ import java.io.InputStreamReader;
 /**
  * <Boundary>
  * <p>
- * Acquisisce dall'utente i comandi attraverso una CLI,
- * realizzando un REPL (Read, Eval, Print Loop).
+ * Accepts commands from the user in a CLI,
+ * performing a REPL (Read, Eval, Print Loop).
  */
 
 public final class CommandLineShell {

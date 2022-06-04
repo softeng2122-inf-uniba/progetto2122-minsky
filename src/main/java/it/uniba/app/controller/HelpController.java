@@ -4,7 +4,7 @@ import it.uniba.app.exception.FlagException;
 /**
  * <Control>
  * <p>
- * Gestisce la stampa della guida  
+ * This class is responsible for displaying the user guide.
  */
 
 public class HelpController implements Controller {

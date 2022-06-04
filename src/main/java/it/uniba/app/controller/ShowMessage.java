@@ -1,10 +1,14 @@
 package it.uniba.app.controller;
-import it.uniba.app.exception.ParolaSegretaMancanteException;
-import it.uniba.app.wordle.ParolaSegreta;
+import it.uniba.app.exception.MissingCurrentSecretWordException;
+import it.uniba.app.wordle.SecretWord;
+
 /**
  * <Control>
  * <p>
- * Classe che permette di visualizzare la parola segreta se impostata 
+ * This class is used to display the current {@code SecretWord}
+ * if it has already been selected.
+ *
+ * @see SecretWord
  */
 
 public class ShowMessage implements Controller{
@@ -13,19 +17,17 @@ public class ShowMessage implements Controller{
     
     @Override
     public void control(String[] args)  {
-        
+
         
         try{
-            if(ParolaSegreta.getAttualeParolaSegreta()!=null){
-            System.out.println(SHOWING_MESSAGE);
-            System.out.println(ParolaSegreta.getAttualeParolaSegreta().toString());
-        }
-            else{
-                throw new ParolaSegretaMancanteException();
+            if (SecretWord.getCurrentSecretWord() != null) {
+                System.out.println(SHOWING_MESSAGE);
+                System.out.println(SecretWord.getCurrentSecretWord().toString());
+            } else {
+                throw new MissingCurrentSecretWordException();
             }  
-        }
-        catch (ParolaSegretaMancanteException e) {
-             System.out.println(MISSING_WORD);
+        } catch (MissingCurrentSecretWordException e) {
+            System.out.println(MISSING_WORD);
         }
          
     }

@@ -1,11 +1,10 @@
 package it.uniba.app.controller;
 
 /**
- * L'interfaccia Controller deve essere implementata
- * dalle classi Control relative alle user story.
- * <p>
- * In caso ci siano più classi Control per una singola user story,
- * è sufficiente che solo quella "principale" implementi Controller.
+ * The {@code Controller} interface must be implemented
+ * by the Control classes corresponding to each user story.
+ * If more than one Control class is used for a single user story,
+ * then only the 'main' one needs to implement Controller.
  */
 
 public interface Controller {

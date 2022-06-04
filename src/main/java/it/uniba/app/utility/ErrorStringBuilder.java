@@ -1,11 +1,10 @@
 package it.uniba.app.utility;
 
-import it.uniba.app.utility.AnsiColors;
-
 /**
  * <noECB>
  * <p>
- * Realizza stringhe rappresentanti errori.
+ * An {@code ErrorStringBuilder} is used
+ * to create error message strings for CLI.
  */
 
 public final class ErrorStringBuilder {
