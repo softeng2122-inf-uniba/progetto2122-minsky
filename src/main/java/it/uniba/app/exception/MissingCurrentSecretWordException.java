@@ -11,4 +11,10 @@ package it.uniba.app.exception;
  */
 
 public class MissingCurrentSecretWordException extends Exception {
+
+    private static final String MISSING_SECRET_WORD_MESSAGE = "Non hai specificato alcuna parola.";
+
+    public MissingCurrentSecretWordException() {
+        super(MISSING_SECRET_WORD_MESSAGE);
+    }
 }
