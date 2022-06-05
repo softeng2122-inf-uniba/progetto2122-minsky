@@ -9,9 +9,17 @@ package it.uniba.app.exception;
 
 public class RunningGameException extends Exception {
 
-    public String showMessage() {
-
-        return "Impossibile effettuare un tentativo se la partita non è in corso, per maggiori informazioni digitare /help";
+    /**
+     * Constructs a new {@code RunningGameException}
+     * with the specified detail message.
+     * The cause is not initialized, and may subsequently be initialized by
+     * a call to {@link #initCause}.
+     *
+     * @param message the detail message. The detail message is saved for
+     *                later retrieval by the {@link #getMessage()} method.
+     */
+    public RunningGameException(String message) {
+        super(message);
     }
 
 }

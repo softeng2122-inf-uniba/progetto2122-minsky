@@ -33,7 +33,7 @@ public class Game {
                 throw new MissingCurrentSecretWordException();
             }
         } else {
-            throw new RunningGameException();
+            throw new RunningGameException("Una partita è già in corso.");
         }
     }
 
@@ -41,7 +41,7 @@ public class Game {
         if (getRunningGame() != null) {
             runningGame = null;
         } else {
-            throw new MissingRunningGameException();
+            throw new MissingRunningGameException("Non c'è nessuna partita in corso.");
         }
     }
 
