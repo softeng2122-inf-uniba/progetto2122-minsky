@@ -18,17 +18,17 @@ public final class Letter {
     private final char character;
     private final Color color;
 
-    public Letter(final char character, final Color color) throws InvalidLetterException {
-        if (Character.isLetter(character)) {
-            this.character = character;
-            this.color = color;
+    public Letter(final char ch, final Color c) throws InvalidLetterException {
+        if (Character.isLetter(ch)) {
+            this.character = ch;
+            this.color = c;
         } else {
             throw new InvalidLetterException();
         }
     }
 
-    public Letter(final char character) throws InvalidLetterException {
-        this(character, null);
+    public Letter(final char ch) throws InvalidLetterException {
+        this(ch, null);
     }
 
     public char getCharacter() {
@@ -39,8 +39,8 @@ public final class Letter {
         return color;
     }
 
-    public boolean equalsIgnoreCaseAndColor(final Letter letter) {
+    public boolean equalsIgnoreCase(final char ch) {
         return Character.toLowerCase(getCharacter())
-                == Character.toLowerCase(letter.getCharacter());
+                == Character.toLowerCase(ch);
     }
 }
