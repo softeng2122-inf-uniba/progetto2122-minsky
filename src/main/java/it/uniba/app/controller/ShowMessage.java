@@ -1,6 +1,7 @@
 package it.uniba.app.controller;
 import it.uniba.app.exception.MissingCurrentSecretWordException;
 import it.uniba.app.wordle.SecretWord;
+import it.uniba.app.StartGameBoundary;
 
 /**
  * <Control>
@@ -17,10 +18,7 @@ public class ShowMessage implements Controller {
     private static final String SHOWING_MESSAGE =
     "Questa è la parola segreta impostata: ";
 
-    /** @param is a string that show a message
-     * if the current secret word is not set. */
-    private static final String MISSING_WORD =
-    "\n[ERRORE]Non è stata impostata nessuna parola segreta";
+    StartGameBoundary startGameBoundary = new StartGameBoundary();
 
     /**
      * This method is used to display the current {@code SecretWord}.
@@ -36,7 +34,7 @@ public class ShowMessage implements Controller {
                 throw new MissingCurrentSecretWordException();
             }
         } catch (MissingCurrentSecretWordException e) {
-            System.out.println(MISSING_WORD);
+            startGameBoundary.showMissingSecretWord();
         }
 
     }
