@@ -18,13 +18,12 @@ public class ShowMessage implements Controller {
     private static final String SHOWING_MESSAGE =
     "Questa è la parola segreta impostata: ";
 
-    StartGameBoundary startGameBoundary = new StartGameBoundary();
-
     /**
      * This method is used to display the current {@code SecretWord}.
      */
     @Override
-    public void control(final String[] args)  {
+    public void control(final String[] args) {
+        StartGameBoundary startGameBoundary = new StartGameBoundary();
         try {
             if (SecretWord.getCurrentSecretWord() != null) {
                 System.out.println(SHOWING_MESSAGE);
