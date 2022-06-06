@@ -22,7 +22,7 @@ public class InvalidWordException extends Exception {
      * @param message the detail message. The detail message is saved for
      *                later retrieval by the {@link #getMessage()} method.
      */
-    public InvalidWordException(String message) {
+    public InvalidWordException(final String message) {
         super(message);
     }
 }

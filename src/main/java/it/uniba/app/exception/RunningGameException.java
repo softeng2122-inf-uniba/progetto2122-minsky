@@ -18,7 +18,7 @@ public class RunningGameException extends Exception {
      * @param message the detail message. The detail message is saved for
      *                later retrieval by the {@link #getMessage()} method.
      */
-    public RunningGameException(String message) {
+    public RunningGameException(final String message) {
         super(message);
     }
 
