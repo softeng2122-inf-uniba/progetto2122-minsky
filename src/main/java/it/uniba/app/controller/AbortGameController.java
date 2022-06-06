@@ -26,7 +26,7 @@ public class AbortGameController implements Controller {
                     AbortGameBoundary.showGameAbortedMessage();
                 }
             } else {
-                throw new MissingRunningGameException();
+                throw new MissingRunningGameException("Non c'è nessuna partita in corso.");
             }
         } catch (IOException | InvalidConfirmationException ex) {
             System.out.println("Errore nell'input");

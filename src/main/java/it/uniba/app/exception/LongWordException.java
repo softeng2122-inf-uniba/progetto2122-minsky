@@ -10,9 +10,24 @@ package it.uniba.app.exception;
 
 public class LongWordException extends Exception {
 
-    public String showMessage() {
+    public LongWordException(String message, int correctLength) {
+        super(String.format(message, correctLength));
 
-        return "Tentativo eccessivo, parola troppo lunga, per maggiori informazioni digitare /help";
+        if (correctLength < 2) {
+            throw new IllegalArgumentException("length is less than 2");
+        }
     }
 
+    /**
+     * Constructs a new {@code LongWordException}
+     * with the specified detail message.
+     * The cause is not initialized, and may subsequently be initialized by
+     * a call to {@link #initCause}.
+     *
+     * @param message the detail message. The detail message is saved for
+     *                later retrieval by the {@link #getMessage()} method.
+     */
+    public LongWordException(String message) {
+        super(message);
+    }
 }
