@@ -1,8 +1,12 @@
 package it.uniba.app.controller;
 
-import it.uniba.app.exception.*;
+import it.uniba.app.exception.InvalidWordException;
+import it.uniba.app.exception.LongWordException;
+import it.uniba.app.exception.MissingRunningGameException;
+import it.uniba.app.exception.ShortWordException;
 import it.uniba.app.utility.AnsiColors;
 import it.uniba.app.utility.ErrorStringBuilder;
+import it.uniba.app.wordle.AttemptWord;
 import it.uniba.app.wordle.Game;
 import it.uniba.app.wordle.SecretWord;
 import it.uniba.app.wordle.Word;
@@ -67,70 +71,39 @@ public class attemptController implements Controller {
 
             if (Game.getRunningGame() != null) {
 
+                AttemptWord attemptWord = new AttemptWord(args[0]);
+                String[] coloredLetter;
 
-                if (args[0].length() == Word.getLength()) {
+                attemptController.addCount();
+                coloredLetter = compereLetters(SecretWord.getCurrentSecretWord(), attemptWord);
 
-                    Word word = new Word(args[0]);
-                    String[] coloredLetter;
+                attempt.add(coloredLetter);
 
-                    attemptController.addCount();
-                    coloredLetter = compereLetters(SecretWord.getCurrentSecretWord(), word);
+                printGrid(attempt);
 
-                    attempt.add(coloredLetter);
-
-                    printGrid(attempt);
-
-                    attemptController.endAttempts();
-
-                } else if (args[0].length() < Word.getLength()) {
-
-
-                    throw new ShortWordException();
-
-                } else if (args[0].length() > Word.getLength()) {
-
-                    throw new LongWordException();
-
-                } else {
-
-                    throw new InvalidLetterException();
-                }
+                attemptController.endAttempts();
 
             } else {
 
-                throw new RunningGameException();
+                throw new MissingRunningGameException("Impossibile effettuare un tentativo se la partita non è in corso, per maggiori informazioni digitare /help");
             }
 
-        } catch (RunningGameException px) {
-
-            System.out.println(new ErrorStringBuilder(px.showMessage()));
-
-        } catch (ShortWordException e) {
-
-            System.out.println(new ErrorStringBuilder(e.showMessage()));
-
-        } catch (LongWordException e) {
-
-            System.out.println(new ErrorStringBuilder(e.showMessage()));
-
-        } catch (InvalidLetterException e) {
-
-            System.out.println(new ErrorStringBuilder(e.showMessage()));
-
-        } catch (MissingRunningGameException e) {
+        } catch (MissingRunningGameException | ShortWordException
+                 | LongWordException | InvalidWordException e) {
+            System.out.println(new ErrorStringBuilder(e.getLocalizedMessage()));
         }
 
     }
 
-    public String[] compereLetters(Word secretWord, Word gameAttempt) throws MissingRunningGameException {
+    public String[] compereLetters(SecretWord secretWord, AttemptWord attemptWord) throws MissingRunningGameException {
 
         String[] coloredWord = new String[5];
         boolean letterFlag = false;
 
-        if (gameAttempt.equalsIgnoreCaseAndColors(SecretWord.getCurrentSecretWord())) {
+        if (attemptWord.equalsIgnoreCase(SecretWord.getCurrentSecretWord())) {
 
             for (int i = 0; i < Word.getLength(); i++) {
-                coloredWord[i] = AnsiColors.makeBackgroundGreen(gameAttempt.getLetters()[i].getCharacter());
+                coloredWord[i] = AnsiColors.makeBackgroundGreen(attemptWord.getLetters()[i].getCharacter());
             }
             System.out.println(AnsiColors.getBrightGreen() + "Parola segreta indovinata, complimenti! Numero tentativi : " + attemptController.getCount() + AnsiColors.getReset());
             attemptController.setWin();
@@ -145,24 +118,24 @@ public class attemptController implements Controller {
 
                 while (j < Word.getLength() && letterFlag == false) {
 
-                    if (secretWord.getLetters()[j].getCharacter() == gameAttempt.getLetters()[i].getCharacter()) {
+                    if (secretWord.toString().charAt(j) == attemptWord.getLetters()[i].getCharacter()) {
 
                         letterFlag = true;
 
                         if (i == j) {
 
-                            coloredWord[i] = AnsiColors.makeBackgroundGreen(gameAttempt.getLetters()[i].getCharacter());
+                            coloredWord[i] = AnsiColors.makeBackgroundGreen(attemptWord.getLetters()[i].getCharacter());
                         } else {
 
                             j = i;
-                            if (secretWord.getLetters()[j].getCharacter() == gameAttempt.getLetters()[i]
+                            if (secretWord.toString().charAt(j) == attemptWord.getLetters()[i]
                                     .getCharacter()) {
                                 coloredWord[i] = AnsiColors
-                                        .makeBackgroundGreen(gameAttempt.getLetters()[i].getCharacter());
+                                        .makeBackgroundGreen(attemptWord.getLetters()[i].getCharacter());
                             } else {
 
                                 coloredWord[i] = AnsiColors
-                                        .makeBackgroundYellow(gameAttempt.getLetters()[i].getCharacter());
+                                        .makeBackgroundYellow(attemptWord.getLetters()[i].getCharacter());
                             }
 
                         }
@@ -173,7 +146,7 @@ public class attemptController implements Controller {
                 }
 
                 if (letterFlag == false) {
-                    coloredWord[i] = AnsiColors.makeBackgroundGray(gameAttempt.getLetters()[i].getCharacter());
+                    coloredWord[i] = AnsiColors.makeBackgroundGray(attemptWord.getLetters()[i].getCharacter());
                 }
 
             }

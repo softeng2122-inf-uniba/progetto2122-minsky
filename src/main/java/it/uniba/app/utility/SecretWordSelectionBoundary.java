@@ -12,49 +12,30 @@ package it.uniba.app.utility;
 
 public final class SecretWordSelectionBoundary {
 
-    private static final String OK_MESSAGE = AnsiColors.getBrightGreen() + "[OK] Parola segreta impostata con successo!" + AnsiColors.getReset();
-    private static final String MISSING_WORD_MESSAGE =
-            new ErrorStringBuilder("Non hai specificato alcuna parola.").toString();
-    private static final String RUNNING_GAME_MESSAGE =
-            new ErrorStringBuilder("Non è possibile modificare la parola segreta durante una partita.").toString();
-    private static final String SHORT_WORD_MESSAGE =
-            new ErrorStringBuilder("Parola segreta troppo corta (deve essere di %d lettere).").toString();
-    private static final String LONG_WORD_MESSAGE =
-            new ErrorStringBuilder("Parola segreta troppo lunga (deve essere di %d lettere).").toString();
-    private static final String INVALID_WORD_MESSAGE =
-            new ErrorStringBuilder("Parola segreta non valida (non conteneva solo lettere dell'alfabeto).").toString();
+    /**
+     * Message confirming to the user that
+     * the secret word has been correctly selected.
+     */
+    private static final String OK_MESSAGE = AnsiColors.getBrightGreen()
+            + "[OK] Parola segreta impostata con successo!"
+            + AnsiColors.getReset();
 
+    /**
+     * Displays a message to the user
+     * confirming that the secret word entered has been successfully selected,
+     * using appropriate formatting.
+     */
     public void showOK() {
         System.out.println(OK_MESSAGE);
     }
 
-    public void showMissingWordError() {
-        System.out.println(MISSING_WORD_MESSAGE);
-    }
-
-    public void showRunningGameError() {
-        System.out.println(RUNNING_GAME_MESSAGE);
-    }
-
-    public void showShortWordError(final int correctLength) {
-        if (correctLength >= 2) {
-            System.out.format(SHORT_WORD_MESSAGE, correctLength);
-            System.out.println();
-        } else {
-            throw new IllegalArgumentException("length is less than 2");
-        }
-    }
-
-    public void showLongWordError(final int correctLength) {
-        if (correctLength >= 2) {
-            System.out.format(LONG_WORD_MESSAGE, correctLength);
-            System.out.println();
-        } else {
-            throw new IllegalArgumentException("length is less than 2");
-        }
-    }
-
-    public void showInvalidWordError() {
-        System.out.println(INVALID_WORD_MESSAGE);
+    /**
+     * Displays an error message to the user
+     * using appropriate text formatting for errors.
+     *
+     * @param errorMessage the message displayed to the user
+     */
+    public void showError(final String errorMessage) {
+        System.out.println(new ErrorStringBuilder(errorMessage));
     }
 }
