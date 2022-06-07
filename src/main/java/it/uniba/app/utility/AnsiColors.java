@@ -30,16 +30,16 @@ public class AnsiColors {
         return ANSI_RESET;
     }
 
-    public static String makeBackgroundGreen(char c) {
-        return ANSI_BACKGROUND_BRIGHT_GREEN + " " + c + " " + ANSI_RESET;
+    public static String makeBackgroundGreen(char letter) {
+        return ANSI_BACKGROUND_BRIGHT_GREEN + " " + letter + " " + ANSI_RESET;
     }
 
-    public static String makeBackgroundYellow(char c) {
-        return ANSI_BACKGROUND_BRIGHT_YELLOW + " " + c + " " + ANSI_RESET;
+    public static String makeBackgroundYellow(char letter) {
+        return ANSI_BACKGROUND_BRIGHT_YELLOW + " " + letter + " " + ANSI_RESET;
     }
 
-    public static String makeBackgroundGray(char c) {
-        return ANSI_BACKGROUND_BRIGHT_GRAY + " " + c + " " + ANSI_RESET;
+    public static String makeBackgroundGray(char letter) {
+        return ANSI_BACKGROUND_BRIGHT_GRAY + " " + letter + " " + ANSI_RESET;
     }
 
 }
