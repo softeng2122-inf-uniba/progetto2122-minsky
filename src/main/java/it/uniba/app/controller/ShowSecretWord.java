@@ -1,7 +1,7 @@
 package it.uniba.app.controller;
 import it.uniba.app.exception.MissingCurrentSecretWordException;
 import it.uniba.app.wordle.SecretWord;
-import it.uniba.app.utility.ShowMessageBoundary;
+import it.uniba.app.utility.ShowSecretWordBoundary;
 
 /**
  * <Control>
@@ -12,18 +12,14 @@ import it.uniba.app.utility.ShowMessageBoundary;
  * @see SecretWord
  */
 
-public class ShowMessage implements Controller {
-
-    /** @param is a string that show an initial message. */
-    private static final String ERROR_MESSAGE =
-    "Per visualizzare la parola segreta devi prima impostarla.";
+public class ShowSecretWord implements Controller {
 
     /**
      * This method is used to display the current {@code SecretWord}.
      */
     @Override
     public void control(final String[] args) {
-        ShowMessageBoundary showMessageBoundary = new ShowMessageBoundary();
+        ShowSecretWordBoundary showMessageBoundary = new ShowSecretWordBoundary();
         try {
             if (SecretWord.getCurrentSecretWord() != null) {
                 showMessageBoundary.showMess();
@@ -33,7 +29,7 @@ public class ShowMessage implements Controller {
                 throw new MissingCurrentSecretWordException();
             }
         } catch (MissingCurrentSecretWordException e) {
-            showMessageBoundary.showError(ERROR_MESSAGE);
+            showMessageBoundary.showError();
         }
 
     }
