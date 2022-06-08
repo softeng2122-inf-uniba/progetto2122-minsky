@@ -163,7 +163,7 @@ container contenente l’applicazione è:
 > docker run --rm -it ghcr.io/softeng2122-inf-uniba/wordle-minsky2122:latest
 
 # 4. System Design
-
+Questa sezione non è compilata perchè si tratta di un progetto di piccole-medie dimensioni per tanto il gruppo dopo un'analisi del problema ha opportunamente deciso che non avrebbe avuto senso esplicitare un design del sistema.
 # 5. OO Design
 
 ## 5.1 Selezione Parola Segreta
