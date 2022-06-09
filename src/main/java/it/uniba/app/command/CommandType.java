@@ -18,7 +18,7 @@ import it.uniba.app.controller.*;
 public enum CommandType {
 
     NUOVA(SecretWordSelectionController.class),
-    MOSTRA(ShowMessage.class),
+    MOSTRA(ShowSecretWord.class),
     HELP(HelpController.class),
     GIOCA(StartGameController.class),
     ABBANDONA(AbortGameController.class),
