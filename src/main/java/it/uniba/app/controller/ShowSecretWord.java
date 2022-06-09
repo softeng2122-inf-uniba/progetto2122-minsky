@@ -19,7 +19,8 @@ public class ShowSecretWord implements Controller {
      */
     @Override
     public void control(final String[] args) {
-        ShowSecretWordBoundary showMessageBoundary = new ShowSecretWordBoundary();
+        ShowSecretWordBoundary showMessageBoundary =
+                new ShowSecretWordBoundary();
         try {
             if (SecretWord.getCurrentSecretWord() != null) {
                 showMessageBoundary.showMess();

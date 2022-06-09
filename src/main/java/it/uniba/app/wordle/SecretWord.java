@@ -5,41 +5,13 @@ import it.uniba.app.exception.LongWordException;
 import it.uniba.app.exception.RunningGameException;
 import it.uniba.app.exception.ShortWordException;
 
-import java.util.Locale;
-
 /**
  * <Entity>
  * <p>
  * A secret word in Wordle.
  */
 
-public class SecretWord extends Word {
-    /**
-     * Error message used when user tries
-     * to select a new secret word
-     * when a game is running.
-     */
-    private static final String GAME_RUNNING_ERROR_MESSAGE =
-            "Non è possibile modificare la parola segreta durante una partita.";
-    /**
-     * Error message used when user enters
-     * a secret word that is too short.
-     */
-    private static final String SHORT_SECRET_WORD_ERROR_MESSAGE =
-            "Parola segreta troppo corta (deve essere di %d lettere).";
-    /**
-     * Error message used when user enters
-     * a secret word that is too long.
-     */
-    private static final String LONG_SECRET_WORD_ERROR_MESSAGE =
-            "Parola segreta troppo lunga (deve essere di %d lettere).";
-    /**
-     * Error message used when user enters
-     * a secret word that contains some characters
-     * that are not letters.
-     */
-    private static final String INVALID_SECRET_WORD_ERROR_MESSAGE =
-            "Parola segreta non valida (non conteneva solo lettere dell'alfabeto).";
+public final class SecretWord extends Word {
     /**
      * The current {@code SecretWord}.
      */
@@ -53,45 +25,31 @@ public class SecretWord extends Word {
      * Creates a {@code SecretWord} having {@code stringRepresentation}
      * as its string representation.
      * <p>
-     * Note that {@code stringRepresentation} it's a valid string representation
-     * if and only if:
-     * <ol>
-     *     <li>
-     * {@code stringRepresentation.trim().length() == Word.getLength()}
-     *     <li>
-     * {@code stringRepresentation.trim().chars().allMatch(Character::isLetter)}
-     * is {@code true}.
-     * </ol>
+     * Note that {@code stringRepresentation} it's a valid Wordle word
+     * if and only if
+     * {@code Word.checkWord(stringRepresentation)} doesn't throw any exception.
      *
      * @param stringRepresentation string representation of
      *                             the new {@code SecretWord}.
      * @throws ShortWordException   if
-     *                              {@code stringRepresentation.trim().length() < Word.getLength()}.
+     *                              {@code Word.checkWord(stringRepresentation)}
+     *                              throws {@link ShortWordException}.
      * @throws LongWordException    if
-     *                              {@code stringRepresentation.trim().length() > Word.getLength()}.
+     *                              {@code Word.checkWord(stringRepresentation)}
+     *                              throws {@link LongWordException}.
      * @throws InvalidWordException if
-     *                              {@code stringRepresentation.trim().chars().allMatch(Character::isLetter)}
-     *                              is {@code false}.
+     *                              {@code Word.checkWord(stringRepresentation)}
+     *                              throws {@link InvalidWordException}.
+     * @see it.uniba.app.wordle.Word#checkWord(String)
      */
     public SecretWord(final String stringRepresentation) throws
             ShortWordException,
             LongWordException,
             InvalidWordException {
 
-        String str = stringRepresentation.trim().toLowerCase(Locale.ROOT);
+        checkWord(stringRepresentation);
 
-        if (str.length() < Word.getLength()) {
-            throw new ShortWordException(SHORT_SECRET_WORD_ERROR_MESSAGE,
-                    Word.getLength());
-        } else if (str.length() > Word.getLength()) {
-            throw new LongWordException(LONG_SECRET_WORD_ERROR_MESSAGE,
-                    Word.getLength());
-        } else if (!str.chars().allMatch(Character::isLetter)) {
-            throw new InvalidWordException(INVALID_SECRET_WORD_ERROR_MESSAGE);
-        } else {
-            this.secretWord = str;
-        }
-
+        this.secretWord = stringRepresentation.trim().toLowerCase();
     }
 
     /**
@@ -118,7 +76,7 @@ public class SecretWord extends Word {
         if (Game.getRunningGame() == null) {
             currentSecretWord = newSecretWord;
         } else {
-            throw new RunningGameException(GAME_RUNNING_ERROR_MESSAGE);
+            throw new RunningGameException();
         }
     }
 
@@ -130,5 +88,18 @@ public class SecretWord extends Word {
     @Override
     public String toString() {
         return secretWord;
+    }
+
+    /**
+     * Compares the string representation of this secret word to another String,
+     * ignoring case considerations.
+     *
+     * @param word The String to compare this secret word against
+     * @return {@code true}  if the argument is not null and
+     *                       it represents an equivalent String ignoring case;
+     *         {@code false} otherwise
+     */
+    public boolean equalsIgnoreCase(final String word) {
+        return secretWord.equalsIgnoreCase(word);
     }
 }

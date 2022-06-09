@@ -18,12 +18,6 @@ import it.uniba.app.wordle.SecretWord;
 
 public final class SecretWordSelectionController implements Controller {
 
-    /**
-     * Error message indicating to the user that no word has been specified.
-     */
-    private static final String MISSING_WORD_MESSAGE =
-            "Non hai specificato alcuna parola.";
-
     @Override
     public void control(final String[] args) {
         SecretWordSelectionBoundary secretWordSelectionBoundary =
@@ -33,11 +27,10 @@ public final class SecretWordSelectionController implements Controller {
             SecretWord.setCurrentSecretWord(new SecretWord(args[0]));
 
             secretWordSelectionBoundary.showOK();
-        } catch (ArrayIndexOutOfBoundsException e) {
-            secretWordSelectionBoundary.showError(MISSING_WORD_MESSAGE);
-        } catch (RunningGameException | ShortWordException
-                 | LongWordException | InvalidWordException e) {
-            secretWordSelectionBoundary.showError(e.getLocalizedMessage());
+        } catch (RunningGameException | ArrayIndexOutOfBoundsException
+                 | ShortWordException | LongWordException
+                 | InvalidWordException e) {
+            secretWordSelectionBoundary.showError(e);
         }
     }
 }

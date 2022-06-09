@@ -14,22 +14,53 @@ import it.uniba.app.exception.InvalidCommandException;
  */
 
 public final class Command {
+
+    /** The type of this command. */
     private final CommandType commandType;
-    private final String[] args;
 
-    public Command(final CommandType commandType, final String[] args) throws InvalidCommandException {
-        if (commandType != null) this.commandType = commandType;
-        else throw new InvalidCommandException();
+    /** The arguments of this command. */
+    private final String[] arguments;
 
-        if (args == null) this.args = new String[0];
-        else this.args = args;
+
+    /**
+     * Creates a new command with {@code cmdType} as type
+     * and {@code args} as arguments.
+     *
+     * @param cmdType the type of the new command.
+     * @param args the arguments of the new command.
+     * @throws InvalidCommandException if cmdType is {@code null}.
+     */
+    public Command(final CommandType cmdType, final String[] args)
+            throws InvalidCommandException {
+
+        if (cmdType != null) {
+            this.commandType = cmdType;
+        } else {
+            throw new InvalidCommandException();
+        }
+
+        if (args == null) {
+            this.arguments = new String[0];
+        } else {
+            this.arguments = args.clone();
+        }
     }
 
+    /**
+     * Returns the type of this command.
+     *
+     * @return the type of this command
+     */
     public CommandType getCommandType() {
         return commandType;
     }
 
-    public String[] getArgs() {
-        return args;
+    /**
+     * Returns the arguments of this command.
+     *
+     * @return the arguments of this command
+     */
+    public String[] getArguments() {
+        return arguments.clone();
     }
 }

@@ -1,63 +1,42 @@
 package it.uniba.app.wordle;
 
-import it.uniba.app.exception.InvalidLetterException;
-import it.uniba.app.exception.InvalidWordException;
 import it.uniba.app.exception.LongWordException;
 import it.uniba.app.exception.ShortWordException;
 
 public class AttemptWord extends Word {
 
-    private static final String SHORT_ATTEMPT_MESSAGE =
-            "Tentativo incompleto, parola troppo corta, " +
-                    "per maggiori informazioni digitare /help";
-    private static final String LONG_ATTEMPT_MESSAGE =
-            "Tentativo eccessivo, parola troppo lunga, " +
-                    "per maggiori informazioni digitare /help";
-    private static final String INVALID_ATTEMPT_MESSAGE =
-            "Tentativo non valido, caratteri non riconosciuti, " +
-                    "per maggiori informazioni digitare /help";
-    private final Letter[] letters;
+    /** Letters from which this {@link AttemptWord} is composed. */
+    private final Letter[] attemptLetters;
 
-    public AttemptWord(final Letter[] letters) throws ShortWordException, LongWordException {
+    /**
+     * Constructs a new {@link AttemptWord} composed of the letters
+     * contained in the given array of {@link Letter}.
+     *
+     * @param letters array of {@link Letter}
+     * @throws ShortWordException if {@code letters.length < Word.getLength()}
+     * @throws LongWordException if {@code letters.length > Word.getLength()}
+     */
+    public AttemptWord(final Letter[] letters)
+            throws ShortWordException, LongWordException {
+
         if (letters.length < Word.getLength()) {
-            throw new ShortWordException(SHORT_ATTEMPT_MESSAGE);
+            throw new ShortWordException(
+                    "Array letters length is less than Word.getLength().");
         } else if (letters.length > Word.getLength()) {
-            throw new LongWordException(LONG_ATTEMPT_MESSAGE);
+            throw new LongWordException(
+                    "Array letters length is greater than Word.getLength().");
         } else {
-            this.letters = letters;
-        }
-
-    }
-
-    public AttemptWord(String word) throws ShortWordException, LongWordException, InvalidWordException {
-        word = word.trim();
-
-        if (word.length() < Word.getLength()) {
-            throw new ShortWordException(SHORT_ATTEMPT_MESSAGE);
-        } else if (word.length() > Word.getLength()) {
-            throw new LongWordException(LONG_ATTEMPT_MESSAGE);
-        } else {
-            letters = new Letter[Word.getLength()];
-
-            try {
-                for (int i = 0; i < Word.getLength(); i++) {
-                    letters[i] = new Letter(word.charAt(i));
-                }
-            } catch (InvalidLetterException e) {
-                throw new InvalidWordException(INVALID_ATTEMPT_MESSAGE);
-            }
+            this.attemptLetters = letters.clone();
         }
     }
 
+    /**
+     * Returns a copy of letters of which this {@link AttemptWord} is composed.
+     *
+     * @return {@link Letter} array.
+     */
     public final Letter[] getLetters() {
-        return letters;
+        return attemptLetters.clone();
     }
 
-    public final boolean equalsIgnoreCase(final SecretWord secretWord) {
-        for (int i = 0; i < Word.getLength(); i++) {
-            if (!getLetters()[i].equalsIgnoreCase(secretWord.toString().charAt(i))) return false;
-        }
-
-        return true;
-    }
 }
