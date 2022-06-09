@@ -25,41 +25,11 @@ import java.util.List;
 
 public class attemptController implements Controller {
 
-    private static int attemptCount = 0;
-    private static boolean win = false;
     public static List<String[]> attempt = new ArrayList<>();
-
-    private static void addCount() {
-        attemptCount++;
-    }
-
-    private static int getCount() {
-        return attemptCount;
-    }
-
-    private static boolean getWin() {
-        return win;
-    }
-
-    private static void setWin() {
-        win = true;
-    }
-
-    public static void resetWin() {
-        win = false;
-    }
-
-    public static void resetAttemptCount() {
-        attemptCount = 0;
-    }
-
-    public static void clearAttempt() {
-        attempt.clear();
-    }
 
     public static void endAttempts() throws MissingRunningGameException {
 
-        if (attemptController.getCount() == 6 && attemptController.getWin() == false) {
+        if (Game.getCount() == 6 && Game.getWin() == false) {
             System.out.println(new ErrorStringBuilder(
                     "Hai raggiunto il numero massimo di tentativi, per maggiori informazioni digitare /help"));
             System.out.println("\nLa parola segreta è: " + SecretWord.getCurrentSecretWord().toString());
@@ -79,7 +49,7 @@ public class attemptController implements Controller {
                 AttemptWord attemptWord = new AttemptWord(args[0]);
                 String[] coloredLetter;
 
-                attemptController.addCount();
+                Game.addCount();
                 // coloredLetter = compereLetters(SecretWord.getCurrentSecretWord(),
                 // attemptWord);
 
@@ -229,15 +199,15 @@ public class attemptController implements Controller {
     }
 
     private static void showGridBody(GameGrid grid) {
-        if (getCount() > 0) { 
+        if (Game.getCount() > 0) { 
             System.out.println(AnsiColors.convertAttemptWordToGridRow(grid.getWord(0)));
 
-            for (int i = 1; i < getCount(); i++) {
+            for (int i = 1; i < Game.getCount(); i++) {
                 showGridRowsSeparator();
                 System.out.println(AnsiColors.convertAttemptWordToGridRow(grid.getWord(i)));
             }
 
-            if (getCount() < Game.getMaxGameAttempts()) {
+            if (Game.getCount() < Game.getMaxGameAttempts()) {
                 showEmptyGridRow();
             }
 

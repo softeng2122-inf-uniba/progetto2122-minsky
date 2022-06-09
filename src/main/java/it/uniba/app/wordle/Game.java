@@ -17,17 +17,47 @@ public class Game {
     private static Game runningGame;
     private final GameGrid gameGrid = new GameGrid();
     private final SecretWord secretWord;
+    private static int attemptCount = 0;
+    private static boolean win = false;
 
     public Game(final SecretWord secretWord) {
         this.secretWord = secretWord;
     }
 
+    public static void addCount() {
+        attemptCount++;
+    }
+
+    public static int getCount() {
+        return attemptCount;
+    }
+
+    public static boolean getWin() {
+        return win;
+    }
+
+    public static void setWin() {
+        win = true;
+    }
+
+    private static void resetWin() {
+        win = false;
+    }
+
+    private static void resetAttemptCount() {
+        attemptCount = 0;
+    }
+
+    private static void clearAttempt() {
+        //TODO: Pulire la lista dei tentativi
+    }
+
     public static void startNewGame() throws RunningGameException, MissingCurrentSecretWordException {
         if (getRunningGame() == null) {
             if (SecretWord.getCurrentSecretWord() != null) {
-                attemptController.resetWin();
-                attemptController.resetAttemptCount();
-                attemptController.clearAttempt();
+                resetWin();
+                resetAttemptCount();
+                clearAttempt();
                 runningGame = new Game(SecretWord.getCurrentSecretWord());
             } else {
                 throw new MissingCurrentSecretWordException();
