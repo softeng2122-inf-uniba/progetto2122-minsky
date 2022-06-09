@@ -1,6 +1,6 @@
 package it.uniba.app.wordle;
 
-import it.uniba.app.controller.attemptController;
+import it.uniba.app.controller.AttemptController;
 import it.uniba.app.exception.MissingCurrentSecretWordException;
 import it.uniba.app.exception.MissingRunningGameException;
 import it.uniba.app.exception.RunningGameException;
