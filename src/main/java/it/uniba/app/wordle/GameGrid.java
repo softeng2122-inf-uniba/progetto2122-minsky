@@ -13,5 +13,7 @@ import java.util.List;
  */
 
 public class GameGrid {
-    private List<Word> gameAttempts;
+
+    /** List of attempts contained in this game grid. */
+    private List<AttemptWord> attemptWords;
 }
