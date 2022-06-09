@@ -16,6 +16,15 @@ import java.io.InputStreamReader;
 
 public final class ConfirmationRequest {
 
+    /** String used in {@link #showExitMessage}. */
+    private static final String EXIT_MESSAGE =
+        "Sei sicuro di voler uscire da Wordle?";
+
+    /** String used in {@link #showInputError}. */
+    private static final String INPUT_ERROR =
+        "Errore nell'input";
+
+
     /**
      * Asks the user for confirmation before performing an operation.
      *
@@ -45,4 +54,17 @@ public final class ConfirmationRequest {
         }
 
     }
+
+    /** Method used to display the exit confirmation message. */
+    public void showExitMessage() {
+
+        System.out.println(EXIT_MESSAGE);
+
+    }
+
+    /** Method used to display the Input error message. */
+    public void showInputError() {
+        System.out.println(new ErrorStringBuilder(INPUT_ERROR));
+    }
+
 }
