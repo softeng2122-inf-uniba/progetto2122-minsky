@@ -35,11 +35,14 @@ public final class ConfirmationRequest {
      * @throws InvalidConfirmationException If the user did not answer correctly
      *                                      to this request.
      */
-    public boolean askUserConfirmation() throws IOException, InvalidConfirmationException {
+    public boolean askUserConfirmation()
+        throws IOException, InvalidConfirmationException {
+
         System.out.print("[y/n]: ");
 
-        BufferedReader commandLineInputStream =
-            new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
+        BufferedReader commandLineInputStream = new BufferedReader(
+                new InputStreamReader(System.in, StandardCharsets.UTF_8));
+
         String answer = commandLineInputStream.readLine();
         if (answer != null) {
             answer = answer.trim();
