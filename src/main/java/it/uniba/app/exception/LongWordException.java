@@ -10,19 +10,6 @@ package it.uniba.app.exception;
 
 public class LongWordException extends Exception {
     /**
-     * Constructs a new {@code LongWordException}.
-     * @param message
-     * @param correctLength
-     */
-    public LongWordException(final String message, final int correctLength) {
-        super(String.format(message, correctLength));
-
-        if (correctLength < 2) {
-            throw new IllegalArgumentException("length is less than 2");
-        }
-    }
-
-    /**
      * Constructs a new {@code LongWordException}
      * with the specified detail message.
      * The cause is not initialized, and may subsequently be initialized by
@@ -33,5 +20,15 @@ public class LongWordException extends Exception {
      */
     public LongWordException(final String message) {
         super(message);
+    }
+
+    /**
+     * Constructs a new {@code LongWordException}
+     * with {@code null} as its detail message.
+     * The cause is not initialized, and may subsequently be initialized by a
+     * call to {@link #initCause}.
+     */
+    public LongWordException() {
+        super();
     }
 }

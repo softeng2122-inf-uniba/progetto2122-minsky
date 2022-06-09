@@ -6,16 +6,14 @@ package it.uniba.app.exception;
  * Thrown to indicate that the user has provided an invalid flag.
  */
 
+public final class FlagException extends Exception {
 
-public class FlagException extends Exception {
     /**
-     * Constructs a new {@code FlagException}.
+     * Returns a message of a flag error.
      * @return a message of a flag error.
      */
-
     public String showMessage() {
 
         return "[ERRORE] Flag non valido, riprova con -h oppure --help \n\n";
     }
-
 }

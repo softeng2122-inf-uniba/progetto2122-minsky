@@ -1,4 +1,4 @@
 /**
- * This package includes all the exception.
+ * This package includes all exceptions.
  */
 package it.uniba.app.exception;
