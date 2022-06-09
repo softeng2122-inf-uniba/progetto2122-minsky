@@ -1,5 +1,6 @@
 package it.uniba.app.controller;
 
+import it.uniba.app.exception.InvalidLetterException;
 import it.uniba.app.exception.InvalidWordException;
 import it.uniba.app.exception.LongWordException;
 import it.uniba.app.exception.MissingRunningGameException;
@@ -8,6 +9,7 @@ import it.uniba.app.utility.AnsiColors;
 import it.uniba.app.utility.ErrorStringBuilder;
 import it.uniba.app.wordle.AttemptWord;
 import it.uniba.app.wordle.Game;
+import it.uniba.app.wordle.GameGrid;
 import it.uniba.app.wordle.SecretWord;
 import it.uniba.app.wordle.Word;
 
@@ -58,7 +60,8 @@ public class attemptController implements Controller {
     public static void endAttempts() throws MissingRunningGameException {
 
         if (attemptController.getCount() == 6 && attemptController.getWin() == false) {
-            System.out.println(new ErrorStringBuilder("Hai raggiunto il numero massimo di tentativi, per maggiori informazioni digitare /help"));
+            System.out.println(new ErrorStringBuilder(
+                    "Hai raggiunto il numero massimo di tentativi, per maggiori informazioni digitare /help"));
             System.out.println("\nLa parola segreta è: " + SecretWord.getCurrentSecretWord().toString());
             Game.abortRunningGame();
         }
@@ -71,110 +74,208 @@ public class attemptController implements Controller {
 
             if (Game.getRunningGame() != null) {
 
+                GameGrid attemptGameGrid = new GameGrid();
+
                 AttemptWord attemptWord = new AttemptWord(args[0]);
                 String[] coloredLetter;
 
                 attemptController.addCount();
-                coloredLetter = compereLetters(SecretWord.getCurrentSecretWord(), attemptWord);
+                // coloredLetter = compereLetters(SecretWord.getCurrentSecretWord(),
+                // attemptWord);
 
-                attempt.add(coloredLetter);
+                // attempt.add(coloredLetter);
 
-                printGrid(attempt);
+                // printGrid(attempt);
+                showGrid(Game.getRunningGame().getGameGrid());
 
                 attemptController.endAttempts();
 
             } else {
 
-                throw new MissingRunningGameException("Impossibile effettuare un tentativo se la partita non è in corso, per maggiori informazioni digitare /help");
+                throw new MissingRunningGameException(
+                        "Impossibile effettuare un tentativo se la partita non è in corso, per maggiori informazioni digitare /help");
             }
 
         } catch (MissingRunningGameException | ShortWordException
-                 | LongWordException | InvalidWordException e) {
+                | LongWordException | InvalidWordException e) {
             System.out.println(new ErrorStringBuilder(e.getLocalizedMessage()));
         }
 
     }
 
-    public String[] compereLetters(SecretWord secretWord, AttemptWord attemptWord) throws MissingRunningGameException {
+    /*
+     * public String[] compereLetters(SecretWord secretWord, AttemptWord
+     * attemptWord) throws MissingRunningGameException {
+     * 
+     * String[] coloredWord = new String[5];
+     * boolean letterFlag = false;
+     * 
+     * if (attemptWord.equalsIgnoreCase(SecretWord.getCurrentSecretWord())) {
+     * 
+     * for (int i = 0; i < Word.getLength(); i++) {
+     * coloredWord[i] =
+     * AnsiColors.makeBackgroundGreen(attemptWord.getLetters()[i].getCharacter());
+     * }
+     * System.out
+     * .println(AnsiColors.getBrightGreen() +
+     * "Parola segreta indovinata, complimenti! Numero tentativi : "
+     * + attemptController.getCount() + AnsiColors.getReset());
+     * attemptController.setWin();
+     * Game.abortRunningGame();
+     * } else {
+     * 
+     * for (int i = 0; i < Word.getLength(); i++) {
+     * 
+     * int j = 0;
+     * 
+     * letterFlag = false;
+     * 
+     * while (j < Word.getLength() && letterFlag == false) {
+     * 
+     * if (secretWord.toString().charAt(j) ==
+     * attemptWord.getLetters()[i].getCharacter()) {
+     * 
+     * letterFlag = true;
+     * 
+     * if (i == j) {
+     * 
+     * coloredWord[i] =
+     * AnsiColors.makeBackgroundGreen(attemptWord.getLetters()[i].getCharacter());
+     * } else {
+     * 
+     * j = i;
+     * if (secretWord.toString().charAt(j) == attemptWord.getLetters()[i]
+     * .getCharacter()) {
+     * coloredWord[i] = AnsiColors
+     * .makeBackgroundGreen(attemptWord.getLetters()[i].getCharacter());
+     * } else {
+     * 
+     * coloredWord[i] = AnsiColors
+     * .makeBackgroundYellow(attemptWord.getLetters()[i].getCharacter());
+     * }
+     * 
+     * }
+     * 
+     * }
+     * 
+     * j++;
+     * }
+     * 
+     * if (letterFlag == false) {
+     * coloredWord[i] =
+     * AnsiColors.makeBackgroundGray(attemptWord.getLetters()[i].getCharacter());
+     * }
+     * 
+     * }
+     * 
+     * }
+     * 
+     * return coloredWord;
+     * 
+     * }
+     */
 
-        String[] coloredWord = new String[5];
-        boolean letterFlag = false;
+    private static void showGrid(GameGrid grid) {
 
-        if (attemptWord.equalsIgnoreCase(SecretWord.getCurrentSecretWord())) {
+        if (Word.getLength() >= Word.getMinLength()) {
+            showGridHeader();
 
-            for (int i = 0; i < Word.getLength(); i++) {
-                coloredWord[i] = AnsiColors.makeBackgroundGreen(attemptWord.getLetters()[i].getCharacter());
-            }
-            System.out.println(AnsiColors.getBrightGreen() + "Parola segreta indovinata, complimenti! Numero tentativi : " + attemptController.getCount() + AnsiColors.getReset());
-            attemptController.setWin();
-            Game.abortRunningGame();
+            showGridBody(grid);
         } else {
+            throw new UnsupportedOperationException("Word.length must be greater than 2.");
+        }
+    }
 
-            for (int i = 0; i < Word.getLength(); i++) {
+    private static void showEmptyGrid() {
 
-                int j = 0;
+        if (Word.getLength() >= Word.getMinLength()) {
+            showGridHeader();
 
-                letterFlag = false;
+            showEmptyGridBody();
+        } else {
+            throw new UnsupportedOperationException("Word.length must be greater than 2.");
+        }
+    }
 
-                while (j < Word.getLength() && letterFlag == false) {
+    private static void showGridHeader() {
+        int segmentNumber = (Word.getLength() * 4);
+        int spaceNumber = ((Word.getLength() - 2) * 2) + 1;
 
-                    if (secretWord.toString().charAt(j) == attemptWord.getLetters()[i].getCharacter()) {
+        System.out.println(String.format("%-" + segmentNumber + "s", "┌").replace(' ', '─') + "┐");
+        System.out.println(String.format("%-" + spaceNumber + "s", "│") + "GRIGLIA" + String.format("%" + spaceNumber + "s", "│"));
 
-                        letterFlag = true;
+        StringBuilder stringBuilder = new StringBuilder("├");
 
-                        if (i == j) {
-
-                            coloredWord[i] = AnsiColors.makeBackgroundGreen(attemptWord.getLetters()[i].getCharacter());
-                        } else {
-
-                            j = i;
-                            if (secretWord.toString().charAt(j) == attemptWord.getLetters()[i]
-                                    .getCharacter()) {
-                                coloredWord[i] = AnsiColors
-                                        .makeBackgroundGreen(attemptWord.getLetters()[i].getCharacter());
-                            } else {
-
-                                coloredWord[i] = AnsiColors
-                                        .makeBackgroundYellow(attemptWord.getLetters()[i].getCharacter());
-                            }
-
-                        }
-
-                    }
-
-                    j++;
-                }
-
-                if (letterFlag == false) {
-                    coloredWord[i] = AnsiColors.makeBackgroundGray(attemptWord.getLetters()[i].getCharacter());
-                }
-
-            }
-
+        for (int i = 0; i < Word.getLength() - 1; i++) {
+            stringBuilder.append("───┬");
         }
 
-        return coloredWord;
+        stringBuilder.append("───┤");
+
+        System.out.println(stringBuilder);
 
     }
 
-    public static void printGrid(List<String[]> attempt){
+    private static void showGridRowsSeparator() {
+        StringBuilder stringBuilder = new StringBuilder("├");
 
-
-        System.out.println("┌───────────────────┐");
-        System.out.println("│ GRIGLIA DI GIOCO  │");
-        System.out.println("├───┬───┬───┬───┬───┤");
-
-        for(int i = 0; i < attempt.size(); i++){
-
-            System.out.println(MessageFormat.format("│{0}│{1}│{2}│{3}│{4}│", attempt.get(i)[0],
-            attempt.get(i)[1],  attempt.get(i)[2],  attempt.get(i)[3],  attempt.get(i)[4]));
-            System.out.println("├───┼───┼───┼───┼───┤");
-
+        for (int i = 0; i < Word.getLength() - 1; i++) {
+            stringBuilder.append("───┼");
         }
 
-        System.out.println("│   │   │   │   │   │");
-        System.out.println("└───┴───┴───┴───┴───┘");
+        stringBuilder.append("───┤");
 
+        System.out.println(stringBuilder);
+    }
+
+    private static void showGridBody(GameGrid grid) {
+        if (getCount() > 0) { 
+            System.out.println(AnsiColors.convertAttemptWordToGridRow(grid.getWord(0)));
+
+            for (int i = 1; i < getCount(); i++) {
+                showGridRowsSeparator();
+                System.out.println(AnsiColors.convertAttemptWordToGridRow(grid.getWord(i)));
+            }
+
+            if (getCount() < Game.getMaxGameAttempts()) {
+                showEmptyGridRow();
+            }
+
+            showGridBottom();
+        }
+    }
+
+    private static void showGridBottom() {
+        StringBuilder stringBuilder = new StringBuilder("└");
+
+        for (int i = 0; i < Word.getLength() - 1; i++) {
+            stringBuilder.append("───┴");
+        }
+
+        stringBuilder.append("───┘");
+
+        System.out.println(stringBuilder);
+    }
+
+    private static void showEmptyGridBody() {
+        showEmptyGridRow();
+
+        for (int i = 0; i < Game.getMaxGameAttempts() - 1; i++) {
+            showGridRowsSeparator();
+            showEmptyGridRow();
+        }
+
+        showGridBottom();
+    }
+
+    private static void showEmptyGridRow() {
+        StringBuilder stringBuilder = new StringBuilder("│");
+
+        for (int i = 0; i < Word.getLength(); i++) {
+            stringBuilder.append("   │");
+        }
+
+        System.out.println(stringBuilder);
     }
 
 }

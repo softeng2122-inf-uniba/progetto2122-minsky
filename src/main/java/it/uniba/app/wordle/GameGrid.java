@@ -1,6 +1,8 @@
 package it.uniba.app.wordle;
 
+import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * <Entity>
@@ -13,5 +15,18 @@ import java.util.List;
  */
 
 public class GameGrid {
-    private List<Word> gameAttempts;
+    private List<AttemptWord> gameAttempts = new ArrayList<>();
+
+    public GameGrid()
+    {
+      
+    }
+
+    public AttemptWord getWord(int index){
+        return gameAttempts.get(index);
+    }
+
+    public void setWord(AttemptWord attempt){
+        this.gameAttempts.add(attempt);
+    }
 }
