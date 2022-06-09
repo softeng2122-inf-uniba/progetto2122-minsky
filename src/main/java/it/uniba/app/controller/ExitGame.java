@@ -20,7 +20,7 @@ public class ExitGame implements Controller  {
              
         try {
            if(exitConfirmation.askUserConfirmation()){
-               System.exit(0);
+               Runtime.getRuntime().exit(0);
            }
         } catch (IOException | InvalidConfirmationException ex) {
             

@@ -5,6 +5,7 @@ import it.uniba.app.exception.InvalidConfirmationException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 /**
  * <Boundary>
@@ -37,20 +38,24 @@ public final class ConfirmationRequest {
     public boolean askUserConfirmation() throws IOException, InvalidConfirmationException {
         System.out.print("[y/n]: ");
 
-        BufferedReader commandLineInputStream = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader commandLineInputStream =
+            new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
         String answer = commandLineInputStream.readLine();
+        if (answer != null) {
+            answer = answer.trim();
 
-        answer = answer.trim();
-
-        if (answer.equalsIgnoreCase("y")
-                || answer.equalsIgnoreCase("yes")
-                || answer.equalsIgnoreCase("si")) {
-            return true;
-        } else if (answer.equalsIgnoreCase("n")
-                || answer.equalsIgnoreCase("no")) {
-            return false;
+            if (answer.equalsIgnoreCase("y")
+                    || answer.equalsIgnoreCase("yes")
+                    || answer.equalsIgnoreCase("si")) {
+                return true;
+            } else if (answer.equalsIgnoreCase("n")
+                    || answer.equalsIgnoreCase("no")) {
+                return false;
+            } else {
+                throw new InvalidConfirmationException();
+            }
         } else {
-            throw new InvalidConfirmationException();
+            throw new NullPointerException();
         }
 
     }
