@@ -9,8 +9,12 @@ package it.uniba.app.exception;
  */
 
 public class LongWordException extends Exception {
-
-    public LongWordException(String message, int correctLength) {
+    /**
+     * Constructs a new {@code LongWordException}.
+     * @param message
+     * @param correctLength
+     */
+    public LongWordException(final String message, final int correctLength) {
         super(String.format(message, correctLength));
 
         if (correctLength < 2) {
@@ -27,7 +31,7 @@ public class LongWordException extends Exception {
      * @param message the detail message. The detail message is saved for
      *                later retrieval by the {@link #getMessage()} method.
      */
-    public LongWordException(String message) {
+    public LongWordException(final String message) {
         super(message);
     }
 }

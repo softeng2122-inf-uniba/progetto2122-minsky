@@ -9,8 +9,12 @@ package it.uniba.app.exception;
  */
 
 public class ShortWordException extends Exception {
-
-    public ShortWordException(String message, int correctLength) {
+    /**
+     * Construct a new {@code ShortWordException}.
+     * @param message
+     * @param correctLength
+     */
+    public ShortWordException(final String message, final int correctLength) {
         super(String.format(message, correctLength));
 
         if (correctLength < 2) {
@@ -27,7 +31,7 @@ public class ShortWordException extends Exception {
      * @param message the detail message. The detail message is saved for
      *                later retrieval by the {@link #getMessage()} method.
      */
-    public ShortWordException(String message) {
+    public ShortWordException(final String message) {
         super(message);
     }
 }

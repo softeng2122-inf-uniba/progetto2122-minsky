@@ -7,10 +7,14 @@ package it.uniba.app.exception;
  */
 
 
-public class FlagException extends Exception{
-    
-    public String showMessage(){
-        
+public class FlagException extends Exception {
+    /**
+     * Constructs a new {@code FlagException}.
+     * @return a message of a flag error.
+     */
+
+    public String showMessage() {
+
         return "[ERRORE] Flag non valido, riprova con -h oppure --help \n\n";
     }
 
