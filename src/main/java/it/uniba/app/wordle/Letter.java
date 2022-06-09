@@ -16,7 +16,7 @@ import java.awt.*;
 
 public final class Letter {
     private final char character;
-    private final Color color;
+    private Color color;
 
     public Letter(final char ch, final Color c) throws InvalidLetterException {
         if (Character.isLetter(ch)) {
@@ -37,6 +37,10 @@ public final class Letter {
 
     public Color getColor() {
         return color;
+    }
+
+    public void setColor(Color newColor){
+        color = newColor;
     }
 
     public boolean equalsIgnoreCase(final char ch) {

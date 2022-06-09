@@ -51,19 +51,19 @@ public class AnsiColors {
     {
         StringBuilder stringBuilder = new StringBuilder("│");
 
-        for(Letter l : attemptWord.getLetters())
+        for(Letter letter : attemptWord.getLetters())
         {
-            if (l.getColor().equals(Color.GREEN))
+            if (letter.getColor().equals(Color.GREEN))
             {
-                stringBuilder.append(makeBackgroundGreen(l.getCharacter()) + "│");
+                stringBuilder.append(makeBackgroundGreen(letter.getCharacter()) + "│");
             }
-            else if (l.getColor().equals(Color.YELLOW))
+            else if (letter.getColor().equals(Color.YELLOW))
             {
-                stringBuilder.append(makeBackgroundYellow(l.getCharacter()) + "│");
+                stringBuilder.append(makeBackgroundYellow(letter.getCharacter()) + "│");
             }
-            else if (l.getColor().equals(Color.GRAY))
+            else if (letter.getColor().equals(Color.GRAY))
             {
-                stringBuilder.append(makeBackgroundGray(l.getCharacter()) + "│");
+                stringBuilder.append(makeBackgroundGray(letter.getCharacter()) + "│");
             }
         }
 

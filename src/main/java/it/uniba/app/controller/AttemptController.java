@@ -11,8 +11,10 @@ import it.uniba.app.wordle.AttemptWord;
 import it.uniba.app.wordle.Game;
 import it.uniba.app.wordle.GameGrid;
 import it.uniba.app.wordle.GameGridBoundary;
+import it.uniba.app.wordle.Letter;
 import it.uniba.app.wordle.SecretWord;
 import it.uniba.app.wordle.Word;
+import java.awt.*;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -57,7 +59,14 @@ public class AttemptController implements Controller {
                 // attempt.add(coloredLetter);
 
                 // printGrid(attempt);
-                GameGridBoundary.showGrid(Game.getRunningGame().getGameGrid());
+                try{
+                    compereLetters(SecretWord.getCurrentSecretWord(), attemptWord);
+                    GameGridBoundary.showGrid(Game.getRunningGame().getGameGrid());
+
+                }catch(Exception e){
+                    e.printStackTrace();
+                    
+                }
 
                 AttemptController.endAttempts();
 
@@ -74,76 +83,100 @@ public class AttemptController implements Controller {
 
     }
 
-    /*
-     * public String[] compereLetters(SecretWord secretWord, AttemptWord
-     * attemptWord) throws MissingRunningGameException {
-     * 
-     * String[] coloredWord = new String[5];
-     * boolean letterFlag = false;
-     * 
-     * if (attemptWord.equalsIgnoreCase(SecretWord.getCurrentSecretWord())) {
-     * 
-     * for (int i = 0; i < Word.getLength(); i++) {
-     * coloredWord[i] =
-     * AnsiColors.makeBackgroundGreen(attemptWord.getLetters()[i].getCharacter());
-     * }
-     * System.out
-     * .println(AnsiColors.getBrightGreen() +
-     * "Parola segreta indovinata, complimenti! Numero tentativi : "
-     * + attemptController.getCount() + AnsiColors.getReset());
-     * attemptController.setWin();
-     * Game.abortRunningGame();
-     * } else {
-     * 
-     * for (int i = 0; i < Word.getLength(); i++) {
-     * 
-     * int j = 0;
-     * 
-     * letterFlag = false;
-     * 
-     * while (j < Word.getLength() && letterFlag == false) {
-     * 
-     * if (secretWord.toString().charAt(j) ==
-     * attemptWord.getLetters()[i].getCharacter()) {
-     * 
-     * letterFlag = true;
-     * 
-     * if (i == j) {
-     * 
-     * coloredWord[i] =
-     * AnsiColors.makeBackgroundGreen(attemptWord.getLetters()[i].getCharacter());
-     * } else {
-     * 
-     * j = i;
-     * if (secretWord.toString().charAt(j) == attemptWord.getLetters()[i]
-     * .getCharacter()) {
-     * coloredWord[i] = AnsiColors
-     * .makeBackgroundGreen(attemptWord.getLetters()[i].getCharacter());
-     * } else {
-     * 
-     * coloredWord[i] = AnsiColors
-     * .makeBackgroundYellow(attemptWord.getLetters()[i].getCharacter());
-     * }
-     * 
-     * }
-     * 
-     * }
-     * 
-     * j++;
-     * }
-     * 
-     * if (letterFlag == false) {
-     * coloredWord[i] =
-     * AnsiColors.makeBackgroundGray(attemptWord.getLetters()[i].getCharacter());
-     * }
-     * 
-     * }
-     * 
-     * }
-     * 
-     * return coloredWord;
-     * 
-     * }
-     */
+    public void compereLetters(SecretWord secretWord, AttemptWord attemptWord) throws MissingRunningGameException {
+
+        String[] coloredWord = new String[5];
+        boolean letterFlag = false;
+
+        if (attemptWord.equalsIgnoreCase(SecretWord.getCurrentSecretWord())) {
+
+            for (Letter letter : attemptWord.getLetters()) {
+                letter.setColor(Color.GREEN);
+            }
+            // TODO: spostare nella classe boundary
+            // System.out.println(AnsiColors.getBrightGreen() + "Parola segreta indovinata,
+            // complimenti! Numero tentativi : " + attemptController.getCount() +
+            // AnsiColors.getReset());
+
+            Game.setWin();
+            Game.abortRunningGame();
+
+        } else {
+
+            for (int i = 0; i < Word.getLength(); i++) {
+
+                letterFlag = false;
+
+                for (int j = 0; j < Word.getLength() && letterFlag == false; j++) {
+
+                    if (attemptWord.getLetters()[j].equalsIgnoreCase(secretWord.toString().charAt(i))) {
+
+                        letterFlag = true;
+
+                        if (i == j) {
+                            attemptWord.getLetters()[j].setColor(Color.GREEN);
+
+                        } else {
+                            attemptWord.getLetters()[j].setColor(Color.YELLOW);
+
+                        }
+
+                    } else {
+                        attemptWord.getLetters()[j].setColor(Color.GRAY);
+
+                    }
+
+                }
+
+            }
+        }
+
+        /*
+         * for (int i = 0; i < Word.getLength(); i++) {
+         * 
+         * int j = 0;
+         * 
+         * letterFlag = false;
+         * 
+         * while (j < Word.getLength() && letterFlag == false) {
+         * 
+         * if (secretWord.toString().charAt(j) ==
+         * attemptWord.getLetters()[i].getCharacter()) {
+         * 
+         * letterFlag = true;
+         * 
+         * if (i == j) {
+         * 
+         * coloredWord[i] =
+         * AnsiColors.makeBackgroundGreen(attemptWord.getLetters()[i].getCharacter());
+         * } else {
+         * 
+         * j = i;
+         * if (secretWord.toString().charAt(j) == attemptWord.getLetters()[i]
+         * .getCharacter()) {
+         * coloredWord[i] = AnsiColors
+         * .makeBackgroundGreen(attemptWord.getLetters()[i].getCharacter());
+         * } else {
+         * 
+         * coloredWord[i] = AnsiColors
+         * .makeBackgroundYellow(attemptWord.getLetters()[i].getCharacter());
+         * }
+         * 
+         * }
+         * 
+         * }
+         * 
+         * j++;
+         * }
+         * 
+         * if (letterFlag == false) {
+         * coloredWord[i] =
+         * AnsiColors.makeBackgroundGray(attemptWord.getLetters()[i].getCharacter());
+         * }
+         * 
+         * }
+         */
+
+    }
 
 }
