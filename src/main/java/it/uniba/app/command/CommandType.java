@@ -23,7 +23,7 @@ public enum CommandType {
     GIOCA(StartGameController.class),
     ABBANDONA(AbortGameController.class),
     ESCI(ExitGame.class),
-    ATTEMPT(attemptController.class);
+    ATTEMPT(AttemptController.class);
 
     private final Class<? extends Controller> controllerClass;
 

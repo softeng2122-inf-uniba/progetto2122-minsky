@@ -23,7 +23,7 @@ import java.util.List;
  * Handles the execution of {@code Game} attempts.
  */
 
-public class attemptController implements Controller {
+public class AttemptController implements Controller {
 
     public static List<String[]> attempt = new ArrayList<>();
 
@@ -58,7 +58,7 @@ public class attemptController implements Controller {
                 // printGrid(attempt);
                 showGrid(Game.getRunningGame().getGameGrid());
 
-                attemptController.endAttempts();
+                AttemptController.endAttempts();
 
             } else {
 
