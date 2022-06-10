@@ -2,19 +2,29 @@ package it.uniba.app.wordle;
 
 import it.uniba.app.utility.AnsiColors;
 
-public class GameGridBoundary {
+public final class GameGridBoundary {
 
+    /**Number of segmets for each column of grid. */
+    private static final int SEGMENT_CONST = 4;
+
+    private GameGridBoundary() {
+    }
+
+    /** Method used to show the grid.
+     * @param grid current game gird.
+    */
     public static void showGrid(final GameGrid grid) {
 
         if (Word.getLength() >= Word.getMinLength()) {
             showGridHeader();
-
             showGridBody(grid);
         } else {
-            throw new UnsupportedOperationException("Word.length must be greater than 2."); //TODO
+            throw new UnsupportedOperationException(
+                    "La parola deve essere più lunga di 2 lettere");
         }
     }
 
+    /** Method used to show the empty grid. */
     public static void showEmptyGrid() {
 
         if (Word.getLength() >= Word.getMinLength()) {
@@ -22,12 +32,13 @@ public class GameGridBoundary {
 
             showEmptyGridBody();
         } else {
-            throw new UnsupportedOperationException("Word.length must be greater than 2."); //TODO
+            throw new UnsupportedOperationException(
+                    "La parola deve essere più lunga di 2 lettere");
         }
     }
 
     private static void showGridHeader() {
-        int segmentNumber = (Word.getLength() * 4);
+        int segmentNumber = (Word.getLength() * SEGMENT_CONST);
         int spaceNumber = ((Word.getLength() - 2) * 2) + 1;
 
         System.out.println(

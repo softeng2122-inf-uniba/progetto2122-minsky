@@ -23,6 +23,13 @@ import java.awt.Color;
 
 public class AttemptController implements Controller {
 
+    /**
+    * This method is used to undestand if the user
+    * reached the max number of attempts.
+    * {@code Game} used to get the running Game and
+    * the current attempt count.
+    * {@code attemptBoundary} used to print the messages.
+    */
     public static void endAttempts() {
 
         AttemptBoundary attemptBoundary = new AttemptBoundary();
@@ -47,6 +54,10 @@ public class AttemptController implements Controller {
         }
     }
 
+    /**
+     * method used to handle the attempts on the current {@code Game}.
+     * {@param args}
+     */
     @Override
     public void control(final String[] args) {
 
@@ -66,13 +77,22 @@ public class AttemptController implements Controller {
 
         Game.getRunningGame().addCount();
         compereLetters(SecretWord.getCurrentSecretWord(),
-            args[0].trim().toLowerCase());
+                args[0].trim().toLowerCase());
 
         GameGridBoundary.showGrid(Game.getRunningGame().getGameGrid());
 
         endAttempts();
     }
 
+    /**
+     * method used to compare the params
+     * {@link #coloredLetters} is used to store
+     * the instances of {@code Letter}
+     * where every letter is colored based on the result of the compare.
+     * at the end we set the result in the current GameGrid see {@code Game}.
+     * @param secretWord the current secret word {@code SecretWord}.
+     * @param attemptWord the string that the user digit as attempt.
+     */
     public void compereLetters(final SecretWord secretWord,
         final String attemptWord) {
 

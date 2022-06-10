@@ -61,6 +61,10 @@ public class AttemptBoundary {
         + "complimenti! Numero tentativi : %d"
         + AnsiColors.getReset();
 
+    /**
+     * Method used to display the error message.
+     * @param exception used to picking up the proper message.
+     */
     public void showError(final Exception exception) {
 
         String errorMessage;
@@ -80,15 +84,20 @@ public class AttemptBoundary {
         System.out.println(new ErrorStringBuilder(errorMessage));
     }
 
+    /**
+     * Method used to display
+     * the end of the attempts message.
+     */
     public void showEndAttemptsMessage() {
         System.out.println(new ErrorStringBuilder(END_ATTEMPTS_MESSAGE));
         System.out.println("\nLa parola segreta è: "
-            + Game.getRunningGame().getSecretWord().toString());
+                + Game.getRunningGame().getSecretWord().toString());
     }
 
+    /** Method used to display the win message. */
     public void showWinMessage() {
         System.out.println(String.format(WIN_MESSAGE,
-            Game.getRunningGame().getCount()));
+                Game.getRunningGame().getCount()));
     }
 
 }
