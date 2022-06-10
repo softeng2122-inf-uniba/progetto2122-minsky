@@ -30,7 +30,7 @@ public class AttemptController implements Controller {
     * the current attempt count.
     * {@code attemptBoundary} used to print the messages.
     */
-    public static void endAttempts() {
+    private static void endAttempts() {
 
         AttemptBoundary attemptBoundary = new AttemptBoundary();
 
@@ -76,7 +76,7 @@ public class AttemptController implements Controller {
         }
 
         Game.getRunningGame().addCount();
-        compereLetters(SecretWord.getCurrentSecretWord(),
+        compereLetters(Game.getRunningGame().getSecretWord(),
                 args[0].trim().toLowerCase());
 
         GameGridBoundary.showGrid(Game.getRunningGame().getGameGrid());
@@ -93,7 +93,7 @@ public class AttemptController implements Controller {
      * @param secretWord the current secret word {@code SecretWord}.
      * @param attemptWord the string that the user digit as attempt.
      */
-    public void compereLetters(final SecretWord secretWord,
+    private void compereLetters(final SecretWord secretWord,
         final String attemptWord) {
 
         boolean letterFlag = false;
