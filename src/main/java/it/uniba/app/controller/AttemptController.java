@@ -7,14 +7,13 @@ import it.uniba.app.exception.LongWordException;
 import it.uniba.app.exception.MissingRunningGameException;
 import it.uniba.app.exception.ShortWordException;
 import it.uniba.app.utility.AttemptBoundary;
-import it.uniba.app.utility.ErrorStringBuilder;
 import it.uniba.app.wordle.AttemptWord;
 import it.uniba.app.wordle.Game;
 import it.uniba.app.wordle.GameGridBoundary;
 import it.uniba.app.wordle.Letter;
 import it.uniba.app.wordle.SecretWord;
 import it.uniba.app.wordle.Word;
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * <Control>
@@ -28,7 +27,8 @@ public class AttemptController implements Controller {
 
         AttemptBoundary attemptBoundary = new AttemptBoundary();
 
-        if (Game.getRunningGame().getCount() == Game.getMaxGameAttempts() && Game.getRunningGame().getWin() == false) {
+        if (Game.getRunningGame().getCount() == Game.getMaxGameAttempts()
+                && !Game.getRunningGame().getWin()) {
             attemptBoundary.showEndAttemptsMessage();
             try {
                 Game.abortRunningGame();
@@ -48,7 +48,7 @@ public class AttemptController implements Controller {
     }
 
     @Override
-    public void control(String[] args) {
+    public void control(final String[] args) {
 
         AttemptBoundary attemptBoundary = new AttemptBoundary();
 
@@ -65,14 +65,16 @@ public class AttemptController implements Controller {
         }
 
         Game.getRunningGame().addCount();
-        compereLetters(SecretWord.getCurrentSecretWord(), args[0].trim().toLowerCase());
+        compereLetters(SecretWord.getCurrentSecretWord(),
+            args[0].trim().toLowerCase());
 
         GameGridBoundary.showGrid(Game.getRunningGame().getGameGrid());
 
         endAttempts();
     }
 
-    public void compereLetters(SecretWord secretWord, final String attemptWord) {
+    public void compereLetters(final SecretWord secretWord,
+        final String attemptWord) {
 
         boolean letterFlag = false;
         Letter[] coloredLetters = new Letter[Word.getLength()];
@@ -82,7 +84,9 @@ public class AttemptController implements Controller {
             if (secretWord.equalsIgnoreCase(attemptWord)) {
 
                 for (int i = 0; i < Word.getLength(); i++) {
-                    coloredLetters[i] = new Letter(attemptWord.charAt(i), Color.GREEN);
+                    coloredLetters[i] =
+                        new Letter(attemptWord.charAt(i),
+                            Color.GREEN);
                 }
 
                 Game.getRunningGame().setWin();
@@ -93,22 +97,29 @@ public class AttemptController implements Controller {
 
                     letterFlag = false;
 
-                    for (int j = 0; j < Word.getLength() && letterFlag == false; j++) {
+                    for (int j = 0; j < Word.getLength() && !letterFlag; j++) {
 
-                        if (secretWord.toString().charAt(j) == attemptWord.charAt(i)) {
-
+                        if (secretWord.toString().charAt(j)
+                            == attemptWord.charAt(i)) {
                             letterFlag = true;
 
                             if (i == j) {
-                                coloredLetters[i] = new Letter(attemptWord.charAt(i), Color.GREEN);
+                                coloredLetters[i] =
+                                    new Letter(attemptWord.charAt(i),
+                                        Color.GREEN);
 
                             } else {
                                 j = i;
-                                if (secretWord.toString().charAt(j) == attemptWord.charAt(i)) {
-                                    coloredLetters[i] = new Letter(attemptWord.charAt(i), Color.GREEN);
+                                if (secretWord.toString().charAt(j)
+                                    == attemptWord.charAt(i)) {
+                                    coloredLetters[i] =
+                                        new Letter(attemptWord.charAt(i),
+                                            Color.GREEN);
 
                                 } else {
-                                    coloredLetters[i] = new Letter(attemptWord.charAt(i), Color.YELLOW);
+                                    coloredLetters[i] =
+                                        new Letter(attemptWord.charAt(i),
+                                             Color.YELLOW);
 
                                 }
 
@@ -118,17 +129,20 @@ public class AttemptController implements Controller {
 
                     }
 
-                    if (letterFlag == false) {
-                        coloredLetters[i] = new Letter(attemptWord.charAt(i), Color.GRAY);
+                    if (!letterFlag) {
+                        coloredLetters[i] =
+                            new Letter(attemptWord.charAt(i), Color.GRAY);
 
                     }
 
                 }
             }
 
-            Game.getRunningGame().getGameGrid().setWord(new AttemptWord(coloredLetters));
+            Game.getRunningGame().getGameGrid()
+                .setWord(new AttemptWord(coloredLetters));
 
-        } catch (InvalidLetterException | ShortWordException | LongWordException e) {
+        } catch (InvalidLetterException
+           | ShortWordException | LongWordException e) {
             CommandLineShell.showUnexpectedError(e);
         }
 
