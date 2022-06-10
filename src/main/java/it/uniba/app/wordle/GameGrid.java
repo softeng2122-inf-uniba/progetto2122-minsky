@@ -3,7 +3,6 @@ package it.uniba.app.wordle;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * <Entity>
  * <p>
@@ -15,18 +14,16 @@ import java.util.List;
  */
 
 public class GameGrid {
-    private List<AttemptWord> gameAttempts = new ArrayList<>();
 
-    public GameGrid()
-    {
-      
+    /** List of attempts contained in this game grid. */
+    private List<AttemptWord> attemptWords = new ArrayList<>();
+
+    public AttemptWord getWord(int index) {
+        return attemptWords.get(index);
     }
 
-    public AttemptWord getWord(int index){
-        return gameAttempts.get(index);
+    public void setWord(AttemptWord attempt) {
+        this.attemptWords.add(attempt);
     }
 
-    public void setWord(AttemptWord attempt){
-        this.gameAttempts.add(attempt);
-    }
 }

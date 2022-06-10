@@ -59,15 +59,16 @@ public class GameGridBoundary {
     }
 
     private static void showGridBody(GameGrid grid) {
-        if (Game.getCount() > 0) {
+        if (Game.getRunningGame().getCount() > 0) {
             System.out.println(AnsiColors.convertAttemptWordToGridRow(grid.getWord(0)));
 
-            for (int i = 1; i < Game.getCount(); i++) {
+            for (int i = 1; i < Game.getRunningGame().getCount(); i++) {
                 showGridRowsSeparator();
                 System.out.println(AnsiColors.convertAttemptWordToGridRow(grid.getWord(i)));
             }
 
-            if (Game.getCount() < Game.getMaxGameAttempts()) {
+            if (Game.getRunningGame().getCount() < Game.getMaxGameAttempts() && !Game.getRunningGame().getWin()) {
+                showGridRowsSeparator();
                 showEmptyGridRow();
             }
 

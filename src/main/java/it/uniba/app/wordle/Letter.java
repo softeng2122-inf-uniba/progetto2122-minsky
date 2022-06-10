@@ -2,7 +2,7 @@ package it.uniba.app.wordle;
 
 import it.uniba.app.exception.InvalidLetterException;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * <Entity>
@@ -15,9 +15,23 @@ import java.awt.*;
  */
 
 public final class Letter {
-    private final char character;
-    private Color color;
 
+    /**
+     * Alphabetical character contained in this letter.
+     */
+    private final char character;
+    /**
+     * Background color of this letter.
+     */
+    private final Color color;
+
+    /**
+     * Constructs a new letter with the given character and color.
+     *
+     * @param ch an alphabetical character
+     * @param c background color for this new letter.
+     * @throws InvalidLetterException if {@code ch} is not alphabetical.
+     */
     public Letter(final char ch, final Color c) throws InvalidLetterException {
         if (Character.isLetter(ch)) {
             this.character = ch;
@@ -27,24 +41,21 @@ public final class Letter {
         }
     }
 
-    public Letter(final char ch) throws InvalidLetterException {
-        this(ch, null);
-    }
-
+    /**
+     * Returns the alphabetical character contained in this letter.
+     *
+     * @return alphabetical character contained in this letter
+     */
     public char getCharacter() {
         return character;
     }
 
+    /**
+     * Retruns the background color of this letter.
+     *
+     * @return background color of this letter
+     */
     public Color getColor() {
         return color;
-    }
-
-    public void setColor(Color newColor){
-        color = newColor;
-    }
-
-    public boolean equalsIgnoreCase(final char ch) {
-        return Character.toLowerCase(getCharacter())
-                == Character.toLowerCase(ch);
     }
 }
