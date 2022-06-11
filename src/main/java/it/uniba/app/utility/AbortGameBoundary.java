@@ -12,6 +12,12 @@ package it.uniba.app.utility;
 
 public final class AbortGameBoundary {
     /**
+     * String used to ask user if he wants to abort the
+     * game currently running.
+     */
+    private static final String ABORT_REQUEST =
+            "Vuoi Abbandonare la partita in corso?";
+    /**
      * String used in {@link #showGameNotRunningError()}.
      */
     private static final String GAMENOTRUNNINGERROR =
@@ -47,6 +53,12 @@ public final class AbortGameBoundary {
     public static void showGameAbortedMessage() {
         System.out.println();
         System.out.println(ABORTGAMEMESSAGE);
+        System.out.println();
+    }
+
+    public static void setAbortgamemessage() {
+        System.out.println();
+        System.out.println(ABORT_REQUEST);
         System.out.println();
     }
 }

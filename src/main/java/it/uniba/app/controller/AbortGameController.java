@@ -19,7 +19,7 @@ public final class AbortGameController implements Controller {
     public void control(final String[] args) {
         try {
             if (Game.getRunningGame() != null) {
-                System.out.println("Vuoi Abbandonare la partita in corso?");
+                AbortGameBoundary.setAbortgamemessage();
                 ConfirmationRequest abortConfirmation =
                         new ConfirmationRequest();
                 if (abortConfirmation.askUserConfirmation()) {
