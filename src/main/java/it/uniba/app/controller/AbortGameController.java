@@ -14,13 +14,14 @@ import java.io.IOException;
  * This class allows the player
  * to abort the game currently running.
  */
-public class AbortGameController implements Controller {
+public final class AbortGameController implements Controller {
     @Override
-    public void control(String[] args) {
+    public void control(final String[] args) {
         try {
             if (Game.getRunningGame() != null) {
-                System.out.println("Vuoi Abbandonare la partita in corso?");
-                ConfirmationRequest abortConfirmation = new ConfirmationRequest();
+                AbortGameBoundary.setAbortgamemessage();
+                ConfirmationRequest abortConfirmation =
+                        new ConfirmationRequest();
                 if (abortConfirmation.askUserConfirmation()) {
                     Game.abortRunningGame();
                     AbortGameBoundary.showGameAbortedMessage();
@@ -29,7 +30,8 @@ public class AbortGameController implements Controller {
                 throw new MissingRunningGameException();
             }
         } catch (IOException | InvalidConfirmationException ex) {
-            System.out.println("Errore nell'input");
+            ConfirmationRequest exitConfirmation = new ConfirmationRequest();
+            exitConfirmation.showInputError();
         } catch (MissingRunningGameException e) {
             AbortGameBoundary.showGameNotRunningError();
         }
