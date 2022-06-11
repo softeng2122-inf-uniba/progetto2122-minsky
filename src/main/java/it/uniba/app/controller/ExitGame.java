@@ -13,23 +13,27 @@ import java.io.IOException;
 
 public class ExitGame implements Controller  {
 
-    private static final String EXIT_CONFIRMATION = "Sei sicuro di voler uscire da Wordle?";
-    
-    ConfirmationRequest exitConfirmation = new ConfirmationRequest();
-    
-    
-    public void control(String[] args) {
-        
-        System.out.println(EXIT_CONFIRMATION);
-        
+    /**
+     * Instance of {@code ConfirmationRequest}
+     * used to request an exit confirmation.
+     */
+    private ConfirmationRequest exitConfirmation = new ConfirmationRequest();
+
+    /**
+     * Method used to handle the shutdown
+     * of the application using {@link #exitConfirmation}.
+     * @param args
+     */
+    public void control(final String[] args) {
+        exitConfirmation.showExitMessage();
         try {
-           if(exitConfirmation.askUserConfirmation()){
-               System.exit(0);
-           }
+            if (exitConfirmation.askUserConfirmation()) {
+                Runtime.getRuntime().exit(0);
+            }
         } catch (IOException | InvalidConfirmationException ex) {
-            System.out.println("Errore nell'input");
+            exitConfirmation.showInputError();
         }
-   
-   }
-    
+
+    }
+
 }
