@@ -1,9 +1,10 @@
 package it.uniba.app.controller;
 
-import it.uniba.app.StartGameBoundary;
 import it.uniba.app.exception.MissingCurrentSecretWordException;
 import it.uniba.app.exception.RunningGameException;
+import it.uniba.app.utility.StartGameBoundary;
 import it.uniba.app.wordle.Game;
+import it.uniba.app.wordle.GameGridBoundary;
 
 /**
  * <Control>
@@ -17,16 +18,13 @@ public class StartGameController implements Controller {
 
     @Override
     public void control(String[] args) {
-        StartGameBoundary startGameBoundary = new StartGameBoundary();
-
         try {
             Game.startNewGame();
-
-            startGameBoundary.showEmptyGrid();
+            GameGridBoundary.showEmptyGrid();
         } catch (RunningGameException e) {
-            startGameBoundary.showGameRunningError();
+            StartGameBoundary.showGameRunningError();
         } catch (MissingCurrentSecretWordException e) {
-            startGameBoundary.showMissingSecretWord();
+            StartGameBoundary.showMissingSecretWord();
         }
     }
 }
