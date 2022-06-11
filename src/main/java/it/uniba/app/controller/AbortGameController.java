@@ -20,7 +20,8 @@ public class AbortGameController implements Controller {
         try {
             if (Game.getRunningGame() != null) {
                 System.out.println("Vuoi Abbandonare la partita in corso?");
-                ConfirmationRequest abortConfirmation = new ConfirmationRequest();
+                ConfirmationRequest abortConfirmation =
+                        new ConfirmationRequest();
                 if (abortConfirmation.askUserConfirmation()) {
                     Game.abortRunningGame();
                     AbortGameBoundary.showGameAbortedMessage();
@@ -29,7 +30,8 @@ public class AbortGameController implements Controller {
                 throw new MissingRunningGameException();
             }
         } catch (IOException | InvalidConfirmationException ex) {
-            System.out.println("Errore nell'input");
+            ConfirmationRequest exitConfirmation = new ConfirmationRequest();
+            exitConfirmation.showInputError();
         } catch (MissingRunningGameException e) {
             AbortGameBoundary.showGameNotRunningError();
         }
