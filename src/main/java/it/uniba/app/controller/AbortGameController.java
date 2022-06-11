@@ -14,9 +14,9 @@ import java.io.IOException;
  * This class allows the player
  * to abort the game currently running.
  */
-public class AbortGameController implements Controller {
+public final class AbortGameController implements Controller {
     @Override
-    public void control(String[] args) {
+    public void control(final String[] args) {
         try {
             if (Game.getRunningGame() != null) {
                 System.out.println("Vuoi Abbandonare la partita in corso?");
