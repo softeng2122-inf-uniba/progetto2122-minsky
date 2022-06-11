@@ -11,12 +11,22 @@ package it.uniba.app.utility;
  */
 
 public final class StartGameBoundary {
+    /**
+     * String used in {@link #showGameRunningError()}.
+     */
     private static final String GAMERUNNINGERRORMESSAGE =
             "Una partita è già in corso.";
+    /**
+     * String used in {@link #showMissingSecretWord()}.
+     */
     private static final String MISSINGSECRETWORDERROR =
             "La parola segreta non è stata impostata.";
+    /**
+     * String used in {@link #showMissingSecretWord()}.
+     */
     private static final String SETSECRETWORDTIP =
-            "[TIP] Per iniziare una nuova partita, devi impostare una nuova partita con il comando /nuova parola";
+            "[TIP] Per iniziare una nuova partita, devi impostare"
+                    + " una nuova partita con il comando /nuova parola";
 
     private StartGameBoundary() {
         throw new
@@ -24,12 +34,21 @@ public final class StartGameBoundary {
                 "Questa è una classe <<utility>> e non può essere istanziata");
     }
 
+    /**
+     * Displays an error message to the user
+     * when there's already a game currently running.
+     */
     public static void showGameRunningError() {
         System.out.println();
         System.out.println(new ErrorStringBuilder(GAMERUNNINGERRORMESSAGE));
         System.out.println();
     }
 
+    /**
+     * Displays an error message to the user
+     * when he tries to start a new game
+     * without set a Secret Word before.
+     */
     public static void showMissingSecretWord() {
         System.out.println();
         System.out.println(new ErrorStringBuilder(MISSINGSECRETWORDERROR));

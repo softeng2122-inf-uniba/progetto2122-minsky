@@ -14,10 +14,10 @@ import it.uniba.app.wordle.GameGridBoundary;
  * @see Game
  */
 
-public class StartGameController implements Controller {
+public final class StartGameController implements Controller {
 
     @Override
-    public void control(String[] args) {
+    public void control(final String[] args) {
         try {
             Game.startNewGame();
             GameGridBoundary.showEmptyGrid();
