@@ -1,5 +1,10 @@
 package it.uniba.app.utility;
 
+import it.uniba.app.wordle.AttemptWord;
+import it.uniba.app.wordle.Letter;
+
+import java.awt.Color;
+
 /**
  * <noECB>
  * <p>
@@ -32,7 +37,6 @@ public final class AnsiColors {
     private AnsiColors() {
     }
 
-
     /**
      * Returns bright red color ANSI sequence for char foreground in CLI.
      *
@@ -61,16 +65,43 @@ public final class AnsiColors {
         return ANSI_RESET;
     }
 
-    public static String makeBackgroundGreen(final char c) {
-        return ANSI_BACKGROUND_BRIGHT_GREEN + " " + c + " " + ANSI_RESET;
+    private static String makeBackgroundGreen(final char letter) {
+        return ANSI_BACKGROUND_BRIGHT_GREEN + " " + letter + " " + ANSI_RESET;
     }
 
-    public static String makeBackgroundYellow(final char c) {
-        return ANSI_BACKGROUND_BRIGHT_YELLOW + " " + c + " " + ANSI_RESET;
+    private static String makeBackgroundYellow(final char letter) {
+        return ANSI_BACKGROUND_BRIGHT_YELLOW + " " + letter + " " + ANSI_RESET;
     }
 
-    public static String makeBackgroundGray(final char c) {
-        return ANSI_BACKGROUND_BRIGHT_GRAY + " " + c + " " + ANSI_RESET;
+    private static String makeBackgroundGray(final char letter) {
+        return ANSI_BACKGROUND_BRIGHT_GRAY + " " + letter + " " + ANSI_RESET;
+    }
+
+    /**
+     * Method used to convert the attempt word that will be converted.
+     * @param attemptWord the attempt that will be converted
+     * @return colored attempt word
+     */
+
+    public static String convertAttemptWordToGridRow(
+            final AttemptWord attemptWord) {
+        StringBuilder stringBuilder = new StringBuilder("│");
+
+        for (Letter letter : attemptWord.getLetters()) {
+
+            if (letter.getColor().equals(Color.GREEN)) {
+                stringBuilder.append(makeBackgroundGreen(letter
+                    .getCharacter()) + "│");
+            } else if (letter.getColor().equals(Color.YELLOW)) {
+                stringBuilder.append(makeBackgroundYellow(letter
+                    .getCharacter()) + "│");
+            } else if (letter.getColor().equals(Color.GRAY)) {
+                stringBuilder.append(makeBackgroundGray(letter
+                    .getCharacter()) + "│");
+            }
+        }
+
+        return stringBuilder.toString();
     }
 
 }

@@ -1,6 +1,5 @@
 package it.uniba.app.wordle;
 
-import it.uniba.app.controller.attemptController;
 import it.uniba.app.exception.MissingCurrentSecretWordException;
 import it.uniba.app.exception.MissingRunningGameException;
 import it.uniba.app.exception.RunningGameException;
@@ -33,12 +32,58 @@ public class Game {
      */
     private final SecretWord secretWord;
 
+    /**
+     * Number of attempts.
+     */
+
+    private int attemptCount = 0;
+
+    /**
+     * Win flag.
+     */
+
+    private boolean win = false;
+
     /** Constructs a new game with the given secret word.
      *
      * @param gameSecretWord {@link SecretWord} to guess for this new game
      */
     public Game(final SecretWord gameSecretWord) {
         this.secretWord = gameSecretWord;
+    }
+
+    /**
+     * Incrementm count of attempts.
+     */
+
+    public void addCount() {
+        attemptCount++;
+    }
+
+    /**
+     * Get the current number of attempts.
+     * @return current number of attempts
+     */
+
+    public int getCount() {
+        return attemptCount;
+    }
+
+    /**
+     * Get the win flag.
+     * @return win flag
+     */
+
+    public boolean getWin() {
+        return win;
+    }
+
+    /**
+     * Set the win.
+     */
+
+    public void setWin() {
+        win = true;
     }
 
     /**
@@ -53,9 +98,7 @@ public class Game {
 
         if (getRunningGame() == null) {
             if (SecretWord.getCurrentSecretWord() != null) {
-                attemptController.resetWin();
-                attemptController.resetAttemptCount();
-                attemptController.clearAttempt();
+
                 runningGame = new Game(SecretWord.getCurrentSecretWord());
             } else {
                 throw new MissingCurrentSecretWordException();

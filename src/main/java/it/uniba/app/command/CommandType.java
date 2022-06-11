@@ -7,7 +7,7 @@ import it.uniba.app.controller.HelpController;
 import it.uniba.app.controller.SecretWordSelectionController;
 import it.uniba.app.controller.ShowSecretWord;
 import it.uniba.app.controller.StartGameController;
-import it.uniba.app.controller.attemptController;
+import it.uniba.app.controller.AttemptController;
 
 /**
  * <noECB>
@@ -58,7 +58,7 @@ public enum CommandType {
      * This command type is recognised whenever
      * the user enters a game attempt.
      */
-    ATTEMPT(null, attemptController.class);
+    ATTEMPT(null, AttemptController.class);
 
     /** Label corresponding to this {@link CommandType}. */
     private final String label;
