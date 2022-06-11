@@ -20,13 +20,12 @@ public final class StartGameBoundary {
      * String used in {@link #showMissingSecretWord()}.
      */
     private static final String MISSINGSECRETWORDERROR =
-            "La parola segreta non è stata impostata.";
+            "Per iniziare una nuova partita, devi impostare una nuova partita.";
     /**
      * String used in {@link #showMissingSecretWord()}.
      */
     private static final String SETSECRETWORDTIP =
-            "[TIP] Per iniziare una nuova partita, devi impostare"
-                    + " una nuova partita con il comando /nuova parola";
+            "[TIP] Imposta la parola segreta con il comando /nuova <parola>.";
 
     private StartGameBoundary() {
         throw new
