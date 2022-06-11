@@ -12,7 +12,7 @@ import it.uniba.app.wordle.HelpBoundary;
 public class HelpController implements Controller {
 
   /**
-   * Check if the application is invoked with the correct flegs.
+   * Check if the application is invoked with the correct flags.
    *
    * @param args
    * @return helpFlag
