@@ -31,7 +31,17 @@ public class Game {
      * The secret word for this game.
      */
     private final SecretWord secretWord;
+
+    /**
+     * Number of attempts.
+     */
+
     private int attemptCount = 0;
+
+    /**
+     * Win flag.
+     */
+
     private boolean win = false;
 
     /** Constructs a new game with the given secret word.
@@ -42,17 +52,35 @@ public class Game {
         this.secretWord = gameSecretWord;
     }
 
+    /**
+     * Incrementm count of attempts.
+     */
+
     public void addCount() {
         attemptCount++;
     }
+
+    /**
+     * Get the current number of attempts.
+     * @return current number of attempts
+     */
 
     public int getCount() {
         return attemptCount;
     }
 
+    /**
+     * Get the win flag.
+     * @return win flag
+     */
+
     public boolean getWin() {
         return win;
     }
+
+    /**
+     * Set the win.
+     */
 
     public void setWin() {
         win = true;

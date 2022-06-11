@@ -18,11 +18,22 @@ public class GameGrid {
     /** List of attempts contained in this game grid. */
     private List<AttemptWord> attemptWords = new ArrayList<>();
 
-    public AttemptWord getWord(int index) {
+    /**
+     * Get an attempt word at index.
+     * @param index
+     * @return the attempt word at index
+     */
+
+    public AttemptWord getWord(final int index) {
         return attemptWords.get(index);
     }
 
-    public void setWord(AttemptWord attempt) {
+    /**
+     * Add an attempt word at the list.
+     * @param attempt
+     */
+
+    public void setWord(final AttemptWord attempt) {
         this.attemptWords.add(attempt);
     }
 
