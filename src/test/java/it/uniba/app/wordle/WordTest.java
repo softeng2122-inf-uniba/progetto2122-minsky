@@ -1,5 +1,6 @@
 package it.uniba.app.wordle;
 
+import it.uniba.app.exception.LongWordException;
 import it.uniba.app.exception.ShortWordException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -55,6 +56,22 @@ class WordTest {
             }
 
             Assertions.assertThrows(ShortWordException.class,
+                    () -> Word.checkWord(stringBuilder.toString()));
+        }
+    }
+
+    @Test
+    void longWordTest() {
+        if (Word.getLength() >= 0 && Word.getLength() < Integer.MAX_VALUE) {
+            final Random random = new Random();
+            final StringBuilder stringBuilder = new StringBuilder();
+
+            for (int i = 0; i < Word.getLength() + 1; i++) {
+                stringBuilder
+                        .append(LETTERS.charAt(random.nextInt(LETTERS_LENGTH)));
+            }
+
+            Assertions.assertThrows(LongWordException.class,
                     () -> Word.checkWord(stringBuilder.toString()));
         }
     }
