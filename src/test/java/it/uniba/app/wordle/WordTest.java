@@ -20,18 +20,28 @@ class WordTest {
      */
     private static final int LETTERS_LENGTH = LETTERS.length();
 
+    private String randomAlphaWord(final int length) {
+        if (length >= 0) {
+            final Random random = new Random();
+            final StringBuilder stringBuilder = new StringBuilder();
+
+            for (int i = 0; i < length; i++) {
+                stringBuilder
+                        .append(LETTERS.charAt(random.nextInt(LETTERS_LENGTH)));
+            }
+
+            return stringBuilder.toString();
+        } else {
+            throw new IllegalArgumentException("length must be positive.");
+        }
+    }
+
     @Test
     void validWordTest() {
-        final Random random = new Random();
-        final StringBuilder stringBuilder = new StringBuilder();
-
-        for (int i = 0; i < Word.getLength(); i++) {
-            stringBuilder
-                    .append(LETTERS.charAt(random.nextInt(LETTERS_LENGTH)));
+        if (Word.getLength() >= 0) {
+            Assertions.assertDoesNotThrow(
+                    () -> Word.checkWord(randomAlphaWord(Word.getLength())));
         }
-
-        Assertions.assertDoesNotThrow(
-                () -> Word.checkWord(stringBuilder.toString()));
     }
 
     @Test
@@ -39,7 +49,7 @@ class WordTest {
         if (Word.getLength() > 0) {
             Assertions.assertThrows(ShortWordException.class,
                     () -> Word.checkWord(""));
-        } else {
+        } else if (Word.getLength() == 0) {
             Assertions.assertDoesNotThrow(() -> Word.checkWord(""));
         }
     }
@@ -47,32 +57,16 @@ class WordTest {
     @Test
     void shortWordTest() {
         if (Word.getLength() > 0) {
-            final Random random = new Random();
-            final StringBuilder stringBuilder = new StringBuilder();
-
-            for (int i = 0; i < Word.getLength() - 1; i++) {
-                stringBuilder
-                        .append(LETTERS.charAt(random.nextInt(LETTERS_LENGTH)));
-            }
-
-            Assertions.assertThrows(ShortWordException.class,
-                    () -> Word.checkWord(stringBuilder.toString()));
+            Assertions.assertThrows(ShortWordException.class, () ->
+                    Word.checkWord(randomAlphaWord(Word.getLength() - 1)));
         }
     }
 
     @Test
     void longWordTest() {
         if (Word.getLength() >= 0 && Word.getLength() < Integer.MAX_VALUE) {
-            final Random random = new Random();
-            final StringBuilder stringBuilder = new StringBuilder();
-
-            for (int i = 0; i < Word.getLength() + 1; i++) {
-                stringBuilder
-                        .append(LETTERS.charAt(random.nextInt(LETTERS_LENGTH)));
-            }
-
-            Assertions.assertThrows(LongWordException.class,
-                    () -> Word.checkWord(stringBuilder.toString()));
+            Assertions.assertThrows(LongWordException.class, () ->
+                    Word.checkWord(randomAlphaWord(Word.getLength() + 1)));
         }
     }
 }
