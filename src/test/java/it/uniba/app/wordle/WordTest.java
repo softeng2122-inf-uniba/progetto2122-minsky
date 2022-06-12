@@ -42,4 +42,20 @@ class WordTest {
             Assertions.assertDoesNotThrow(() -> Word.checkWord(""));
         }
     }
+
+    @Test
+    void shortWordTest() {
+        if (Word.getLength() > 0) {
+            final Random random = new Random();
+            final StringBuilder stringBuilder = new StringBuilder();
+
+            for (int i = 0; i < Word.getLength() - 1; i++) {
+                stringBuilder
+                        .append(LETTERS.charAt(random.nextInt(LETTERS_LENGTH)));
+            }
+
+            Assertions.assertThrows(ShortWordException.class,
+                    () -> Word.checkWord(stringBuilder.toString()));
+        }
+    }
 }
