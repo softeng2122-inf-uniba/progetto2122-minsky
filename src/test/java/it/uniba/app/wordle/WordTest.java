@@ -9,19 +9,24 @@ import java.util.Random;
 class WordTest {
 
     /**
-     * String containing all accepted letters for a valid word.
+     * {@code String} containing all accepted letters for a valid word.
      */
     private static final String LETTERS = "abcdefghijklmnopqrstuvwxyz"
             + "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+    /**
+     * Length of the {@code String} {@link WordTest#LETTERS}.
+     */
+    private static final int LETTERS_LENGTH = LETTERS.length();
+
     @Test
     void validWordTest() {
-        final int n = LETTERS.length();
         final Random random = new Random();
         final StringBuilder stringBuilder = new StringBuilder();
 
         for (int i = 0; i < Word.getLength(); i++) {
-            stringBuilder.append(LETTERS.charAt(random.nextInt(n)));
+            stringBuilder
+                    .append(LETTERS.charAt(random.nextInt(LETTERS_LENGTH)));
         }
 
         Assertions.assertDoesNotThrow(
