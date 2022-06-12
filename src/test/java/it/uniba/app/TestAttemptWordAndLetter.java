@@ -1,5 +1,6 @@
 package it.uniba.app;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import it.uniba.app.exception.InvalidLetterException;
@@ -13,13 +14,14 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 
 import java.awt.Color;
 
-public class TestAttemptWord {
+public class TestAttemptWordAndLetter {
     /**
      * Test the method {@link AttemptWord#getLetters()}
      * Test the method {@link Letter#getCharacter()}
      * Test the method {@link Letter#getColor()}.
      */
     @Test
+    @DisplayName("Test the method getLetters(), getCharacter() and getColor()")
     public void testGetLettersGetcolors() {
         try {
             char[] letters = {'a', 'b', 'c', 'd', 'e'};
@@ -36,7 +38,7 @@ public class TestAttemptWord {
             }
         } catch (InvalidLetterException | LongWordException
         | ShortWordException e) {
-            System.out.println("InvalidLetterException");
+            System.out.println(e.getMessage());
         }
 
     }
