@@ -1,5 +1,6 @@
 package it.uniba.app.wordle;
 
+import it.uniba.app.exception.ShortWordException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -25,5 +26,15 @@ class WordTest {
 
         Assertions.assertDoesNotThrow(
                 () -> Word.checkWord(stringBuilder.toString()));
+    }
+
+    @Test
+    void emptyStringTest() {
+        if (Word.getLength() > 0) {
+            Assertions.assertThrows(ShortWordException.class,
+                    () -> Word.checkWord(""));
+        } else {
+            Assertions.assertDoesNotThrow(() -> Word.checkWord(""));
+        }
     }
 }
