@@ -55,7 +55,10 @@ public final class AbortGameBoundary {
         System.out.println(ABORTGAMEMESSAGE);
         System.out.println();
     }
-
+    /**
+     * Displays a message to the user asking
+     * if he wants to abort the game.
+     */
     public static void setAbortgamemessage() {
         System.out.println();
         System.out.println(ABORT_REQUEST);

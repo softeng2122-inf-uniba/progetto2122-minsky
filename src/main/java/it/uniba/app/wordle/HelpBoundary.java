@@ -6,7 +6,7 @@ package it.uniba.app.wordle;
  * This class is responsible for printing the help message
  * to the user.
  */
- 
+
 public final class HelpBoundary {
 
     private HelpBoundary() {
