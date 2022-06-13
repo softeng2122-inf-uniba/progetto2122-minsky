@@ -1,4 +1,4 @@
-package it.uniba.app;
+package it.uniba.app.controller;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import it.uniba.app.controller.HelpController;
 import it.uniba.app.exception.FlagException;
 
 public class HelpControllerTest {
