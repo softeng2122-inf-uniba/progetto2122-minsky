@@ -1,4 +1,4 @@
-package it.uniba.app;
+package it.uniba.app.wordle;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -7,8 +7,6 @@ import org.junit.jupiter.api.Test;
 import it.uniba.app.exception.InvalidLetterException;
 import it.uniba.app.exception.LongWordException;
 import it.uniba.app.exception.ShortWordException;
-import it.uniba.app.wordle.AttemptWord;
-import it.uniba.app.wordle.Letter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
