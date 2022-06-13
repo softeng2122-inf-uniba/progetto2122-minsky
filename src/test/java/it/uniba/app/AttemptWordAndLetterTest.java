@@ -34,7 +34,7 @@ public class AttemptWordAndLetterTest {
     private int max = letters.length;
     /**
      * Initializer for the test.
-     */ 
+     */
     @BeforeEach
     public void setup() {
         try {
@@ -48,7 +48,7 @@ public class AttemptWordAndLetterTest {
             System.out.println(e.getMessage());
         }
 
-    } 
+    }
     /**
      * Test the method {@link AttemptWord#getLetters()}
      * Test the method {@link Letter#getCharacter()}
@@ -56,7 +56,7 @@ public class AttemptWordAndLetterTest {
      */
     @Test
     @DisplayName("Test the method getLetters(), getCharacter() and getColor()")
-    public void testGetLettersGetcolors(){
+    public void testGetLettersGetcolors() {
         for (int i = 0; i < max; i++) {
                 char expected = attempt.getLetters()[i].getCharacter();
                 assertEquals(letters[i], expected);

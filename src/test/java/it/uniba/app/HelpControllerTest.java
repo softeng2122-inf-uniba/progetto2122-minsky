@@ -22,7 +22,7 @@ public class HelpControllerTest {
      * Method that set up the variables for the test.
      */
     @BeforeEach
-    public void setup(){
+    public void setup() {
         helpFlag = false;
         try {
             helpFlag = HelpController.checkFlagOnStart(args);
