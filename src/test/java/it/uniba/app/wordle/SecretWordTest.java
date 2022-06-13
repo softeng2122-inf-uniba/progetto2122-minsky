@@ -2,6 +2,7 @@ package it.uniba.app.wordle;
 
 import it.uniba.app.exception.InvalidWordException;
 import it.uniba.app.exception.LongWordException;
+import it.uniba.app.exception.RunningGameException;
 import it.uniba.app.exception.ShortWordException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -34,7 +35,7 @@ class SecretWordTest {
                     secretWord.getClass().getDeclaredField("secretWord");
 
             Assertions.assertSame(
-                    secretWordStringRepresentation.getType(), String.class);
+                    String.class, secretWordStringRepresentation.getType());
 
             secretWordStringRepresentation.setAccessible(true);
 
@@ -51,7 +52,7 @@ class SecretWordTest {
         final Field currentSecretWord =
                 SecretWord.class.getDeclaredField("currentSecretWord");
 
-        Assertions.assertSame(currentSecretWord.getType(), SecretWord.class);
+        Assertions.assertSame(SecretWord.class, currentSecretWord.getType());
 
         currentSecretWord.setAccessible(true);
 
@@ -62,5 +63,51 @@ class SecretWordTest {
 
         Assertions.assertEquals(
                 currentSecretWord.get(null), SecretWord.getCurrentSecretWord());
+    }
+
+    @Test
+    void setCurrentSecretWordGameRunningTest()
+            throws LongWordException, ShortWordException, InvalidWordException,
+            NoSuchFieldException, IllegalAccessException {
+
+        if (Word.getLength() >= 0) {
+            final Field runningGame =
+                    Game.class.getDeclaredField("runningGame");
+            final SecretWord secretWord =
+                    new SecretWord(WordTest.randomAlphaWord(Word.getLength()));
+
+            runningGame.setAccessible(true);
+
+            runningGame.set(null, new Game(secretWord));
+
+            Assertions.assertThrows(RunningGameException.class,
+                    () -> SecretWord.setCurrentSecretWord(secretWord));
+
+            runningGame.set(null, null);
+        }
+    }
+
+    @Test
+    void setCurrentSecretWordGameNotRunningTest()
+            throws LongWordException, ShortWordException, InvalidWordException,
+            NoSuchFieldException, IllegalAccessException {
+
+        if (Word.getLength() >= 0) {
+            final SecretWord secretWord =
+                    new SecretWord(WordTest.randomAlphaWord(Word.getLength()));
+
+            Assertions.assertDoesNotThrow(
+                    () -> SecretWord.setCurrentSecretWord(secretWord));
+
+            final Field currentSecretWord =
+                    SecretWord.class.getDeclaredField("currentSecretWord");
+
+            Assertions
+                    .assertSame(SecretWord.class, currentSecretWord.getType());
+
+            currentSecretWord.setAccessible(true);
+
+            Assertions.assertEquals(secretWord, currentSecretWord.get(null));
+        }
     }
 }
