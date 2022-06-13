@@ -20,14 +20,45 @@ class WordTest {
      */
     private static final int LETTERS_LENGTH = LETTERS.length();
 
+    /**
+     * Used to generate random doubles and integers in
+     * {@link WordTest#randomAlphaWord(int)} and
+     * {@link WordTest#randomNotAlphaWord(int)}.
+     */
+    private static final Random RANDOM = new Random();
+
     private String randomAlphaWord(final int length) {
         if (length >= 0) {
-            final Random random = new Random();
             final StringBuilder stringBuilder = new StringBuilder();
 
             for (int i = 0; i < length; i++) {
                 stringBuilder
-                        .append(LETTERS.charAt(random.nextInt(LETTERS_LENGTH)));
+                        .append(LETTERS.charAt(RANDOM.nextInt(LETTERS_LENGTH)));
+            }
+
+            return stringBuilder.toString();
+        } else {
+            throw new IllegalArgumentException("length must be positive.");
+        }
+    }
+
+    private String randomNotAlphaWord(final int length) {
+        if (length >= 0) {
+            final int[] notAlphaCharIndexes = RANDOM.ints(0, length)
+                    .distinct().limit(RANDOM.nextInt(length) + 1).toArray();
+            final StringBuilder stringBuilder =
+                    new StringBuilder(randomAlphaWord(length));
+
+            for (final int i : notAlphaCharIndexes) {
+                char randomNotAlphaChar;
+
+                do {
+                    randomNotAlphaChar =
+                            (char) (RANDOM.nextInt('␡' - '!') + '!');
+                }
+                while (Character.isLetter(randomNotAlphaChar));
+
+                stringBuilder.setCharAt(i, randomNotAlphaChar);
             }
 
             return stringBuilder.toString();
