@@ -1,5 +1,6 @@
 package it.uniba.app.wordle;
 
+import it.uniba.app.exception.InvalidWordException;
 import it.uniba.app.exception.LongWordException;
 import it.uniba.app.exception.ShortWordException;
 import org.junit.jupiter.api.Assertions;
@@ -98,6 +99,14 @@ class WordTest {
         if (Word.getLength() >= 0 && Word.getLength() < Integer.MAX_VALUE) {
             Assertions.assertThrows(LongWordException.class, () ->
                     Word.checkWord(randomAlphaWord(Word.getLength() + 1)));
+        }
+    }
+
+    @Test
+    void notAlphaWordTest() {
+        if (Word.getLength() >= 0) {
+            Assertions.assertThrows(InvalidWordException.class, () ->
+                    Word.checkWord(randomNotAlphaWord(Word.getLength())));
         }
     }
 }
