@@ -53,7 +53,8 @@ public class GameGridTest {
      */
 
     @Test
-    @DisplayName("Compare an artificial attempt Word added to a game grid with the return of getWord of game grid")
+    @DisplayName("Compare an artificial attempt Word added to a"
+        + "game grid with the return of getWord of game grid")
     void testGetWord() {
 
         assertEquals(attemptWord, gameGrid.getWord(0));
