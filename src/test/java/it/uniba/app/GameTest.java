@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import it.uniba.app.exception.InvalidWordException;
 import it.uniba.app.exception.LongWordException;
 import it.uniba.app.exception.MissingCurrentSecretWordException;
+import it.uniba.app.exception.MissingRunningGameException;
 import it.uniba.app.exception.RunningGameException;
 import it.uniba.app.exception.ShortWordException;
 import it.uniba.app.wordle.Game;
@@ -21,7 +23,7 @@ public class GameTest {
     /**A secret word. */
     private SecretWord secretWord;
     /**Wxpectation of the number of attempts. */
-    private final int EXPECTED_GAME_ATTEMPTS = 6;
+    private static final int EXPECTED_GAME_ATTEMPTS = 6;
 
     /**
      * Initial configuration of the test.
@@ -74,6 +76,8 @@ public class GameTest {
     @DisplayName("Check if the counter has been increased")
     void testGetCount() {
         assertEquals(1, Game.getRunningGame().getCount());
+        Game.getRunningGame().addCount();
+        assertEquals(2,  Game.getRunningGame().getCount());
     }
 
     /**Test the method {@link Game#getRunningGame()}. */
@@ -90,6 +94,17 @@ public class GameTest {
     @DisplayName("Check if there is a instance of GameGrid")
     void testGetGameGrid() {
         assertNotNull(Game.getRunningGame().getGameGrid());
+    }
+
+    /**Cleaning the environment. */
+
+    @AfterAll
+    static void cleanUp() {
+        try {
+            Game.abortRunningGame();
+        } catch (MissingRunningGameException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }
