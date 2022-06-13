@@ -120,4 +120,17 @@ class WordTest {
             Assertions.assertEquals(length.getInt(null), Word.getLength());
         }
     }
+
+    @Test
+    void getMinLengthTest()
+            throws NoSuchFieldException, IllegalAccessException {
+
+        final Field minLength = Word.class.getDeclaredField("MIN_LENGTH");
+
+        if (minLength.getType() == int.class) {
+            minLength.setAccessible(true);
+            Assertions
+                    .assertEquals(minLength.getInt(null), Word.getMinLength());
+        }
+    }
 }
