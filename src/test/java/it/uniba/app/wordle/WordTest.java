@@ -29,7 +29,7 @@ class WordTest {
      */
     private static final Random RANDOM = new Random();
 
-    private String randomAlphaWord(final int length) {
+    static String randomAlphaWord(final int length) {
         if (length >= 0) {
             final StringBuilder stringBuilder = new StringBuilder();
 
@@ -44,7 +44,7 @@ class WordTest {
         }
     }
 
-    private String randomNotAlphaWord(final int length) {
+    private static String randomNotAlphaWord(final int length) {
         if (length >= 0) {
             final int[] notAlphaCharIndexes = RANDOM.ints(0, length)
                     .distinct().limit(RANDOM.nextInt(length) + 1).toArray();
