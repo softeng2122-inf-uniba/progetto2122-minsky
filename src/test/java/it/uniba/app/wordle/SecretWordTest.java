@@ -110,4 +110,16 @@ class SecretWordTest {
             Assertions.assertEquals(secretWord, currentSecretWord.get(null));
         }
     }
+
+    @Test
+    void toStringTest()
+            throws LongWordException, ShortWordException, InvalidWordException {
+        if (Word.getLength() >= 0) {
+            final String secretWordString =
+                    WordTest.randomAlphaWord(Word.getLength());
+
+            Assertions.assertTrue(secretWordString.equalsIgnoreCase(
+                    new SecretWord(secretWordString).toString()));
+        }
+    }
 }
