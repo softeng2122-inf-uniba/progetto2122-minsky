@@ -6,6 +6,7 @@ import it.uniba.app.exception.ShortWordException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Field;
 import java.util.Random;
 
 class WordTest {
@@ -107,6 +108,16 @@ class WordTest {
         if (Word.getLength() >= 0) {
             Assertions.assertThrows(InvalidWordException.class, () ->
                     Word.checkWord(randomNotAlphaWord(Word.getLength())));
+        }
+    }
+
+    @Test
+    void getLengthTest() throws NoSuchFieldException, IllegalAccessException {
+        final Field length = Word.class.getDeclaredField("LENGTH");
+
+        if (length.getType() == int.class) {
+            length.setAccessible(true);
+            Assertions.assertEquals(length.getInt(null), Word.getLength());
         }
     }
 }
