@@ -2,6 +2,7 @@ package it.uniba.app;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterAll;
@@ -22,8 +23,10 @@ public class GameTest {
 
     /**A secret word. */
     private SecretWord secretWord;
-    /**Wxpectation of the number of attempts. */
+    /**Expectation of the number of attempts. */
     private static final int EXPECTED_GAME_ATTEMPTS = 6;
+    /**A game instance. */
+    private static Game game;
 
     /**
      * Initial configuration of the test.
@@ -42,6 +45,15 @@ public class GameTest {
             System.out.println(e.getMessage());
         }
 
+    }
+
+    /**Test the method {@link Game#Game(SecretWord)}. */
+
+    @Test
+    @DisplayName("Constructor test")
+    void testGame() {
+        game = new Game(secretWord);
+        assertEquals(secretWord, game.getSecretWord());
     }
 
     /**Test the method {@link Game#getMaxGameAttempts()}. */
@@ -94,6 +106,22 @@ public class GameTest {
     @DisplayName("Check if there is a instance of GameGrid")
     void testGetGameGrid() {
         assertNotNull(Game.getRunningGame().getGameGrid());
+    }
+
+    /**Test the method {@link Game#abortRunningGame()}. */
+
+    @Test
+    @DisplayName("Abort game test")
+    void testAbortRunningGame() {
+
+        try {
+            Game.abortRunningGame();
+        } catch (MissingRunningGameException e) {
+            System.out.println(e.getMessage());
+        }
+
+        assertNull(Game.getRunningGame());
+
     }
 
     /**Cleaning the environment. */
