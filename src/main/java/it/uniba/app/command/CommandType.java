@@ -2,10 +2,10 @@ package it.uniba.app.command;
 
 import it.uniba.app.controller.AbortGameController;
 import it.uniba.app.controller.Controller;
-import it.uniba.app.controller.ExitGame;
+import it.uniba.app.controller.ExitGameController;
 import it.uniba.app.controller.HelpController;
 import it.uniba.app.controller.SecretWordSelectionController;
-import it.uniba.app.controller.ShowSecretWord;
+import it.uniba.app.controller.ShowSecretWordController;
 import it.uniba.app.controller.StartGameController;
 import it.uniba.app.controller.AttemptController;
 
@@ -32,7 +32,7 @@ public enum CommandType {
      *
      * @see it.uniba.app.wordle.SecretWord#getCurrentSecretWord()
      */
-    MOSTRA("/mostra", ShowSecretWord.class),
+    MOSTRA("/mostra", ShowSecretWordController.class),
 
     /** Command to show help message. */
     HELP("/help", HelpController.class),
@@ -52,7 +52,7 @@ public enum CommandType {
     ABBANDONA("/abbandona", AbortGameController.class),
 
     /** Command to exit the application. */
-    ESCI("/esci", ExitGame.class),
+    ESCI("/esci", ExitGameController.class),
 
     /**
      * This command type is recognised whenever

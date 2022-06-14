@@ -1,4 +1,4 @@
-package it.uniba.app;
+package it.uniba.app.wordle;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -9,10 +9,6 @@ import org.junit.jupiter.api.Test;
 import it.uniba.app.exception.InvalidLetterException;
 import it.uniba.app.exception.LongWordException;
 import it.uniba.app.exception.ShortWordException;
-import it.uniba.app.wordle.AttemptWord;
-import it.uniba.app.wordle.GameGrid;
-import it.uniba.app.wordle.Letter;
-import it.uniba.app.wordle.Word;
 
 public class GameGridTest {
 

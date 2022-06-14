@@ -1,4 +1,4 @@
-package it.uniba.app;
+package it.uniba.app.wordle;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -16,8 +16,6 @@ import it.uniba.app.exception.MissingCurrentSecretWordException;
 import it.uniba.app.exception.MissingRunningGameException;
 import it.uniba.app.exception.RunningGameException;
 import it.uniba.app.exception.ShortWordException;
-import it.uniba.app.wordle.Game;
-import it.uniba.app.wordle.SecretWord;
 
 public class GameTest {
 

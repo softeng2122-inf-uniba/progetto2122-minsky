@@ -2,8 +2,8 @@ package it.uniba.app.controller;
 
 import it.uniba.app.exception.InvalidConfirmationException;
 import it.uniba.app.exception.MissingRunningGameException;
-import it.uniba.app.utility.AbortGameBoundary;
-import it.uniba.app.utility.ConfirmationRequest;
+import it.uniba.app.ui.AbortGameBoundary;
+import it.uniba.app.ui.ConfirmationRequest;
 import it.uniba.app.wordle.Game;
 
 import java.io.IOException;
