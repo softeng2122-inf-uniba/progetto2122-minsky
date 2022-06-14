@@ -254,6 +254,10 @@ Il gruppo Minsky per la realizzazione di questo progetto ha utilizzato il proces
 Il gruppo si è coordinato utilizzando le piattaforme di comunicazione Whatsapp,  Discord e Microsoft Teams sui quali venivano condivisi file, immagini e documentazioni oltre che problemi incontrati durante lo sviluppo. Nello specifico su Whatsapp venivano decisi meeting da farsi periodicamente in aggiunta a quelli straordinari quando venivano sollevate questioni importanti, i meeting erano poi svolti sulla piattafroma Discord sul quale è stato creato un server privato di comunicazione contenente diversi canali per mantenere ordine e organizzazione al massimo. E' stato anche svolto un meeting straordinario su Microsoft Teams per la realizzazione dell'analisi retrospettiva dato che Teams ci permetteva di condividere in tempo reale l'utilizzo del software Microsoft Witheboard.
 Nello specifico i meeting periodici venivano svolti ogni 2 giorni, escludendo la domenica, ed avevano la durata di 15/20 minuti, nei quali si aggiornavano i membri del gruppo dello stato di avanzamento dei propri issue. 
 
+Il server di Discord usato per comunicare si presenta cosi come nell'immagine:
+
+![immagine server discord](./img/immagine%20menu%20discord.png)
+
 # 9. Analisi retrospettiva
 ## 1. Sprint 1
 ![Analisi retrospettiva](./img/analisi%20retrospettiva.png)
