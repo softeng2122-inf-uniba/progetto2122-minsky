@@ -1,5 +1,6 @@
-package it.uniba.app.utility;
+package it.uniba.app.ui;
 
+import it.uniba.app.utility.ErrorStringBuilder;
 
 /**
  * <Boundary>

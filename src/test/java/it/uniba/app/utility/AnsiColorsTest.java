@@ -1,4 +1,4 @@
-package it.uniba.app;
+package it.uniba.app.utility;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import it.uniba.app.exception.InvalidLetterException;
 import it.uniba.app.exception.LongWordException;
 import it.uniba.app.exception.ShortWordException;
-import it.uniba.app.utility.AnsiColors;
 import it.uniba.app.wordle.AttemptWord;
 import it.uniba.app.wordle.Letter;
 import it.uniba.app.wordle.Word;
@@ -81,7 +80,6 @@ public class AnsiColorsTest {
 
         } catch (InvalidLetterException
             | ShortWordException | LongWordException e) {
-            System.out.println(e.getMessage());
         }
 
         gridRow = "│" + ANSI_BACKGROUND_BRIGHT_GREEN + " a " + EXPECTED_RESET

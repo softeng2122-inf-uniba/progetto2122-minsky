@@ -1,9 +1,11 @@
-package it.uniba.app.utility;
+package it.uniba.app.ui;
 
 import it.uniba.app.exception.InvalidWordException;
 import it.uniba.app.exception.LongWordException;
 import it.uniba.app.exception.RunningGameException;
 import it.uniba.app.exception.ShortWordException;
+import it.uniba.app.utility.AnsiColors;
+import it.uniba.app.utility.ErrorStringBuilder;
 import it.uniba.app.wordle.Word;
 
 /**

@@ -1,7 +1,7 @@
 package it.uniba.app.controller;
 import it.uniba.app.exception.MissingCurrentSecretWordException;
+import it.uniba.app.ui.ShowSecretWordBoundary;
 import it.uniba.app.wordle.SecretWord;
-import it.uniba.app.utility.ShowSecretWordBoundary;
 
 /**
  * <Control>
@@ -12,7 +12,7 @@ import it.uniba.app.utility.ShowSecretWordBoundary;
  * @see SecretWord
  */
 
-public class ShowSecretWord implements Controller {
+public class ShowSecretWordController implements Controller {
 
     /**
      * This method is used to display the current {@code SecretWord}.

@@ -1,4 +1,7 @@
-package it.uniba.app.utility;
+package it.uniba.app.ui;
+
+import it.uniba.app.utility.AnsiColors;
+import it.uniba.app.utility.ErrorStringBuilder;
 
 /**
  * <Boundary>

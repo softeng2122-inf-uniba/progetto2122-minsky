@@ -1,4 +1,4 @@
-package it.uniba.app;
+package it.uniba.app.wordle;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -16,8 +16,6 @@ import it.uniba.app.exception.MissingCurrentSecretWordException;
 import it.uniba.app.exception.MissingRunningGameException;
 import it.uniba.app.exception.RunningGameException;
 import it.uniba.app.exception.ShortWordException;
-import it.uniba.app.wordle.Game;
-import it.uniba.app.wordle.SecretWord;
 
 public class GameTest {
 
@@ -26,7 +24,7 @@ public class GameTest {
     /**Expectation of the number of attempts. */
     private static final int EXPECTED_GAME_ATTEMPTS = 6;
     /**A game instance. */
-    private static Game game;
+    private Game game;
 
     /**
      * Initial configuration of the test.
@@ -42,7 +40,6 @@ public class GameTest {
         } catch (ShortWordException | LongWordException
             | InvalidWordException | RunningGameException
                 | MissingCurrentSecretWordException e) {
-            System.out.println(e.getMessage());
         }
 
     }
@@ -117,7 +114,6 @@ public class GameTest {
         try {
             Game.abortRunningGame();
         } catch (MissingRunningGameException e) {
-            System.out.println(e.getMessage());
         }
 
         assertNull(Game.getRunningGame());
@@ -131,7 +127,6 @@ public class GameTest {
         try {
             Game.abortRunningGame();
         } catch (MissingRunningGameException e) {
-            System.out.println(e.getMessage());
         }
     }
 

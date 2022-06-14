@@ -1,15 +1,15 @@
 package it.uniba.app.controller;
 
-import it.uniba.app.command.CommandLineShell;
 import it.uniba.app.exception.InvalidLetterException;
 import it.uniba.app.exception.InvalidWordException;
 import it.uniba.app.exception.LongWordException;
 import it.uniba.app.exception.MissingRunningGameException;
 import it.uniba.app.exception.ShortWordException;
-import it.uniba.app.utility.AttemptBoundary;
+import it.uniba.app.ui.AttemptBoundary;
+import it.uniba.app.ui.CommandLineShell;
+import it.uniba.app.ui.GameGridBoundary;
 import it.uniba.app.wordle.AttemptWord;
 import it.uniba.app.wordle.Game;
-import it.uniba.app.wordle.GameGridBoundary;
 import it.uniba.app.wordle.Letter;
 import it.uniba.app.wordle.SecretWord;
 import it.uniba.app.wordle.Word;

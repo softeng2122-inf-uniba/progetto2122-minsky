@@ -1,4 +1,4 @@
-package it.uniba.app;
+package it.uniba.app.wordle;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -9,10 +9,6 @@ import org.junit.jupiter.api.Test;
 import it.uniba.app.exception.InvalidLetterException;
 import it.uniba.app.exception.LongWordException;
 import it.uniba.app.exception.ShortWordException;
-import it.uniba.app.wordle.AttemptWord;
-import it.uniba.app.wordle.GameGrid;
-import it.uniba.app.wordle.Letter;
-import it.uniba.app.wordle.Word;
 
 public class GameGridTest {
 
@@ -35,7 +31,7 @@ public class GameGridTest {
 
         try {
 
-            for(int i = 0; i < AttemptWord.getLength(); i++) {
+            for (int i = 0; i < AttemptWord.getLength(); i++) {
                 letters[i] =  new Letter('a', Color.GREEN);
             }
 
@@ -44,7 +40,6 @@ public class GameGridTest {
 
         } catch (InvalidLetterException
             | ShortWordException | LongWordException e) {
-            System.out.println(e.getMessage());
         }
     }
 

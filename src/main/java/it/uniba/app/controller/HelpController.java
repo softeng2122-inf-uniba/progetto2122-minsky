@@ -1,7 +1,7 @@
 package it.uniba.app.controller;
 
 import it.uniba.app.exception.FlagException;
-import it.uniba.app.wordle.HelpBoundary;
+import it.uniba.app.ui.HelpBoundary;
 
 /**
  * <Control>

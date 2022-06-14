@@ -1,7 +1,7 @@
 package it.uniba.app.controller;
 
 import it.uniba.app.exception.InvalidConfirmationException;
-import it.uniba.app.utility.ConfirmationRequest;
+import it.uniba.app.ui.ConfirmationRequest;
 
 import java.io.IOException;
 
@@ -11,7 +11,7 @@ import java.io.IOException;
  * This class is responsible for shutting down the application.
  */
 
-public class ExitGame implements Controller  {
+public class ExitGameController implements Controller  {
 
     /**
      * Instance of {@code ConfirmationRequest}

@@ -1,6 +1,6 @@
 package it.uniba.app;
 
-import it.uniba.app.command.CommandLineShell;
+import it.uniba.app.ui.CommandLineShell;
 
 /**
  * <noECB>

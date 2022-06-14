@@ -1,4 +1,4 @@
-package it.uniba.app.wordle;
+package it.uniba.app.ui;
 
 /**
  * <Boundary>
