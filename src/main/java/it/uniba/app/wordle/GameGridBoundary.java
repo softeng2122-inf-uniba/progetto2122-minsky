@@ -2,6 +2,11 @@ package it.uniba.app.wordle;
 
 import it.uniba.app.utility.AnsiColors;
 
+/**
+ * <Boundary>
+ * <p>
+ * This class is responsible for printing the {@code GameGrid}.
+ */
 public final class GameGridBoundary {
 
     /**Number of segmets for each column of grid. */

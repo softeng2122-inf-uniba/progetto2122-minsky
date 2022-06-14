@@ -6,6 +6,12 @@ import it.uniba.app.exception.MissingRunningGameException;
 import it.uniba.app.exception.ShortWordException;
 import it.uniba.app.wordle.Game;
 
+/**
+ * <Boundary>
+ * <p>
+ * This class is responsible for printing messages to the user
+ * in specific cases when they execute an attempt.
+ */
 public class AttemptBoundary {
 
     /**

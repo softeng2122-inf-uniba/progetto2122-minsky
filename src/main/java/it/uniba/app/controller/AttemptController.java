@@ -30,7 +30,7 @@ public class AttemptController implements Controller {
     * the current attempt count.
     * {@code attemptBoundary} used to print the messages.
     */
-    private static void endAttempts() {
+    void endAttempts() {
 
         AttemptBoundary attemptBoundary = new AttemptBoundary();
 
@@ -93,7 +93,7 @@ public class AttemptController implements Controller {
      * @param secretWord the current secret word {@code SecretWord}.
      * @param attemptWord the string that the user digit as attempt.
      */
-    private void compereLetters(final SecretWord secretWord,
+    void compereLetters(final SecretWord secretWord,
         final String attemptWord) {
 
         boolean letterFlag = false;
