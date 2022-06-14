@@ -196,8 +196,18 @@ Questa sezione non è compilata perchè si tratta di un progetto di piccole-medi
 
 ![](img/OO_Design/EsecuzioneTentativo/sequenceDiagram.png)
 
-# 6. Riepilogo del test
+Per quanto riguarda questa user story è stata presa una decisione di comune accordo ovvero quella di far adattare la griglia di gioco in basa alla lunghezza dei tentativi, opzionalità che potrà essere introdotta in seguito e attualmente non implementata. La griglia si presenterebbe come in figura:
 
+![nota tentativo](./img/nota%20tentativo.png)
+
+# 6. Riepilogo del test
+Viene riportata di seguito la tabella riassuntiva dei test presente su Coveralls dove sono presenti solo le classi testate e la percentuale di coverage:
+
+![tabella riassuntiva test](./img/tabella%20riassuntiva%20test.png)
+
+Viene, inoltre riportata la percentuale di coverage del codice :
+
+![coverage totale](./img/coverage%20totale.png)
 # 7. Manuale d'uso
 
 All’avvio il gioco si interfaccia con l’utente spiegando brevemente in cosa consiste; dopodiché è pronto a ricevere un nuovo comando, tra i seguenti:
@@ -258,6 +268,15 @@ Nello specifico i meeting periodici venivano svolti ogni 2 giorni, escludendo la
 Il server di Discord usato per comunicare si presenta cosi come nell'immagine:
 
 ![immagine server discord](./img/immagine%20menu%20discord.png)
+
+Commento per decisione presa riguardante due warning di checkstyle:
+
+Non sono stati risolti due problemi segnalati da SpotBugs. Di seguito le motivazioni dietro questa scelta:
+
+1. Il primo warning riguarda l'attributo gameGrid delle istanze della classe Game. Questo warning asserisce che tale attributo possa essere esposto all'esterno in quanto valore di ritorno per il metodo getGameGrid() della classe Game. Tuttavia in questo caso si tratta di un comportamento desiderato. Infatti il codice responsabile dell'esecuzione dei tentativi di gioco necessita di aggiornare la griglia di gioco, aggiungendo man mano i nuovi tentativi durante lo svolgimento di una partita. Per farlo è necessario modificare la griglia di gioco della partita attualmente in corso. Pertanto il metodo getGameGrid() deve necessariamente restituire la "rappresentazione interna" della griglia di gioco, altrimenti non sarebbe possibile modificarla dal codice responsabile dell'esecuzione dei tentativi di gioco.
+2. Il secondo warning è simile al primo ma rigurda l'attributo runningGame della classe Game. Anche in questo caso, il warning asserisce che tale attributo possa essere esposto all'esterno in quanto valore di ritorno per il metodo getRunningGame() della classe Game. Anche in questo caso si tratta di un comportamento desiderato. Come per il warning precedente, il motivo è permettere al codice responsabile dell'esecuzione dei tentativi di gioco di modificare la griglia di gioco durante lo svolgimento di una partita. Per poterlo fare bisogna prima accedere alla partita in corso con il metodo getRunningGame() della classe Game e poi accedere alla sua griglia di gioco con il metodo getGameGrid() sempre di Game.
+
+In conclusione si deve notare che in entrambi i casi non era possibile restituire una copia delle "rappresentazioni interne" in quanto ciò avrebbe impedito al codice responsabile dell'esecuzione dei tentativi di gioco di **modificare** la griglia di gioco della partita in corso.
 
 # 9. Analisi retrospettiva
 ## 1. Sprint 1
