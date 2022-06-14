@@ -205,9 +205,13 @@ Viene riportata di seguito la tabella riassuntiva dei test presente su Coveralls
 
 ![tabella riassuntiva test](./img/tabella%20riassuntiva%20test.png)
 
-Viene, inoltre riportata la percentuale di coverage del codice :
+Viene, inoltre riportata la percentuale di coverage del codice e il numero di casi di test :
 
 ![coverage totale](./img/coverage%20totale.png)
+
+![numero test](./img/numero%20test.png)
+
+
 # 7. Manuale d'uso
 
 All’avvio il gioco si interfaccia con l’utente spiegando brevemente in cosa consiste; dopodiché è pronto a ricevere un nuovo comando, tra i seguenti:
