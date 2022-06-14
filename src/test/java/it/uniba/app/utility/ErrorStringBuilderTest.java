@@ -5,15 +5,25 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
+import java.util.Random;
 import java.util.UUID;
 
 class ErrorStringBuilderTest {
 
     /**
+     * Used to generate a random integer in
+     * {@link ErrorStringBuilderTest#appendTest()}.
+     */
+    private static final Random RANDOM = new Random();
+    /**
+     * Max amount of times {@link #appendTest()} can
+     * use {@link ErrorStringBuilder#append(String)}.
+     */
+    private static final int MAX_APPEND_AMOUNT = 1000;
+    /**
      * Prefix of error string messages.
      */
     private static String prefix;
-
     /**
      * Suffix of error string messages.
      */
@@ -42,9 +52,28 @@ class ErrorStringBuilderTest {
 
     @Test
     void stringParamConstructorTest() {
-        String randomString = UUID.randomUUID().toString();
+        final String randomString = UUID.randomUUID().toString();
 
         Assertions.assertEquals(prefix + randomString + suffix,
                 new ErrorStringBuilder(randomString).toString());
+    }
+
+    @Test
+    void appendTest() {
+        final StringBuilder stringBuilder =
+                new StringBuilder(UUID.randomUUID().toString());
+        final int appendAmount = RANDOM.nextInt(MAX_APPEND_AMOUNT) + 1;
+        final ErrorStringBuilder errorStringBuilder =
+                new ErrorStringBuilder(stringBuilder.toString());
+
+        for (int i = 0; i < appendAmount; i++) {
+            String randomString = UUID.randomUUID().toString();
+
+            stringBuilder.append(randomString);
+            errorStringBuilder.append(randomString);
+
+            Assertions.assertEquals(prefix + stringBuilder + suffix,
+                    errorStringBuilder.toString());
+        }
     }
 }
