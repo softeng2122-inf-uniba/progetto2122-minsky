@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
+import java.util.UUID;
 
 class ErrorStringBuilderTest {
 
@@ -37,5 +38,13 @@ class ErrorStringBuilderTest {
     void emptyConstructorTest() {
         Assertions.assertEquals(
                 prefix + suffix, new ErrorStringBuilder().toString());
+    }
+
+    @Test
+    void stringParamConstructorTest() {
+        String randomString = UUID.randomUUID().toString();
+
+        Assertions.assertEquals(prefix + randomString + suffix,
+                new ErrorStringBuilder(randomString).toString());
     }
 }
