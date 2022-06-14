@@ -122,4 +122,44 @@ class SecretWordTest {
                     new SecretWord(secretWordString).toString()));
         }
     }
+
+    @Test
+    void equalsIgnoreCaseTrueTest()
+            throws LongWordException, ShortWordException, InvalidWordException {
+
+        if (Word.getLength() >= 0) {
+            String randomWord = WordTest.randomAlphaWord(Word.getLength());
+
+            Assertions.assertTrue(
+                    new SecretWord(randomWord).equalsIgnoreCase(randomWord));
+        }
+    }
+
+    @Test
+    void equalsIgnoreCaseFalseCharTest()
+            throws LongWordException, ShortWordException, InvalidWordException {
+
+        if (Word.getLength() >= 0) {
+            final String randomAlphaWord =
+                    WordTest.randomAlphaWord(Word.getLength());
+            final String randomNotAlphaWord =
+                    WordTest.randomNotAlphaWord(Word.getLength());
+
+            Assertions.assertFalse(new SecretWord(randomAlphaWord)
+                    .equalsIgnoreCase(randomNotAlphaWord));
+        }
+    }
+
+    @Test
+    void equalsIgnoreCaseFalseLengthTest()
+            throws LongWordException, ShortWordException, InvalidWordException {
+
+        if (Word.getLength() >= 0) {
+            final String randWord = WordTest.randomAlphaWord(Word.getLength());
+            final String longerWord = randWord + 'a';
+
+            Assertions.assertFalse(new SecretWord(randWord)
+                    .equalsIgnoreCase(longerWord));
+        }
+    }
 }

@@ -44,7 +44,7 @@ class WordTest {
         }
     }
 
-    private static String randomNotAlphaWord(final int length) {
+    static String randomNotAlphaWord(final int length) {
         if (length >= 0) {
             final int[] notAlphaCharIndexes = RANDOM.ints(0, length)
                     .distinct().limit(RANDOM.nextInt(length) + 1).toArray();
