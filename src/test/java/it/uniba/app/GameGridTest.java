@@ -35,7 +35,7 @@ public class GameGridTest {
 
         try {
 
-            for(int i = 0; i < AttemptWord.getLength(); i++) {
+            for (int i = 0; i < AttemptWord.getLength(); i++) {
                 letters[i] =  new Letter('a', Color.GREEN);
             }
 

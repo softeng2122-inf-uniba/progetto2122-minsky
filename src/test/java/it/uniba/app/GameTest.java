@@ -26,7 +26,7 @@ public class GameTest {
     /**Expectation of the number of attempts. */
     private static final int EXPECTED_GAME_ATTEMPTS = 6;
     /**A game instance. */
-    private static Game game;
+    private Game game;
 
     /**
      * Initial configuration of the test.
