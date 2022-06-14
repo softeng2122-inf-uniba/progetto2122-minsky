@@ -32,7 +32,7 @@ Il lavoro è stato suddiviso equamente tra tutti i contributori del progetto :
 Proscia Vito, Quagliarella Vincenzo, Romanazzi Raffaello, Tancrini Stefano, Venezia Mario.
 
 # 2. Modello di dominio
-![Modello di dominio](./img/modello%20di%20dominio%20plant.png)
+![Modello di dominio](./img/dominio.png)
 
 # 3. Requisiti specifici
 ## 3.1 Requisiti funzionali
