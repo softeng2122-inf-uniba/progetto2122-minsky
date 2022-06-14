@@ -80,7 +80,6 @@ public class AnsiColorsTest {
 
         } catch (InvalidLetterException
             | ShortWordException | LongWordException e) {
-            System.out.println(e.getMessage());
         }
 
         gridRow = "│" + ANSI_BACKGROUND_BRIGHT_GREEN + " a " + EXPECTED_RESET

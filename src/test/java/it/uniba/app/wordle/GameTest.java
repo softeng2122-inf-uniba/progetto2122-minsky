@@ -40,7 +40,6 @@ public class GameTest {
         } catch (ShortWordException | LongWordException
             | InvalidWordException | RunningGameException
                 | MissingCurrentSecretWordException e) {
-            System.out.println(e.getMessage());
         }
 
     }
@@ -115,7 +114,6 @@ public class GameTest {
         try {
             Game.abortRunningGame();
         } catch (MissingRunningGameException e) {
-            System.out.println(e.getMessage());
         }
 
         assertNull(Game.getRunningGame());
@@ -129,7 +127,6 @@ public class GameTest {
         try {
             Game.abortRunningGame();
         } catch (MissingRunningGameException e) {
-            System.out.println(e.getMessage());
         }
     }
 

@@ -40,7 +40,6 @@ public class GameGridTest {
 
         } catch (InvalidLetterException
             | ShortWordException | LongWordException e) {
-            System.out.println(e.getMessage());
         }
     }
 
