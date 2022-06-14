@@ -67,7 +67,7 @@ class ErrorStringBuilderTest {
                 new ErrorStringBuilder(stringBuilder.toString());
 
         for (int i = 0; i < appendAmount; i++) {
-            String randomString = UUID.randomUUID().toString();
+            final String randomString = UUID.randomUUID().toString();
 
             stringBuilder.append(randomString);
             errorStringBuilder.append(randomString);
@@ -75,5 +75,13 @@ class ErrorStringBuilderTest {
             Assertions.assertEquals(prefix + stringBuilder + suffix,
                     errorStringBuilder.toString());
         }
+    }
+
+    @Test
+    void toStringTest() {
+        final String randomString = UUID.randomUUID().toString();
+
+        Assertions.assertEquals(prefix + randomString + suffix,
+                new ErrorStringBuilder(randomString).toString());
     }
 }
