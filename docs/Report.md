@@ -222,6 +222,7 @@ Per assicurarsi che la parola segreta sia stata scritta correttamente, si utiliz
 ![griglia di gioco](./img/manuale%20utente/griglia%20di%20gioco.png)
 
 Se il tentativo sarà inferiore o superiore a 5 caratteri, o i caratteri inseriti non saranno lettere dell’alfabeto, l’applicazione mostrerà messaggi di errore.
+
 ![errori](./img/manuale%20utente/errori.png)
 
 Una volta inserito un tentativo valido l'applicazione da un feedback visivo al giocatore evidenziando le lettere di un determinato colore in base alla presenza o meno di esse nella parola segreta, secondo questi criteri:
