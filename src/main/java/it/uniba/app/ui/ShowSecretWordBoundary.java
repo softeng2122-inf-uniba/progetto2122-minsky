@@ -1,4 +1,7 @@
-package it.uniba.app.utility;
+package it.uniba.app.ui;
+
+import it.uniba.app.utility.ErrorStringBuilder;
+
 /**
  * <Boundary>
  * <p>
@@ -7,7 +10,7 @@ package it.uniba.app.utility;
  * to show the secret word {@code ShowSecretWord}.
  *
  * @see it.uniba.app.wordle.SecretWord
- * @see it.uniba.app.controller.ShowSecretWord
+ * @see it.uniba.app.controller.ShowSecretWordController
  */
 
 public class ShowSecretWordBoundary {

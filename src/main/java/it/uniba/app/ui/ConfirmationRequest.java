@@ -1,6 +1,7 @@
-package it.uniba.app.utility;
+package it.uniba.app.ui;
 
 import it.uniba.app.exception.InvalidConfirmationException;
+import it.uniba.app.utility.ErrorStringBuilder;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -6,7 +6,7 @@ package it.uniba.app.exception;
  * Thrown to indicate that the user
  * did not answer a {@code ConfirmationRequest} correctly.
  *
- * @see it.uniba.app.utility.ConfirmationRequest
+ * @see it.uniba.app.ui.ConfirmationRequest
  */
 
 public class InvalidConfirmationException extends Exception {

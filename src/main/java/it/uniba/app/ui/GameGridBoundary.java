@@ -1,6 +1,9 @@
-package it.uniba.app.wordle;
+package it.uniba.app.ui;
 
 import it.uniba.app.utility.AnsiColors;
+import it.uniba.app.wordle.Game;
+import it.uniba.app.wordle.GameGrid;
+import it.uniba.app.wordle.Word;
 
 /**
  * <Boundary>

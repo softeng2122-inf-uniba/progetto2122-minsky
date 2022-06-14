@@ -9,7 +9,7 @@ import it.uniba.app.exception.InvalidCommandException;
  * entered in a {@code CommandLineShell}.
  *
  * @see Command
- * @see CommandLineShell
+ * @see it.uniba.app.ui.CommandLineShell
  */
 
 public final class CommandParser {

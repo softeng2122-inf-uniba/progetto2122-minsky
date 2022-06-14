@@ -2,9 +2,9 @@ package it.uniba.app.controller;
 
 import it.uniba.app.exception.MissingCurrentSecretWordException;
 import it.uniba.app.exception.RunningGameException;
-import it.uniba.app.utility.StartGameBoundary;
+import it.uniba.app.ui.GameGridBoundary;
+import it.uniba.app.ui.StartGameBoundary;
 import it.uniba.app.wordle.Game;
-import it.uniba.app.wordle.GameGridBoundary;
 
 /**
  * <Control>

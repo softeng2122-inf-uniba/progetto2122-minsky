@@ -1,5 +1,7 @@
-package it.uniba.app.command;
+package it.uniba.app.ui;
 
+import it.uniba.app.command.Command;
+import it.uniba.app.command.CommandParser;
 import it.uniba.app.controller.Controller;
 import it.uniba.app.controller.HelpController;
 import it.uniba.app.exception.FlagException;
